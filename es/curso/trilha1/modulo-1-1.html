@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Módulo 1.1 · El cambio de mentalidad | Automatización con IA</title>
+<meta content="Módulo 1.1 — El cambio de enfoque: de 10 horas a 10 segundos. Por qué la automatización estratégica consiste en saber qué construir, no solo en usar herramientas." name="description"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#FACC15',
+        dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+      } } }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - acento emerald (T1) */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5,150,105,0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5,150,105,0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5,150,105,0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5,150,105,0.18); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+    html:not(.dark) .hover\:text-rose-400:hover { color: #9f1239; }
+
+    /* Light mode - remove gradientes e cores especiais */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+
+    /* Dark mode - bordas suaves */
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.3s} .wf-a:nth-child(3){animation-delay:.6s}
+      @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    }
+  </style>
+<link href="https://inematds.github.io/fae-ai/curso/trilha1/modulo-1-1.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fae-ai/en/curso/trilha1/modulo-1-1.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fae-ai/es/curso/trilha1/modulo-1-1.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha1/modulo-1-1.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="../../../en/curso/trilha1/modulo-1-1.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="modulo-1-1.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">ES</a></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">⚙️</span>
+<span class="font-bold text-lg hidden sm:inline">Automatización con IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10" href="index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Auditoría</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Diseño</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construcción</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Comercial</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors" href="../trilha6/index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Práctica</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-emerald-400" href="../../index.html">Inicio</a>
+<span>/</span>
+<a class="hover:text-emerald-400" href="index.html">Ruta 1</a>
+<span>/</span>
+<span class="text-emerald-400">Módulo 1.1</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">MÓDULO 1.1</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">⚡ El cambio decisivo: de 10 horas a 10 segundos</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">
+        La automatización estratégica con IA no comienza con una herramienta: comienza en la cabeza. En este módulo entiendes el
+        costo de las tareas de 10 horas, la diferencia entre estrategia y herramienta, y por qué
+        <strong class="text-neutral-300">saber qué construir</strong> es la habilidad más valiosa del curso.
+      </p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">6</div><div class="text-xs text-neutral-400">Temas</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">~40</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Básico</div><div class="text-xs text-neutral-400">Nivel</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Teoría</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- SVG FUTURISTA -->
+<div class="rounded-2xl border border-emerald-500/30 bg-dark-900/40 p-3 sm:p-4 mb-12 overflow-hidden">
+<svg aria-label="Diagrama del cambio: una tarea manual de 10 horas pasa por una configuración única de automatización y se convierte en una ejecución de 10 segundos que se repite sin esfuerzo" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 1000 230">
+<defs>
+<lineargradient id="m11-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#34d399"></stop><stop offset="1" stop-color="#10b981"></stop></lineargradient>
+<filter height="180%" id="m11-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m11-grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#10b981" opacity="0.12" r="1.3"></circle></pattern>
+<marker id="m11-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#34d399"></path></marker>
+<marker id="m11-ahc" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#38bdf8"></path></marker>
+</defs>
+<rect fill="url(#m11-grid)" height="230" width="1000" x="0" y="0"></rect>
+<g fill="none" opacity="0.5" stroke="#9ca3af" stroke-width="1.8"><path d="M226,115 L392,115" marker-end="url(#m11-ah)"></path></g>
+<g fill="none" opacity="0.5" stroke="#38bdf8" stroke-width="1.8"><path d="M608,115 L772,115" marker-end="url(#m11-ahc)"></path></g>
+<!-- manual -->
+<rect fill="#26201a" height="92" rx="14" stroke="#f87171" stroke-width="2" width="186" x="40" y="70"></rect>
+<text fill="#f87171" font-size="16" font-weight="600" text-anchor="middle" x="133" y="104">Tarea manual</text>
+<text fill="#e5e7eb" font-size="12.5" text-anchor="middle" x="133" y="126">copiar · pegar · comprobar</text>
+<text fill="#f87171" font-size="17" font-weight="700" text-anchor="middle" x="133" y="148">~10 h / vez</text>
+<!-- setup IA (foco) -->
+<g filter="url(#m11-glow)"><rect fill="#0e2018" height="106" rx="16" stroke="url(#m11-grad)" stroke-width="2.5" width="216" x="392" y="62"></rect></g>
+<text fill="#34d399" font-size="17" font-weight="600" text-anchor="middle" x="500" y="98">Configuración única</text>
+<text fill="#a7f3d0" font-size="12.5" text-anchor="middle" x="500" y="122">IA + flujo diseñado</text>
+<text fill="#9ca3af" font-size="12" text-anchor="middle" x="500" y="144">paga 1× · se ejecuta siempre</text>
+<!-- resultado -->
+<rect fill="#0e1b26" height="92" rx="14" stroke="#38bdf8" stroke-width="2" width="188" x="772" y="70"></rect>
+<text fill="#38bdf8" font-size="16" font-weight="600" text-anchor="middle" x="866" y="104">Ejecución</text>
+<text fill="#bfe6ff" font-size="12.5" text-anchor="middle" x="866" y="126">automática · confiable</text>
+<text fill="#38bdf8" font-size="17" font-weight="700" text-anchor="middle" x="866" y="148">~10 s / vez</text>
+<g class="wf-a"><circle cx="866" cy="186" fill="#38bdf8" r="4"></circle></g>
+<g class="wf-a"><circle cx="500" cy="190" fill="#34d399" r="4"></circle></g>
+<g class="wf-a"><circle cx="133" cy="186" fill="#f87171" r="4"></circle></g>
+<text fill="#64748b" font-size="11" text-anchor="middle" x="500" y="218">ilustrativo — el trabajo no desaparece, cambia de lugar: de "cada vez" a "una vez"</text>
+</svg>
+</div>
+<!-- ===================== TÓPICO 1 ===================== -->
+<section class="mb-16" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">⏳ El problema de las tareas de 10 horas</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Toda rutina tiene una tarea que nadie quiere hacer: esa que consume toda la tarde, es puramente mecánica y se
+        repite cada semana. Copiar datos de un lugar a otro, consolidar hojas de cálculo, dar formato a informes, responder
+        las mismas preguntas. Es lo que llamamos <strong class="text-emerald-400">tarea de 10 horas</strong> — y es
+        tu mayor reserva de oportunidades oculta.
+      </p>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">💡</span> El concepto central</h3>
+<p class="text-neutral-300 mb-4">Una tarea de 10 horas tiene tres características que la convierten en un objetivo perfecto:</p>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Repetitiva:</strong> ocurre muchas veces, siempre de la misma manera.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Mecánica:</strong> no requiere criterio, solo ejecutar pasos.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Predecible:</strong> la entrada y la salida siguen un patrón estable.</span></li>
+</ul>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        El costo de estas tareas es <strong class="text-emerald-400">invisible</strong> porque está repartido en pequeños
+        fragmentos. Veinte minutos aquí, una hora allá. Pero suma todo al final del mes y descubrirás que se gastaron días enteros en trabajo que una máquina haría mejor: sin cansarse, sin equivocarse, sin quejarse.
+      </p>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> La matemática del costo invisible</h3>
+<ul class="space-y-2 text-neutral-300">
+<li><strong>2 h/día</strong> en tareas mecánicas = ~40 h/mes = <strong>~480 h/año</strong>.</li>
+<li><strong>480 h</strong> equivalen a <strong>3 meses de trabajo</strong> dedicados a copiar y pegar.</li>
+<li>Ese mismo tiempo podría dedicarse a la estrategia, las ventas o a crear la próxima automatización.</li>
+</ul>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">🎯</span> Consejo práctico</h3>
+<p class="text-neutral-300">Durante una semana, anota cada tarea que hayas repetido más de dos veces. La lista que quede será tu mapa de oportunidades, y casi siempre habrá una "tarea de 10 horas" en primer lugar.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Repetición</div><p class="text-xs text-neutral-400">Cuántas veces se repite la tarea.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Mecanicidad</div><p class="text-xs text-neutral-400">Qué tan poco criterio requiere.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Costo oculto</div><p class="text-xs text-neutral-400">El tiempo acumulado a lo largo del mes.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Oportunidad</div><p class="text-xs text-neutral-400">La ganancia potencial al automatizar.</p></div>
+</div>
+</section>
+<!-- ===================== TÓPICO 2 ===================== -->
+<section class="mb-16" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">🧠 Automatización estratégica vs. solo usar herramientas</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Existe una diferencia enorme entre <strong class="text-emerald-400">automatización estratégica</strong> y
+        «saber usar herramientas». La mayoría de las personas confunde ambas cosas, y por eso acumula suscripciones de
+        software sin ahorrar nunca una hora de verdad. La estrategia es decidir <em>qué</em> e <em>por qué</em>;
+        la herramienta es solo el <em>cómo</em>.
+      </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Automatización estratégica</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Empieza por el problema que más duele.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Mide el retorno antes de construir.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Elige la herramienta después del plan.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Entrega un resultado medible.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Usar solo herramientas</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Empieza por la herramienta de moda.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Construye sin saber cuál es el retorno.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Busca un problema para la solución.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Acumula automatizaciones que nadie usa.</span></li>
+</ul>
+</div>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        La herramienta es un commodity: cambia cada semana, todo el mundo tiene acceso. Lo que es escaso —y valioso— es el
+        <strong class="text-emerald-400">juicio estratégico</strong> de saber qué problema abordar primero. Ese
+        criterio es lo que desarrollas en este curso y lo que nadie puede copiar de ti.
+      </p>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🔬</span> Por qué esto importa</h3>
+<p class="text-neutral-300">Los profesionales que dominan las herramientas, pero no piensan estratégicamente, se quedan atrapados ejecutando. Quien piensa primero en la estrategia decide qué se construirá, y ese es el puesto mejor pagado, dentro o fuera de una empresa.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Estrategia</div><p class="text-xs text-neutral-400">Decide qué y por qué.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Herramienta</div><p class="text-xs text-neutral-400">Resuelve el cómo: es un medio.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Commodity</div><p class="text-xs text-neutral-400">A qué tienen acceso todos.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Diferencial</div><p class="text-xs text-neutral-400">El juicio que es solo tuyo.</p></div>
+</div>
+</section>
+<!-- ===================== TÓPICO 3 ===================== -->
+<section class="mb-16" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🔑 El principio de «saber qué construir»</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Si este curso tuviera una sola frase, sería esta: <strong class="text-emerald-400">la diferencia está en saber qué
+        construir, no solo en las herramientas</strong>. Saber qué construir es mirar un flujo de trabajo confuso y
+        ver con claridad exactamente dónde entra la automatización, en qué orden y cuál será el resultado.
+      </p>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🧭</span> Qué significa en la práctica «saber qué construir»</h3>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Reconocer un patrón automatizable donde los demás solo ven trabajo.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Elegir el problema con mayor retorno y menor riesgo.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Define el resultado esperado antes de tocar cualquier software.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Saber dónde detenerse — qué dejar para que lo haga una persona.</span></li>
+</ul>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Esta habilidad es <strong class="text-emerald-400">duradero</strong>. Las herramientas que usas hoy quizá no
+        existan dentro de dos años, pero el criterio para detectar oportunidades y diseñar la solución adecuada sirve para cualquier
+        herramienta futura. Es un activo que se revaloriza con el tiempo.
+      </p>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">🎯</span> Consejo práctico</h3>
+<p class="text-neutral-300">Antes de abrir cualquier herramienta, escribe una frase: "Quiero que, cuando <em>X</em> ocurrir, el sistema haga <em>Y</em>, generando <em>Z</em>." Si no puedes completar esta frase, todavía no sabes qué construir, y construir antes de eso es un desperdicio.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Patrón</div><p class="text-xs text-neutral-400">Detectar lo que se repite.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Selección</div><p class="text-xs text-neutral-400">Elegir el mejor objetivo.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Resultado</div><p class="text-xs text-neutral-400">Define el destino primero.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Durabilidad</div><p class="text-xs text-neutral-400">Aplica a cualquier herramienta.</p></div>
+</div>
+</section>
+<!-- ===================== TÓPICO 4 ===================== -->
+<section class="mb-16" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">🚀 El caso 10h→10s en la práctica</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Salgamos de lo abstracto. Imagina una rutina real: todos los lunes, alguien necesita reunir datos de varias
+        fuentes, preparar un informe y enviarlo al equipo. Hecho a mano, esto lleva una mañana entera. Mira cómo la misma
+        rutina se convierte en <strong class="text-emerald-400">10 segundos</strong>.
+      </p>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">El proceso manual (~10 h)</h4>
+<p class="text-sm text-neutral-400 mb-3">Cómo era antes</p>
+<p class="text-neutral-300 text-sm">Abrir 4 sistemas, copiar números, pegarlos en una hoja de cálculo, revisarlos, darles formato, escribir el resumen, adjuntarlo y enviarlo. Cada semana, desde cero, con riesgo de error en cada paso.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">La configuración única (una vez)</h4>
+<p class="text-sm text-neutral-400 mb-3">La inversión</p>
+<p class="text-neutral-300 text-sm">Diseñas el flujo: un disparador (el lunes por la mañana), conexiones con las fuentes, la IA que resume los datos y el envío automático. Lleva unas horas configurarlo, una sola vez.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">La ejecución automática (~10 s)</h4>
+<p class="text-sm text-neutral-400 mb-3">El retorno recurrente</p>
+<p class="text-neutral-300 text-sm">A partir de ahí, cada lunes el informe se prepara y se envía solo en segundos. No tienes que hacer nada. El trabajo de 10 horas se convirtió en un evento de 10 segundos que se repite para siempre.</p>
+</div>
+</div>
+</div>
+<div class="bg-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-3 flex items-center"><span class="mr-2">🧮</span> El cálculo de la ganancia</h3>
+<div class="font-mono text-sm bg-dark-900/60 rounded-lg p-4 text-neutral-300 leading-relaxed">
+<span class="text-neutral-500"># manual</span><br/>
+          10 h/semana × 52 semanas  = <span class="text-red-400">520 h/año</span><br/><br/>
+<span class="text-neutral-500"># automatizado</span><br/>
+          setup: 6 h (una vez) + 10 s × 52 = <span class="text-emerald-400">~6,1 h/año</span><br/><br/>
+<span class="text-neutral-500"># ahorro</span><br/>
+          520 h − 6,1 h = <span class="text-emerald-400 font-bold">~514 h/año recuperadas</span>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Disparador</div><p class="text-xs text-neutral-400">Qué activa el flujo.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Configuración única</div><p class="text-xs text-neutral-400">Costo pagado una sola vez.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Recurrencia</div><p class="text-xs text-neutral-400">Dónde se acumula el beneficio.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Escala</div><p class="text-xs text-neutral-400">Cuanto más se repite, más rinde.</p></div>
+</div>
+</section>
+<!-- ===================== TÓPICO 5 ===================== -->
+<section class="mb-16" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">📈 Mentalidad de apalancamiento: el tiempo como activo</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        El cambio de perspectiva no es solo técnico: también es mental. Quien automatiza bien deja de tratar el tiempo como un
+        <strong class="text-emerald-400">costo que gastar</strong> y pasa a tratarlo como un <strong class="text-emerald-400">activo
+        para invertir</strong>. Una automatización es una inversión: pagas una vez, en tiempo de construcción, y cosechas para
+        siempre, en tiempo ahorrado.
+      </p>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">⚙️</span> Esfuerzo lineal × retorno compuesto</h3>
+<p class="text-neutral-300 mb-4">El trabajo manual es lineal: para obtener el doble de resultados, dedicas el doble de tiempo. La automatización es apalancamiento: construyes una vez y el resultado se repite sin costo adicional.</p>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Lineal:</strong> más resultados requieren más horas tuyas.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Apalancado:</strong> el sistema produce mientras haces otra cosa.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Compuesto:</strong> cada automatización libera tiempo para crear la siguiente.</span></li>
+</ul>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ El tiempo como activo</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Invierte horas hoy para ganar días después.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Ve cada automatización como un activo que genera rendimientos.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Reinvierte el tiempo libre en más apalancamiento.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ El tiempo como costo</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Acepta rehacer la misma tarea para siempre.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>"No tengo tiempo" para construir lo que me daría tiempo.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Cambia horas por resultados, siempre en proporción 1:1.</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">🎯</span> Consejo práctico</h3>
+<p class="text-neutral-300">Antes de hacer una tarea manual por tercera vez, pregunta: "¿cuánto tiempo llevaría automatizar esto y en cuántas semanas se recupera esa inversión?". Si el payback es corto, detente y automatiza antes de continuar.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Inversión</div><p class="text-xs text-neutral-400">Tiempo pagado una sola vez.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Apalancamiento</div><p class="text-xs text-neutral-400">Resultado sin esfuerzo adicional.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Compuesto</div><p class="text-xs text-neutral-400">Ganancia que financia la siguiente.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Payback</div><p class="text-xs text-neutral-400">Cuando el setup se amortiza.</p></div>
+</div>
+</section>
+<!-- ===================== TÓPICO 6 ===================== -->
+<section class="mb-16" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">⚠️ Errores de quienes empiezan por la herramienta</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        El error más común de quienes están empezando es invertir el orden: elegir primero la herramienta y solo después buscar
+        un problema que resolver. Esto lleva a meses de esfuerzo desperdiciado en automatizaciones que nadie usa. Conocer
+        estas trampas <strong class="text-emerald-400">antes</strong> de caer en ellos es la mitad del camino.
+      </p>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">🚨</span> Atención: las 3 trampas clásicas</h3>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400 mt-1">✗</span><span><strong>Solución en busca de un problema:</strong> comprar una herramienta y luego inventar dónde usarla.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400 mt-1">✗</span><span><strong>Síndrome del juguete nuevo:</strong> cambiar de herramienta cada semana sin terminar nada.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400 mt-1">✗</span><span><strong>Automatizar lo irrelevante:</strong> invertir tiempo en una tarea que ocurre una vez al año.</span></li>
+</ul>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        La solución para todos estos errores es la misma: <strong class="text-emerald-400">empieza siempre por el problema</strong>.
+        Define qué hay que resolver, calcula el retorno y solo entonces elige la herramienta que mejor consiga ese
+        resultado. La herramienta es la última decisión, no la primera.
+      </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ El orden correcto</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>1. Problema que duele y se repite.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>2. Retorno esperado (tiempo × frecuencia).</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>3. Diseño de la solución.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>4. Herramienta que lo ofrece.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ El orden invertido</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>1. Herramienta de moda.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>2. Tutorial aleatorio.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>3. Buscar dónde encajarla.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>4. Abandonar por falta de uso.</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">🎯</span> Consejo práctico</h3>
+<p class="text-neutral-300">Crea una regla personal: no incorpores ninguna herramienta nueva sin anotar qué problema resolverá y estimar el retorno. Si no hay problema ni cifra, no hay herramienta.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Problema primero</div><p class="text-xs text-neutral-400">Siempre antes de la herramienta.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Retorno</div><p class="text-xs text-neutral-400">Número que justifica el esfuerzo.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Enfoque</div><p class="text-xs text-neutral-400">Terminar antes de cambiar.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Relevancia</div><p class="text-xs text-neutral-400">Automatizar lo que importa.</p></div>
+</div>
+</section>
+<!-- RESUMO DO MÓDULO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Resumen del módulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Tareas de 10 horas</strong><span class="text-neutral-400"> - repetitivas, mecánicas y predecibles: tu mayor reserva de oportunidades.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Estrategia &gt; herramienta</strong><span class="text-neutral-400"> - decidir qué y por qué vale más que dominar el software.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Saber qué construir</strong><span class="text-neutral-400"> - la habilidad duradera y central de todo el curso.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">10h → 10s</strong><span class="text-neutral-400"> - configuración única, pagada una vez; ejecución automática para siempre.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">El tiempo como activo</strong><span class="text-neutral-400"> - apalancamiento y retorno compuesto en lugar de esfuerzo lineal.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Empieza por el problema</strong><span class="text-neutral-400"> - la herramienta es la última decisión, nunca la primera.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-emerald-400 mb-2">Próximo Módulo:</h3>
+<p class="text-neutral-300">1.2 — Dónde la IA crea valor real: ROI, inteligencia irregular y cómo priorizar oportunidades.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="index.html">← Volver a la ruta</a>
+<a class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors" href="modulo-1-2.html">Próximo Módulo →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Formación en Automatización Estratégica con IA · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const htmlEl = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { htmlEl.classList.remove('dark'); darkIcon.classList.remove('hidden'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      htmlEl.classList.toggle('dark');
+      localStorage.setItem('theme', htmlEl.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

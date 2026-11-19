@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Módulo 2.2 · Auditoría de procesos | Automatización con IA</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#FACC15',
+        dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+      } } }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37,99,235,0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37,99,235,0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37,99,235,0.25); }
+    html:not(.dark) .hover\:bg-blue-500\/30:hover { background-color: rgba(37,99,235,0.18); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37,99,235,0.08); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+    html:not(.dark) .hover\:text-rose-400:hover { color: #9f1239; }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-of-type(2){animation-delay:.3s} .wf-a:nth-of-type(3){animation-delay:.6s} .wf-a:nth-of-type(4){animation-delay:.9s}
+      @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+  </style>
+<link href="https://inematds.github.io/fae-ai/curso/trilha2/modulo-2-2.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fae-ai/en/curso/trilha2/modulo-2-2.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fae-ai/es/curso/trilha2/modulo-2-2.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha2/modulo-2-2.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="../../../en/curso/trilha2/modulo-2-2.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="modulo-2-2.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">ES</a></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">⚙️</span>
+<span class="font-bold text-lg hidden sm:inline">Automatización con IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10" href="index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Auditoría</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Diseño</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construcción</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Comercial</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors" href="../trilha6/index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Práctica</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-blue-400" href="../../index.html">Inicio</a>
+<span>/</span>
+<a class="hover:text-blue-400" href="index.html">Ruta 2</a>
+<span>/</span>
+<span class="text-blue-400">Módulo 2.2</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MÓDULO 2.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">⏱️ Auditoría de procesos</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">
+        Las suposiciones no aprueban presupuestos ni venden automatización. Aquí conviertes un proceso en números:
+        cronometras el tiempo real, lo conviertes en costo, calculas el ROI y documentas el estado actual con tanta
+        claridad que la decisión de automatizar se vuelve obvia.
+      </p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">6</div><div class="text-xs text-neutral-400">Temas</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">45</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Básico</div><div class="text-xs text-neutral-400">Nivel</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Práctico</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- TÓPICO 1 -->
+<section class="mb-16" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">⏱️ Cronometrar y medir el estado actual</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Las personas subestiman drásticamente cuánto tiempo dedican a una tarea. La auditoría empieza midiendo el
+        <strong class="text-blue-400">tiempo real</strong> — con cronómetro, en varias ejecuciones, incluyendo las esperas,
+        el retrabajo y los cambios de contexto que nadie cuenta.
+      </p>
+<div class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-8 overflow-hidden">
+<svg aria-label="Diferencia entre el tiempo de intervención y el tiempo de ciclo: el tiempo total es mucho mayor que el tiempo de trabajo activo" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 1000 220">
+<defs>
+<lineargradient id="m22grad" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#60a5fa"></stop><stop offset="1" stop-color="#3b82f6"></stop></lineargradient>
+<filter height="180%" id="m22glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m22grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#3b82f6" opacity="0.12" r="1.3"></circle></pattern>
+</defs>
+<rect fill="url(#m22grid)" height="220" width="1000" x="0" y="0"></rect>
+<text fill="#9ca3af" font-size="13" font-weight="600" x="40" y="44">Tiempo activo (trabajo en curso)</text>
+<g class="wf-a"><rect fill="#0e1622" height="34" rx="8" stroke="#38bdf8" stroke-width="2" width="120" x="40" y="56"></rect><text fill="#bfe6ff" font-size="12" text-anchor="middle" x="100" y="78">8 min</text></g>
+<text fill="#60a5fa" font-size="13" font-weight="600" x="40" y="138">Tiempo de ciclo (de principio a fin)</text>
+<g filter="url(#m22glow)"><rect fill="#0e1622" height="44" rx="10" stroke="url(#m22grad)" stroke-width="2.5" width="800" x="40" y="150"></rect></g>
+<text fill="#9ad6ff" font-size="11" text-anchor="middle" x="120" y="177">trabajo</text>
+<text fill="#9ca3af" font-size="11" text-anchor="middle" x="320" y="177">espera de aprobación</text>
+<text fill="#9ca3af" font-size="11" text-anchor="middle" x="560" y="177">retrabajo</text>
+<text fill="#9ca3af" font-size="11" text-anchor="middle" x="740" y="177">cambio de contexto</text>
+<text fill="#60a5fa" font-size="13" font-weight="700" text-anchor="middle" x="870" y="177">~52 min</text>
+<text fill="#64748b" font-size="11" x="40" y="214">ilustrativo — el tiempo percibido rara vez es el tiempo real</text>
+</svg>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Cómo medir correctamente</h3>
+<ul class="space-y-2 text-neutral-300">
+<li><strong>3–5 ejecuciones:</strong> nunca confíes en una sola medición.</li>
+<li><strong>Incluye esperas:</strong> el tiempo detenido cuenta en el tiempo de ciclo.</li>
+<li><strong>Cuenta el retrabajo:</strong> las correcciones forman parte del costo real.</li>
+</ul>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Consejo práctico</h3>
+<p class="text-neutral-300">Separa <strong>tiempo de trabajo activo</strong> (manos a la obra) de <strong>tiempo de ciclo</strong> (de la solicitud a la entrega). La automatización suele reducir el tiempo de ciclo, eliminando esperas completas.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Cronómetro</div><div class="text-xs text-neutral-400">Mide, no estimes</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Varias muestras</div><div class="text-xs text-neutral-400">Calcula el promedio</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Tiempo activo</div><div class="text-xs text-neutral-400">Trabajo activo</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Tiempo de ciclo</div><div class="text-xs text-neutral-400">De principio a fin</div></div>
+</div>
+</section>
+<!-- TÓPICO 2 -->
+<section class="mb-16" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">💵 Costo por ejecución y por mes</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Los minutos no convencen a quien gestiona — <strong class="text-blue-400">dinero</strong> convence. Convierte el tiempo
+        medido en costo usando el costo por hora total de quien lo ejecuta, y suma hasta obtener el costo mensual. Ese es el
+        número que aprueba el presupuesto.
+      </p>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🧮</span> El cálculo, paso a paso</h3>
+<div class="font-mono text-sm space-y-1 text-neutral-300">
+<div>costo por hora total  = salario + cargas ÷ horas/mes</div>
+<div>costo por ejecución   = tiempo (h) × costo por hora</div>
+<div>costo mensual        = costo por ejecución × ejecuciones/mes</div>
+<div class="text-blue-400 pt-2">p. ej.: 0,87h × R$ 60 × 22/mes = <strong>R$ 1.148/mes</strong></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Incluye en el costo</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Salario + cargas sociales (costo total)</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Costo de errores y retrabajo</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Costo de oportunidad del tiempo perdido</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Errores comunes</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Usar solo el salario base, sin cargas sociales</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Olvidar el volumen mensual real</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Ignorar el costo de los errores</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Costo por hora</div><div class="text-xs text-neutral-400">Cargado</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Por ejecución</div><div class="text-xs text-neutral-400">Tiempo × costo</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Por mes</div><div class="text-xs text-neutral-400">× volumen</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Costo de los errores</div><div class="text-xs text-neutral-400">No olvides</div></div>
+</div>
+</section>
+<!-- TÓPICO 3 -->
+<section class="mb-16" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">📈 Cálculo del ROI de la automatización</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        O <strong class="text-blue-400">ROI</strong> transforma «sería bueno automatizarlo» en «se amortiza en 3 meses».
+        Compara el costo de construir y mantener la automatización con el ahorro mensual que genera, y muestra en cuánto
+        tiempo se recupera la inversión.
+      </p>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Fórmulas clave</h3>
+<div class="font-mono text-sm space-y-2 text-neutral-300">
+<div>payback (meses) = costo de construcción ÷ ahorro mensual</div>
+<div>ROI (1 año)     = (ahorro anual − costo) ÷ costo</div>
+<div class="pt-2 text-blue-400">p. ej.: R$ 8.000 de build · ahorro de R$ 1.100/mes</div>
+<div class="text-emerald-400">→ recuperación de la inversión ≈ 7,3 meses · ROI del 1.er año ≈ 65%</div>
+</div>
+</div>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Suma el ahorro mensual</h4>
+<p class="text-neutral-300 text-sm">Es el costo actual del proceso que la automatización elimina (o reduce).</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Estima el costo de construcción y mantenimiento</h4>
+<p class="text-neutral-300 text-sm">Horas de desarrollo + costo de herramientas y APIs al mes.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Calcula el payback y el ROI</h4>
+<p class="text-neutral-300 text-sm">Un payback inferior a 12 meses suele garantizar la aprobación.</p>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Consejo práctico</h3>
+<p class="text-neutral-300">Sé conservador con los ahorros y generoso con los costos. Un ROI que se confirma vale más que un ROI atractivo que decepciona.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Ahorro</div><div class="text-xs text-neutral-400">Costo eliminado</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Costo</div><div class="text-xs text-neutral-400">Build + mantenimiento</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Payback</div><div class="text-xs text-neutral-400">En meses</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">ROI</div><div class="text-xs text-neutral-400">Retorno anual</div></div>
+</div>
+</section>
+<!-- TÓPICO 4 -->
+<section class="mb-16" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">🔁 Mapear entradas, salidas y reglas</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Toda automatización tiene el mismo esqueleto: algo <strong class="text-blue-400">entra</strong>, pasa por
+        <strong class="text-blue-400">reglas</strong> e <strong class="text-blue-400">sale</strong> transformado.
+        Mapear estos tres elementos es lo que hace que el proceso se pueda construir.
+      </p>
+<div class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-8 overflow-hidden">
+<svg aria-label="Esqueleto del proceso: la entrada pasa por reglas de negocio y produce una salida transformada" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 1000 200">
+<defs>
+<lineargradient id="m22egrad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#60a5fa"></stop><stop offset="1" stop-color="#3b82f6"></stop></lineargradient>
+<filter height="180%" id="m22eglow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m22egrid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#3b82f6" opacity="0.12" r="1.3"></circle></pattern>
+<marker id="m22eah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#60a5fa"></path></marker>
+</defs>
+<rect fill="url(#m22egrid)" height="200" width="1000" x="0" y="0"></rect>
+<g class="wf-a"><rect fill="#0e1622" height="64" rx="12" stroke="#38bdf8" stroke-width="2" width="200" x="40" y="68"></rect><text fill="#bfe6ff" font-size="14" font-weight="600" text-anchor="middle" x="140" y="96">Entrada</text><text fill="#9ad6ff" font-size="11" text-anchor="middle" x="140" y="116">datos que llegan</text></g>
+<g filter="url(#m22eglow)"><rect fill="#0e1622" height="80" rx="14" stroke="url(#m22egrad)" stroke-width="2.5" width="200" x="400" y="60"></rect></g>
+<text fill="#60a5fa" font-size="15" font-weight="700" text-anchor="middle" x="500" y="96">Reglas</text>
+<text fill="#9ca3af" font-size="11" text-anchor="middle" x="500" y="118">si esto, entonces aquello</text>
+<g class="wf-a"><rect fill="#0e1622" height="64" rx="12" stroke="#38bdf8" stroke-width="2" width="200" x="760" y="68"></rect><text fill="#bfe6ff" font-size="14" font-weight="600" text-anchor="middle" x="860" y="96">Salida</text><text fill="#9ad6ff" font-size="11" text-anchor="middle" x="860" y="116">resultado transformado</text></g>
+<g fill="none" opacity="0.6" stroke="#60a5fa" stroke-width="2">
+<path d="M240,100 L400,100" marker-end="url(#m22eah)"></path>
+<path d="M600,100 L760,100" marker-end="url(#m22eah)"></path>
+</g>
+</svg>
+</div>
+<div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🔍</span> Preguntas que mapean</h3>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Entrada:</strong> ¿de dónde vienen los datos? ¿En qué formato?</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Reglas:</strong> ¿qué condiciones cambian el resultado?</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Salida:</strong> ¿cuál es el entregable final? ¿Adónde va?</span></li>
+</ul>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Entrada</div><div class="text-xs text-neutral-400">Qué llega</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Regla</div><div class="text-xs text-neutral-400">Si / entonces</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Salida</div><div class="text-xs text-neutral-400">El entregable</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Formato</div><div class="text-xs text-neutral-400">¿Estructurado?</div></div>
+</div>
+</section>
+<!-- TÓPICO 5 -->
+<section class="mb-16" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">⚠️ Identificar excepciones y casos límite</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Las automatizaciones no fallan en el camino feliz: fallan en las <strong class="text-blue-400">excepciones</strong>: datos
+        faltantes, formatos extraños, situaciones poco frecuentes. Mapearlas a tiempo es lo que distingue una automatización confiable de
+        una que falla constantemente.
+      </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Camino feliz (80%)</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Datos completos y en el formato esperado</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Las reglas se aplican sin ambigüedad</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Resultado predecible: automatiza todo</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Camino infeliz (20%)</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Campo obligatorio vacío</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Formato inesperado o corrupto</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Caso poco frecuente que requiere criterio humano</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Atención</h3>
+<p class="text-neutral-300">La regla 80/20 es clara: automatiza el 80% del flujo normal y <strong>redirige el 20%</strong> de excepción para revisión humana. Intentar automatizar el 100% suele costar 10× más.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Camino feliz</div><div class="text-xs text-neutral-400">Lo previsible</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Excepción</div><div class="text-xs text-neutral-400">Se desvía de la regla</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">80/20</div><div class="text-xs text-neutral-400">Automatiza el 80</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Ruta humana</div><div class="text-xs text-neutral-400">Para el 20%</div></div>
+</div>
+</section>
+<!-- TÓPICO 6 -->
+<section class="mb-16" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">📝 Documentar el proceso tal como es</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        O <strong class="text-blue-400">as-is</strong> es la foto del proceso tal como es hoy, con sus defectos y todo.
+        Es la línea de base: sin documentar el «antes», no puedes demostrar la mejora que aportó la automatización.
+      </p>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📄</span> Anatomía de un as-is</h3>
+<div class="font-mono text-sm space-y-1 text-neutral-300">
+<div><span class="text-blue-400">Proceso:</span> emisión de un informe semanal</div>
+<div><span class="text-blue-400">Pasos:</span> 7 · <span class="text-blue-400">Herramientas:</span> ERP, Excel, correo electrónico</div>
+<div><span class="text-blue-400">Responsable:</span> analista comercial</div>
+<div><span class="text-blue-400">Tiempo de ciclo:</span> ~52 min · <span class="text-blue-400">Costo/mes:</span> R$ 1.148</div>
+<div><span class="text-blue-400">Excepciones:</span> datos faltantes (~15% de los casos)</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Consejo práctico</h3>
+<p class="text-neutral-300">Documenta el proceso <strong>cómo es</strong>, no como debería ser. El as-is honesto, con los cuellos de botella visibles, es lo que hace innegable la mejora de la Trilha 3.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">As-is</div><div class="text-xs text-neutral-400">Cómo es hoy</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Línea de base</div><div class="text-xs text-neutral-400">El «antes»</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Honesto</div><div class="text-xs text-neutral-400">Defectos incluidos</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Medible</div><div class="text-xs text-neutral-400">Demuestra la ganancia</div></div>
+</div>
+</section>
+<!-- CONCEITOS-CHAVE DO MÓDULO -->
+<section class="mb-12">
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceptos clave del módulo</h3>
+<div class="font-mono text-sm space-y-1 text-neutral-300">
+<div><span class="text-blue-400">tiempo de ciclo</span> = intervención + esperas + retrabajo</div>
+<div><span class="text-blue-400">costo/mes</span> = tiempo × costo por hora cargado × volumen</div>
+<div><span class="text-blue-400">payback</span> = costo de desarrollo ÷ ahorro mensual</div>
+<div><span class="text-blue-400">proceso</span> = entrada → reglas → salida</div>
+<div><span class="text-blue-400">80/20</span> = automatiza el flujo ideal · deriva la excepción</div>
+</div>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">⏱️</span> Resumen del módulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Cronometra el estado actual</strong><span class="text-neutral-400"> - tiempo real, varias muestras, intervención frente a ciclo.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Convierte el tiempo en costo</strong><span class="text-neutral-400"> - costo por hora con cargas × volumen = costo mensual.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Calcula el payback y el ROI</strong><span class="text-neutral-400"> - el argumento que aprueba el presupuesto.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Mapea entrada–regla–salida</strong><span class="text-neutral-400"> - el esqueleto construible del proceso.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Identifica excepciones</strong><span class="text-neutral-400"> - 80/20: automatiza el flujo feliz y deriva el infeliz.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Documenta el as-is</strong><span class="text-neutral-400"> - la línea de base honesta que demuestra el beneficio.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-blue-400 mb-2">Próximo Módulo:</h3>
+<p class="text-neutral-300">2.3 · Diagramar el proceso — notación simple, as-is vs. to-be y dónde entra la IA en el flujo.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-2-1.html">← Módulo anterior</a>
+<a class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors" href="modulo-2-3.html">Próximo Módulo →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-8">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Formación en Automatización Estratégica con IA · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { html.classList.remove('dark'); darkIcon.classList.remove('hidden'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

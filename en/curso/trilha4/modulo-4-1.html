@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Module 4.1 · Environment setup | AI Automation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { colors: {
+      primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+    } } } }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217,119,6,0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217,119,6,0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217,119,6,0.25); }
+    html:not(.dark) .hover\:bg-amber-500\/30:hover { background-color: rgba(217,119,6,0.18); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217,119,6,0.08); }
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+    .codebox { background:#0b1220; border:1px solid rgba(245,158,11,0.25); }
+    html:not(.dark) .codebox { background:#0f172a; }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+  </style>
+<link href="https://inematds.github.io/fae-ai/curso/trilha4/modulo-4-1.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fae-ai/en/curso/trilha4/modulo-4-1.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fae-ai/es/curso/trilha4/modulo-4-1.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha4/modulo-4-1.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="modulo-4-1.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../../../es/curso/trilha4/modulo-4-1.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">⚙️</span>
+<span class="font-bold text-lg hidden sm:inline">AI Automation</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentals</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Audit</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Design</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-400 bg-amber-500/10" href="index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construction</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Commercial</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors" href="../trilha6/index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Practice</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-amber-400" href="../../index.html">Start</a>
+<span>/</span>
+<a class="hover:text-amber-400" href="index.html">Track 4</a>
+<span>/</span>
+<span class="text-amber-400">Module 4.1</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-amber-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full mb-4">MODULE 4.1</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">⚙️ Environment setup</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Before building any automation, you need a workshop set up. Here you choose the platform, create accounts, securely configure credentials and API keys, understand the anatomy of a workflow, and run your first "hello world".</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">6</div><div class="text-xs text-neutral-400">Topics</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">45</div><div class="text-xs text-neutral-400">Minutes</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Practical</div><div class="text-xs text-neutral-400">Level</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Hands-on practice</div><div class="text-xs text-neutral-400">Type</div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- SVG ilustrativo -->
+<div class="rounded-2xl border border-amber-500/30 bg-dark-900/40 p-3 sm:p-4 mb-12 overflow-hidden">
+<svg aria-label="Environment layers: platform, credentials, and environment variables feeding a workflow" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 1000 220">
+<defs>
+<lineargradient id="m41-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fbbf24"></stop><stop offset="1" stop-color="#f59e0b"></stop></lineargradient>
+<filter height="180%" id="m41-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m41-grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#f59e0b" opacity="0.12" r="1.3"></circle></pattern>
+<marker id="m41-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#fbbf24"></path></marker>
+</defs>
+<rect fill="url(#m41-grid)" height="220" width="1000" x="0" y="0"></rect>
+<g fill="none" opacity="0.5" stroke="#38bdf8" stroke-width="1.8">
+<path d="M236,60 L470,98" marker-end="url(#m41-ah)"></path>
+<path d="M236,110 L470,110" marker-end="url(#m41-ah)"></path>
+<path d="M236,160 L470,122" marker-end="url(#m41-ah)"></path>
+</g>
+<g font-size="13" font-weight="600">
+<rect fill="#0e1b26" height="40" rx="10" stroke="#38bdf8" stroke-width="2" width="196" x="40" y="40"></rect><text fill="#bfe6ff" text-anchor="middle" x="138" y="65">Platform (n8n/Make)</text>
+<rect fill="#0e1b26" height="40" rx="10" stroke="#38bdf8" stroke-width="2" width="196" x="40" y="90"></rect><text fill="#bfe6ff" text-anchor="middle" x="138" y="115">Credentials</text>
+<rect fill="#0e1b26" height="40" rx="10" stroke="#38bdf8" stroke-width="2" width="196" x="40" y="140"></rect><text fill="#bfe6ff" text-anchor="middle" x="138" y="165">Variables (.env)</text>
+</g>
+<g filter="url(#m41-glow)"><rect fill="#1f1604" height="64" rx="14" stroke="url(#m41-grad)" stroke-width="2.5" width="180" x="470" y="78"></rect></g>
+<text fill="#fbbf24" font-size="17" font-weight="700" text-anchor="middle" x="560" y="106">Workflow</text>
+<text fill="#fcd9a0" font-size="12" text-anchor="middle" x="560" y="126">nodes + connections</text>
+<line marker-end="url(#m41-ah)" opacity="0.65" stroke="#fbbf24" stroke-width="2" x1="650" x2="740" y1="110" y2="110"></line>
+<g><rect fill="#0e2018" height="48" rx="12" stroke="#34d399" stroke-width="2" width="220" x="740" y="86"></rect><text fill="#34d399" font-size="14" font-weight="600" text-anchor="middle" x="850" y="108">Hello World ✓</text><text fill="#9ca3af" font-size="11" text-anchor="middle" x="850" y="124">first run</text></g>
+</svg>
+<p class="text-center text-neutral-500 text-xs mt-2">Illustrative — three configuration layers feed the workflow, which produces its first run.</p>
+</div>
+<!-- TÓPICO 1 -->
+<section class="mb-16" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">🧰 n8n or Make — the choice</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">The first decision in building is <strong class="text-amber-400">which platform</strong> will host your workflows. You don't need both—you need to master one. The candidates are <strong class="text-amber-400">n8n</strong> (open-source, self-hosted or cloud, with an escape hatch for code) and <strong class="text-amber-400">Make</strong> (no-code, 100% hosted, quick to get started).</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Choose n8n when</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>You want to control your data (self-host) and avoid per-operation charges.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Needs complex logic: Code node in JS/Python when visual tools aren't enough.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>High volume of executions—predictable cost per instance, not per step.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>You want to version the workflow as JSON and take it from one client to another.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Avoid starting with Make if</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>It will run tens of thousands of operations/month—the cost per operation will skyrocket.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Needs on-premise data for compliance — Make is cloud-only.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>You want logic beyond no-code; custom code is more limited.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>You want to avoid lock-in — exporting/porting is easier in n8n.</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Practical tip</h3>
+<p class="text-neutral-300">Start with <strong>n8n cloud</strong> (trial) to learn without installing anything. When the workflow proves its value and volume grows, migrate to <strong>self-host</strong> (Docker) — the same flow JSON imports directly. Learn the tool, then optimize the hosting.</p>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600"><div class="text-amber-400 font-semibold text-sm mb-1">Self-host</div><p class="text-xs text-neutral-400">You control costs and data</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600"><div class="text-amber-400 font-semibold text-sm mb-1">Cloud</div><p class="text-xs text-neutral-400">Zero infrastructure, pay a subscription</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600"><div class="text-amber-400 font-semibold text-sm mb-1">Code</div><p class="text-xs text-neutral-400">Escape to complex logic</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600"><div class="text-amber-400 font-semibold text-sm mb-1">Lock-in</div><p class="text-xs text-neutral-400">Flow portability</p></div>
+</div>
+</section>
+<!-- TÓPICO 2 -->
+<section class="mb-16" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">👤 Accounts and credentials</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">A <strong class="text-amber-400">credential</strong> stores access to a service once and reuses it in every node that connects to it. You set up the Gmail, OpenAI, or Supabase connection once; each node just points to it.</p>
+<div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">🔗</span> Dedicated service account</h3>
+<p class="text-neutral-300 mb-4">Never connect your personal account. Create a service account just for the automation (e.g., <span class="font-mono text-amber-400">automacao@empresa.com</span>). This way, you revoke access without affecting anyone and know exactly what the automation touched.</p>
+<ul class="space-y-2 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span>Minimum permissions—only the scopes the flow actually uses.</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span>OAuth when the service supports it (the token expires and renews); API key when it doesn't.</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span>Name the credential by environment: <span class="font-mono">OpenAI · prod</span> vs <span class="font-mono">OpenAI · staging</span>.</span></li>
+</ul>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600"><div class="text-amber-400 font-semibold text-sm mb-1">Credential type</div><p class="text-xs text-neutral-400">Format by service</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600"><div class="text-amber-400 font-semibold text-sm mb-1">OAuth vs. key</div><p class="text-xs text-neutral-400">When to use each one</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600"><div class="text-amber-400 font-semibold text-sm mb-1">Scope</div><p class="text-xs text-neutral-400">Least privilege</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600"><div class="text-amber-400 font-semibold text-sm mb-1">Dedicated account</div><p class="text-xs text-neutral-400">Don’t use your personal one</p></div>
+</div>
+</section>
+<!-- TÓPICO 3 -->
+<section class="mb-16" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🔑 API keys and environment variables</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Everything that changes between dev and production — keys, URLs, spreadsheet IDs — lives in <strong class="text-amber-400">environment variables</strong>, outside the nodes. In self-hosted setups, this is a <span class="font-mono text-amber-400">.env</span>; in the flow you read with <span class="font-mono text-amber-400">$env</span>.</p>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<div class="text-xs text-neutral-500 mb-2 font-mono"># .env — never commit this file</div>
+<pre class="font-mono text-sm text-neutral-300 leading-relaxed"><span class="text-amber-400">OPENAI_API_KEY</span>=sk-xxxxxxxxxxxxxxxxxxxx
+<span class="text-amber-400">SUPABASE_URL</span>=https://abcd.supabase.co
+<span class="text-amber-400">SUPABASE_SERVICE_KEY</span>=eyJhbGciOi...
+<span class="text-amber-400">SLACK_ALERT_WEBHOOK</span>=https://hooks.slack.com/services/...
+<span class="text-amber-400">ENVIRONMENT</span>=production</pre>
+</div>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<div class="text-xs text-neutral-500 mb-2 font-mono"># reading the variable inside a node (n8n)</div>
+<pre class="font-mono text-sm text-neutral-300 leading-relaxed"><span class="text-emerald-400">// no campo de header de um HTTP Request node:</span>
+Authorization: Bearer ={{ $env.OPENAI_API_KEY }}
+
+<span class="text-emerald-400">// escolher comportamento por ambiente:</span>
+={{ $env.ENVIRONMENT === 'production' ? 'real' : 'sandbox' }}</pre>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Practical tip</h3>
+<p class="text-neutral-300">Keep a <span class="font-mono">.env.example</span> versioned, with the keys <em>without value</em>. That way, anyone (including you three months from now) knows which variables the flow needs, without ever exposing the actual secret.</p>
+</div>
+</section>
+<!-- TÓPICO 4 -->
+<section class="mb-16" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">🔒 Security and secrets management</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">The costliest beginner mistake is <strong class="text-amber-400">leak a key</strong>. An LLM key exposed on GitHub can turn into a bill worth thousands of reais within hours, because bots scan public repositories for them.</p>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Where secrets leak (and how to prevent it)</h3>
+<ul class="space-y-2 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400 mt-0.5">✗</span><span>Pasting the key into a node’s body instead of using credential/<span class="font-mono">$env</span>.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400 mt-0.5">✗</span><span>Log the entire request object (which includes the Authorization header).</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400 mt-0.5">✗</span><span>Accidentally return sensitive data in the webhook response.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400 mt-0.5">✗</span><span>Commit the <span class="font-mono">.env</span> — always in the <span class="font-mono">.gitignore</span>.</span></li>
+</ul>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Safe practices</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Rotate keys periodically and at the first sign of a leak.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Least privilege: the key can only do what the workflow needs.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Mask data in logs (<span class="font-mono">sk-***</span>).</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Use a secret manager as the operation grows.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Dangerous habits</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>A single "admin" key for everything.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Send a screenshot of the workflow with the key visible in the chat.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Reuse the same key in staging and production.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Never revoke keys from former projects.</span></li>
+</ul>
+</div>
+</div>
+</section>
+<!-- TÓPICO 5 -->
+<section class="mb-16" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">🧩 Workflow structure</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">A workflow is a <strong class="text-amber-400">node graph</strong> connected by connections. Each connection carries a <strong class="text-amber-400">list of items</strong> in JSON. Internalize this: <em>everything is a list of items flowing from node to node</em> — this is the mental model that unlocks everything else in the learning path.</p>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Trigger</h4>
+<p class="text-sm text-neutral-400 mb-2">Where the flow starts</p>
+<p class="text-neutral-300 text-sm">A special node that starts the execution: manual, webhook, schedule, or external event. Every workflow has exactly one starting point.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Action nodes</h4>
+<p class="text-sm text-neutral-400 mb-2">What does the work</p>
+<p class="text-neutral-300 text-sm">Each node receives items, transforms them, and returns items. HTTP Request, Set, IF, code, Gmail — they all follow the input-item / output-item pattern.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Items and <span class="font-mono text-amber-400">$json</span></h4>
+<p class="text-sm text-neutral-400 mb-2">The data in transit</p>
+<p class="text-neutral-300 text-sm">Inside any node, <span class="font-mono">$json</span> is the current item. If the input has 50 items, the node runs 50 times (once per item) — automatically.</p>
+</div>
+</div>
+</div>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<div class="text-xs text-neutral-500 mb-2 font-mono"># a typical item passed between nodes</div>
+<pre class="font-mono text-sm text-neutral-300 leading-relaxed">{
+  <span class="text-amber-400">"json"</span>: {
+    <span class="text-amber-400">"nome"</span>: "Ana Souza",
+    <span class="text-amber-400">"email"</span>: "ana@empresa.com",
+    <span class="text-amber-400">"valor"</span>: 1290.50
+  }
+}
+<span class="text-emerald-400">// no próximo node, acessa com: ={{ $json.email }}</span></pre>
+</div>
+</section>
+<!-- TÓPICO 6 -->
+<section class="mb-16" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">👋 First "hello world"</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Proof that the environment works: a <strong class="text-amber-400">Manual Trigger</strong> connected to a node that defines a field. You run it, see the data appear in the first node and arrive at the second. Simple — and it eliminates 90% of the anxiety of getting started.</p>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Add a Manual Trigger</h4>
+<p class="text-neutral-300 text-sm">On the blank canvas, click “+” and search for <span class="font-mono">Manual Trigger</span>. It's the "Test workflow" button.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Connect it to an Edit Fields (Set) node</h4>
+<p class="text-neutral-300 text-sm">Create a field <span class="font-mono">message</span> with a value <span class="font-mono">Hello World</span>. Connect the trigger's output to the Set node's input.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Run it and read the output</h4>
+<p class="text-neutral-300 text-sm">Click "Test workflow." Open the Set node and look at the output item—your first data flowing end to end.</p>
+</div>
+</div>
+</div>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<div class="text-xs text-neutral-500 mb-2 font-mono"># expected output from the Set node</div>
+<pre class="font-mono text-sm text-neutral-300 leading-relaxed">[
+  { <span class="text-amber-400">"mensagem"</span>: "Hello World", <span class="text-amber-400">"executadoEm"</span>: "={{ $now }}" }
+]</pre>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Practical tip</h3>
+<p class="text-neutral-300">Before any real workflow, always start with a <strong>"hello world"</strong> of the integration you’ll use (1 API call, 1 spreadsheet row). Proving the connection in isolation saves hours of debugging later.</p>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-amber-900/40 via-dark-800 to-dark-800 rounded-xl border border-amber-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📌</span> Module Summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-neutral-100">Platform</strong><span class="text-neutral-400"> - choose n8n (control, code) or Make (fast no-code); master one.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-neutral-100">Credentials</strong><span class="text-neutral-400"> - dedicated service account, least privilege, reusable across nodes.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-neutral-100">Environment variables</strong><span class="text-neutral-400"> - config outside the code, handled with <span class="font-mono">$env</span>, never committed.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-neutral-100">Security</strong><span class="text-neutral-400"> - leaking a key is the costliest mistake; rotate it, mask it, isolate it.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-neutral-100">Workflow</strong><span class="text-neutral-400"> - graph of nodes; everything is a list of items flowing via <span class="font-mono">$json</span>.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-neutral-100">Hello world</strong><span class="text-neutral-400"> - trigger → Set, execute, read the output: environment verified.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-amber-400 mb-2">Next Module:</h3>
+<p class="text-neutral-300">4.2 - First end-to-end automation (from trigger to action, with AI in the middle)</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="index.html">← Back to Track</a>
+<a class="flex-1 text-center px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-500 transition-colors" href="modulo-4-2.html">Next Module →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-8">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Training in Strategic AI Automation · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { html.classList.remove('dark'); darkIcon.classList.remove('hidden'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

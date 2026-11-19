@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Módulo 3.3 · Diseño de prompts y lógica de decisión | Automatización con IA</title>
+<meta content="Prompt como especificación, estructura confiable, salida JSON y validación, guardrails, ramificación IF/switch a partir de la IA y el ciclo de probar e iterar." name="description"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#FACC15',
+        dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+      } } }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124,58,237,0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124,58,237,0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124,58,237,0.25); }
+    html:not(.dark) .hover\:bg-purple-500\/30:hover { background-color: rgba(124,58,237,0.18); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124,58,237,0.08); }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.22); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wfPulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.3s} .wf-a:nth-child(3){animation-delay:.6s}
+      @keyframes wfPulse { 0%,100%{opacity:.55} 50%{opacity:1} }
+    }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+  </style>
+<link href="https://inematds.github.io/fae-ai/curso/trilha3/modulo-3-3.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fae-ai/en/curso/trilha3/modulo-3-3.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fae-ai/es/curso/trilha3/modulo-3-3.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha3/modulo-3-3.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="../../../en/curso/trilha3/modulo-3-3.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="modulo-3-3.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">ES</a></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">⚙️</span>
+<span class="font-bold text-lg hidden sm:inline">Automatización con IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Auditoría</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10" href="index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Diseño</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construcción</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Comercial</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors" href="../trilha6/index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Práctica</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-purple-400" href="../../index.html">Inicio</a>
+<span>/</span>
+<a class="hover:text-purple-400" href="index.html">Ruta 3</a>
+<span>/</span>
+<span class="text-purple-400">Módulo 3.3</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MÓDULO 3.3</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🎯 Diseño de prompts y lógica de decisión</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">
+        El prompt es el <strong class="text-neutral-300">cerebro</strong> de la automatización con IA — y, como no hay una persona que corrija
+        en tiempo real, tiene que estar bien desde el principio. Aquí diseñas prompts como especificaciones, fuerzas una salida en JSON
+        validable, la proteges con guardrails, ramificas el flujo a partir de la IA e iteras con pruebas hasta confiar.
+      </p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">6</div><div class="text-xs text-neutral-400">Temas</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">~60</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">Inter.</div><div class="text-xs text-neutral-400">Nivel</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">Práctico</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- TOPICO 1 -->
+<section class="mb-16" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">📝 El prompt como especificación</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        En la automatización, el prompt no es una conversación: es <strong class="text-purple-400">código en lenguaje natural</strong>.
+        Se ejecutará mil veces por sí solo, sin nadie que corrija la IA en tiempo real. Por eso necesita una especificación:
+        instrucciones precisas, sin ambigüedades, que definan exactamente el comportamiento esperado.
+      </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Prompt de especificación</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Define el rol, la tarea y el formato exacto de salida.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Cubre los casos límite ("si no hay datos, devuelve X").</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Se comporta igual en cada ejecución.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Prompt conversacional</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>"Ayúdame a analizar esto" — es vago, depende del contexto.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>No indica qué hacer cuando algo se sale de lo esperado.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Da respuestas diferentes en cada ronda.</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Consejo práctico</h3>
+<p class="text-neutral-300">Antes de escribir el prompt, pregunta: <strong>si le diera esta instrucción a un empleado nuevo, ¿podría ejecutarla sin preguntarme nada?</strong> Si la respuesta es no, el prompt todavía tiene vacíos.</p>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Código</div><p class="text-sm text-neutral-400">Funciona sola mil veces.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Sin ambigüedad</div><p class="text-sm text-neutral-400">Necesitas tener certeza antes.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Bordes</div><p class="text-sm text-neutral-400">Cubre lo inesperado.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Consistente</div><p class="text-sm text-neutral-400">La misma entrada, la misma salida.</p></div>
+</div>
+</section>
+<!-- TOPICO 2 -->
+<section class="mb-16" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">🏗️ Estructura de un prompt confiable</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Una estructura fija hace que el comportamiento sea predecible: <strong class="text-purple-400">rol</strong> (quién es la IA),
+        <strong class="text-purple-400">contexto</strong> (lo que necesita saber), <strong class="text-purple-400">tarea</strong>
+        (qué hacer), <strong class="text-purple-400">formato de salida</strong> (cómo responder) y <strong class="text-purple-400">reglas</strong>
+        (qué respetar). A continuación, el mismo patrón aplicado a un clasificador de pedidos.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🧾</span> Ejemplo de prompt estructurado</h3>
+<div class="font-mono text-sm bg-dark-900 rounded-lg p-4 border border-dark-600 overflow-x-auto leading-relaxed">
+<div class="text-purple-400"># ROL</div>
+<div class="text-neutral-300">Eres un clasificador de pedidos de un e-commerce.</div>
+<div class="text-neutral-300">Responde de forma objetiva, sin comentarios adicionales.</div>
+<div class="text-purple-400 mt-3"># CONTEXTO</div>
+<div class="text-neutral-300">Categorías válidas: compra, soporte, reclamacion.</div>
+<div class="text-neutral-300">Prioridades válidas: alta, media, baja.</div>
+<div class="text-purple-400 mt-3"># TAREA</div>
+<div class="text-neutral-300">Lee el mensaje del cliente y clasifica la categoría</div>
+<div class="text-neutral-300">y prioridad. Estima tu confianza de 0 a 1.</div>
+<div class="text-purple-400 mt-3"># FORMATO DE SALIDA</div>
+<div class="text-neutral-300">Responde SOLO con un objeto JSON, sin texto antes</div>
+<div class="text-neutral-300">o después, con las claves: categoría, prioridad,</div>
+<div class="text-neutral-300">confianza, justificación.</div>
+<div class="text-purple-400 mt-3"># REGLAS</div>
+<div class="text-neutral-300">- Si no puedes clasificarlo, usa confianca &lt; 0.5.</div>
+<div class="text-neutral-300">- Nunca inventes una categoría fuera de la lista.</div>
+<div class="text-purple-400 mt-3"># MENSAJE</div>
+<div class="text-neutral-300">{{ mensagem_do_cliente }}</div>
+</div>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📐</span> Por qué funcionan las secciones con nombre</h3>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>La IA separa la instrucción (las reglas) del dato (el mensaje del cliente) sin confundirlos.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Revisas y versionas cada sección de forma aislada.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Se convierte en una plantilla: la misma estructura sirve para cualquier clasificador.</span></li>
+</ul>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Papel</div><p class="text-sm text-neutral-400">Quién es la IA.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Contexto</div><p class="text-sm text-neutral-400">Qué necesitas saber.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Formato</div><p class="text-sm text-neutral-400">Cómo responder.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Reglas</div><p class="text-sm text-neutral-400">Qué respetar.</p></div>
+</div>
+</section>
+<!-- TOPICO 3 -->
+<section class="mb-16" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🧾 Salida estructurada (JSON) y validación</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        El texto libre rompe la automatización: el siguiente paso no sabe dónde está cada dato. Forzar
+        <strong class="text-purple-400">JSON con campos fijos</strong> e <strong class="text-purple-400">validar</strong> la respuesta
+        antes de usarla es lo que hace que la salida de la IA sea lo bastante confiable para alimentar una acción automática.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">📤</span> Salida JSON esperada</h3>
+<div class="font-mono text-sm bg-dark-900 rounded-lg p-4 border border-dark-600 overflow-x-auto leading-relaxed">
+<div class="text-neutral-300">{</div>
+<div class="text-neutral-300">  <span class="text-sky-400">"categoría"</span>: <span class="text-purple-400">"reclamación"</span>,</div>
+<div class="text-neutral-300">  <span class="text-sky-400">"prioridad"</span>: <span class="text-purple-400">"alta"</span>,</div>
+<div class="text-neutral-300">  <span class="text-sky-400">"confianza"</span>: <span class="text-purple-400">0.92</span>,</div>
+<div class="text-neutral-300">  <span class="text-sky-400">"justificación"</span>: <span class="text-purple-400">"el cliente menciona un retraso y pide un reembolso"</span></div>
+<div class="text-neutral-300">}</div>
+</div>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">✅</span> Validación antes de usar (pseudocódigo)</h3>
+<div class="font-mono text-sm bg-dark-900 rounded-lg p-4 border border-dark-600 overflow-x-auto leading-relaxed">
+<div class="text-neutral-500"># 1. ¿es JSON válido?</div>
+<div class="text-neutral-300">datos = parse_json(salida_ia)  <span class="text-neutral-500"># falló → repetir/escalar</span></div>
+<div class="text-neutral-500 mt-2"># 2. ¿tiene todos los campos obligatorios?</div>
+<div class="text-neutral-300">exigir(datos, [categoria, prioridad, confianza])</div>
+<div class="text-neutral-500 mt-2"># 3. ¿los valores están en la lista permitida?</div>
+<div class="text-neutral-300">si datos.categoria no está en CATEGORIAS: rechazar</div>
+<div class="text-neutral-500 mt-2"># 4. solo entonces pasa a la decisión</div>
+</div>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Atención</h3>
+<p class="text-neutral-300">Nunca confíes ciegamente en la salida de la IA. Si el JSON viene <strong>malformado</strong> o con una categoría inventada, la validación debe <strong>rechazar y repetir</strong> (o escalar); jamás dejes que un valor no válido siga hacia una acción automática.</p>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">JSON</div><p class="text-sm text-neutral-400">Campos fijos y con nombre.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Validar</div><p class="text-sm text-neutral-400">Antes de usar la salida.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Lista</div><p class="text-sm text-neutral-400">Valores dentro de lo permitido.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Rechazar</div><p class="text-sm text-neutral-400">No válido → repetir o escalar.</p></div>
+</div>
+</section>
+<!-- TOPICO 4 -->
+<section class="mb-16" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">🚧 Guardrails y fallback</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        La IA comete errores y alucina. <strong class="text-purple-400">Salvaguardas</strong> son los límites — lo que no puede hacer, lo que
+        la validación rechaza. <strong class="text-purple-400">Fallback</strong> es lo que ocurre cuando no está segura: pedir
+        confirmación, escalar a una persona o usar un valor predeterminado seguro. Juntos, impiden que un error se convierta en una acción irreversible.
+      </p>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-neutral-100 mb-2">Salvaguarda en el prompt</h4><p class="text-neutral-300 text-sm">Instrucciones explícitas sobre lo que nunca debe hacer: no inventar categorías, no tomar decisiones fuera del alcance, indicar poca confianza cuando haya dudas.</p></div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-neutral-100 mb-2">Salvaguarda en la validación</h4><p class="text-neutral-300 text-sm">Comprobación programática que rechaza salidas fuera del formato o de la lista de valores: la IA propone, el código verifica.</p></div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-neutral-100 mb-2">Fallback por confianza</h4><p class="text-neutral-300 text-sm">Cuando la confianza está por debajo de un límite (ej.: 0.6), el flujo se desvía a revisión humana en vez de actuar por sí solo.</p></div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Consejo práctico</h3>
+<p class="text-neutral-300">Pídele a la IA un campo <strong>confianza</strong> en cada salida y úsalo como disparador de fallback. Es la forma más sencilla de convertir «la IA no está segura» en una decisión concreta del flujo: actuar por cuenta propia solo por encima del límite y escalar por debajo.</p>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Limitar</div><p class="text-sm text-neutral-400">Qué no puede hacer la IA.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Confianza</div><p class="text-sm text-neutral-400">Campo que activa el fallback.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Escalar</div><p class="text-sm text-neutral-400">Humano cuando haya incertidumbre.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Seguro</div><p class="text-sm text-neutral-400">Un error no se convierte en una acción irreversible.</p></div>
+</div>
+</section>
+<!-- TOPICO 5 -->
+<section class="mb-16" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">🔀 Lógica de ramificación basada en la IA</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Aquí es donde la IA deja de ser un adorno y se convierte en el cerebro: un campo categórico de la salida JSON (p. ej.:
+        <strong class="text-purple-400">categoría</strong> o <strong class="text-purple-400">prioridad</strong>) se convierte en la clave de un
+        <strong class="text-neutral-100">IF/switch</strong> en el flujo, dirigiendo cada caso a una acción diferente. La IA clasifica,
+        el flujo ejecuta.
+      </p>
+<div class="rounded-2xl border border-purple-500/30 bg-dark-900/40 p-3 sm:p-4 mb-8 overflow-hidden">
+<svg aria-label="Diagrama: la salida JSON de la IA alimenta un switch que se ramifica en tres acciones según la categoría" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 920 250">
+<defs>
+<lineargradient id="m33bGrad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#c084fc"></stop><stop offset="1" stop-color="#a855f7"></stop></lineargradient>
+<filter height="180%" id="m33bGlow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="30" id="m33bGrid" patternunits="userSpaceOnUse" width="30"><circle cx="1.3" cy="1.3" fill="#a855f7" opacity="0.12" r="1.3"></circle></pattern>
+<marker id="m33bAh" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#c084fc"></path></marker>
+<marker id="m33bAhc" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#38bdf8"></path></marker>
+</defs>
+<rect fill="url(#m33bGrid)" height="250" width="920" x="0" y="0"></rect>
+<g filter="url(#m33bGlow)"><rect fill="#1a1230" height="62" rx="14" stroke="url(#m33bGrad)" stroke-width="2.5" width="150" x="30" y="96"></rect></g>
+<text fill="#c084fc" font-size="14" font-weight="600" text-anchor="middle" x="105" y="122">IA → JSON</text>
+<text fill="#d8b4fe" font-size="11" text-anchor="middle" x="105" y="142">categoría + confianza</text>
+<path d="M180,127 L262,127" fill="none" marker-end="url(#m33bAh)" opacity="0.6" stroke="#c084fc" stroke-width="2"></path>
+<g><rect fill="#0e1b26" height="54" rx="12" stroke="#38bdf8" stroke-width="2" width="120" x="264" y="100"></rect><text fill="#bfe6ff" font-size="14" font-weight="600" text-anchor="middle" x="324" y="132">switch</text></g>
+<g fill="none" opacity="0.55" stroke="#38bdf8" stroke-width="1.8">
+<path d="M384,118 C480,118 500,40 600,40" marker-end="url(#m33bAhc)"></path>
+<path d="M384,127 L600,127" marker-end="url(#m33bAhc)"></path>
+<path d="M384,136 C480,136 500,214 600,214" marker-end="url(#m33bAhc)"></path>
+</g>
+<g font-family="Inter,sans-serif" font-size="13" font-weight="600">
+<g><rect fill="#0e1b26" height="40" rx="10" stroke="#38bdf8" stroke-width="2" width="200" x="602" y="20"></rect><text fill="#bfe6ff" x="622" y="45">compra → crear pedido</text></g>
+<g><rect fill="#0e1b26" height="40" rx="10" stroke="#38bdf8" stroke-width="2" width="200" x="602" y="107"></rect><text fill="#bfe6ff" x="622" y="132">soporte → abrir ticket</text></g>
+<g><rect fill="#1a1230" height="40" rx="10" stroke="#c084fc" stroke-width="2" width="200" x="602" y="194"></rect><text fill="#d8b4fe" x="622" y="219">queja → escalar</text></g>
+</g>
+<text fill="#64748b" font-size="11" x="30" y="225">ilustrativo — la IA decide, el flujo se ramifica</text>
+</svg>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📐</span> Reglas de una ramificación saludable</h3>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Usa un campo <strong>categórico</strong> (lista cerrada) como clave; nunca texto libre.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Ten siempre un <strong>rama predeterminada</strong> para el caso que no coincide con ninguna opción.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Combina con confianza: la categoría correcta + una confianza baja aún pueden escalarse.</span></li>
+</ul>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">La IA decide</div><p class="text-sm text-neutral-400">El flujo se ejecuta.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Clave</div><p class="text-sm text-neutral-400">Campo categórico cerrado.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Patrón</div><p class="text-sm text-neutral-400">Rama para el resto.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Combinar</div><p class="text-sm text-neutral-400">Categorías + confianza.</p></div>
+</div>
+</section>
+<!-- TOPICO 6 -->
+<section class="mb-16" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">🔁 Probar e iterar el prompt</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Un prompt que acierta en un ejemplo puede fallar en diez. Arma un <strong class="text-purple-400">conjunto de casos de prueba</strong>
+        — incluidos los difíciles y adversariales: ejecuta el prompt con todos, mide la tasa de aciertos y ajústalo hasta que se estabilice.
+        Solo este ciclo te da confianza para dejar que la IA tome decisiones por sí sola en producción.
+      </p>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-neutral-100 mb-2">Reúne casos reales</h4><p class="text-neutral-300 text-sm">Toma mensajes reales del proceso (de la auditoría de la T2), incluidos los ambiguos y los que suelen causar confusión.</p></div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-neutral-100 mb-2">Define la respuesta correcta</h4><p class="text-neutral-300 text-sm">Para cada caso, anota cuál sería la salida correcta. Esa plantilla de referencia es la regla con la que mides el prompt.</p></div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-neutral-100 mb-2">Ejecuta, mide, ajusta</h4><p class="text-neutral-300 text-sm">Ejecuta el prompt en todos los casos, compáralo con la respuesta correcta, calcula la tasa de aciertos y ajusta el prompt donde haya errores. Repite hasta que se estabilice.</p></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Iteración saludable</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Incluye casos difíciles y adversariales desde el inicio.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Mide la tasa de aciertos antes y después de cada ajuste.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Deja de iterar cuando la tasa se estabilice, no en el primer intento.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Iteración ingenua</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Lo prueba solo con un ejemplo fácil y lo da por terminado.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Ajusta según tus suposiciones, sin medir si mejoró.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Corrige un caso y rompe tres sin darte cuenta.</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Conjunto</div><p class="text-sm text-neutral-400">Varios casos, no uno.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Difíciles</div><p class="text-sm text-neutral-400">Primero, casos adversariales.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Medir</div><p class="text-sm text-neutral-400">Tasa de acierto, no suposiciones.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Estabilizar</div><p class="text-sm text-neutral-400">Iterar hasta dejar de mejorar.</p></div>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">🎯</span> Resumen del módulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-neutral-100">Prompt es especificación</strong><span class="text-neutral-400"> — código en lenguaje natural que se ejecuta solo mil veces.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-neutral-100">Estructura fija</strong><span class="text-neutral-400"> — rol, contexto, tarea, formato y reglas en secciones con nombre.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-neutral-100">JSON validado</strong><span class="text-neutral-400"> — salida estructurada, verificada antes de convertirse en acción.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-neutral-100">Salvaguardas y alternativa</strong><span class="text-neutral-400"> — los límites + la escala según la confianza impiden acciones irreversibles equivocadas.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-neutral-100">Ramificar y probar</strong><span class="text-neutral-400"> — la IA decide mediante un switch; iterar con casos reales hasta estabilizarlo.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-purple-400 mb-2">Próxima Ruta de aprendizaje:</h3>
+<p class="text-neutral-300">Ruta 4 · Construcción — salir del blueprint y armar la automatización de punta a punta.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="index.html">← Volver a la ruta</a>
+<a class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors" href="../trilha4/index.html">Próxima Ruta de aprendizaje →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-8">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Formación en Automatización Estratégica con IA · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { html.classList.remove('dark'); darkIcon.classList.remove('hidden'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Module 2.1 · Finding the 10-hour task | AI Automation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#FACC15',
+        dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+      } } }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37,99,235,0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37,99,235,0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37,99,235,0.25); }
+    html:not(.dark) .hover\:bg-blue-500\/30:hover { background-color: rgba(37,99,235,0.18); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37,99,235,0.08); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+    html:not(.dark) .hover\:text-rose-400:hover { color: #9f1239; }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-of-type(2){animation-delay:.3s} .wf-a:nth-of-type(3){animation-delay:.6s} .wf-a:nth-of-type(4){animation-delay:.9s}
+      @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+  </style>
+<link href="https://inematds.github.io/fae-ai/curso/trilha2/modulo-2-1.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fae-ai/en/curso/trilha2/modulo-2-1.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fae-ai/es/curso/trilha2/modulo-2-1.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha2/modulo-2-1.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="modulo-2-1.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../../../es/curso/trilha2/modulo-2-1.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">⚙️</span>
+<span class="font-bold text-lg hidden sm:inline">AI Automation</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentals</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10" href="index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Audit</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Design</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construction</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Commercial</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors" href="../trilha6/index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Practice</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-blue-400" href="../../index.html">Start</a>
+<span>/</span>
+<a class="hover:text-blue-400" href="index.html">Track 2</a>
+<span>/</span>
+<span class="text-blue-400">Module 2.1</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULE 2.1</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🎯 Find the 10-hour task</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">
+        Every company has invisible tasks that consume hours each month without anyone adding up the cost.
+        In this module, you’ll learn to spot these opportunities, separate what’s worth automating from what isn’t,
+        and choose the first process based on clear criteria—not guesswork.
+      </p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">6</div><div class="text-xs text-neutral-400">Topics</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">40</div><div class="text-xs text-neutral-400">Minutes</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Basic</div><div class="text-xs text-neutral-400">Level</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Theory</div><div class="text-xs text-neutral-400">Type</div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- TÓPICO 1 -->
+<section class="mb-16" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">🗺️ Where the opportunities are</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Automation opportunities aren't hidden in exotic places — they're in plain sight, in
+        work nobody wants to do. Three areas account for almost all of them: <strong class="text-blue-400">routines</strong>
+        that repeat, <strong class="text-blue-400">bottlenecks</strong> where the work piles up and
+        <strong class="text-blue-400">copy-paste</strong> between systems that don’t communicate.
+      </p>
+<div class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-8 overflow-hidden">
+<svg aria-label="Three opportunity pools — routines, bottlenecks, and copy-and-paste tasks — converging on a candidate task for automation" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 1000 240">
+<defs>
+<lineargradient id="m21grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#60a5fa"></stop><stop offset="1" stop-color="#3b82f6"></stop></lineargradient>
+<filter height="180%" id="m21glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m21grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#3b82f6" opacity="0.12" r="1.3"></circle></pattern>
+<marker id="m21ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#60a5fa"></path></marker>
+</defs>
+<rect fill="url(#m21grid)" height="240" width="1000" x="0" y="0"></rect>
+<g font-size="13" font-weight="600">
+<g class="wf-a"><rect fill="#0e1622" height="46" rx="10" stroke="#38bdf8" stroke-width="2" width="190" x="40" y="30"></rect><text fill="#bfe6ff" text-anchor="middle" x="135" y="58">Daily routines</text></g>
+<g class="wf-a"><rect fill="#0e1622" height="46" rx="10" stroke="#38bdf8" stroke-width="2" width="190" x="40" y="97"></rect><text fill="#bfe6ff" text-anchor="middle" x="135" y="125">Bottlenecks / queues</text></g>
+<g class="wf-a"><rect fill="#0e1622" height="46" rx="10" stroke="#38bdf8" stroke-width="2" width="190" x="40" y="164"></rect><text fill="#bfe6ff" text-anchor="middle" x="135" y="192">Copy-paste between apps</text></g>
+</g>
+<g fill="none" opacity="0.55" stroke="#60a5fa" stroke-width="1.8">
+<path d="M230,53  C420,53 470,120 600,120" marker-end="url(#m21ah)"></path>
+<path d="M230,120 L600,120" marker-end="url(#m21ah)"></path>
+<path d="M230,187 C420,187 470,120 600,120" marker-end="url(#m21ah)"></path>
+</g>
+<g filter="url(#m21glow)"><rect fill="#0e1622" height="72" rx="14" stroke="url(#m21grad)" stroke-width="2.5" width="220" x="600" y="84"></rect></g>
+<text fill="#60a5fa" font-size="17" font-weight="700" text-anchor="middle" x="710" y="116">Candidate task</text>
+<text fill="#9ca3af" font-size="12" text-anchor="middle" x="710" y="138">repetitive · costly · automatable</text>
+</svg>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Where to look</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Reports put together by hand every week</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Data copied from one system to another</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Standardized emails answered one by one</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Spreadsheets updated manually every day</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Where it tends to be a waste of time</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Strategic decisions that change every time</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Tasks done once a year</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Negotiations that require reading people</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Processes with no stable rules</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Practical tip</h3>
+<p class="text-neutral-300">Ask anyone on the team: "what part of your day do you hate doing?" The answer almost always points straight to a routine that can be automated.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Routine</div><div class="text-xs text-neutral-400">Repeats on a fixed cycle</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Bottleneck</div><div class="text-xs text-neutral-400">Work piles up here</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Copy-paste</div><div class="text-xs text-neutral-400">Manual bridge between apps</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Volume</div><div class="text-xs text-neutral-400">Happens often</div></div>
+</div>
+</section>
+<!-- TÓPICO 2 -->
+<section class="mb-16" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">🚦 Signs of an automatable task</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Not every tedious task is worth automating. The ones that are have <strong class="text-blue-400">clear signals</strong>:
+        stable rules, high volume, structured data, and predictable results. The more signals that line up,
+        the stronger the candidate.
+      </p>
+<div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🎯</span> The 4 signs that matter</h3>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Deterministic:</strong> the same input always produces the same output.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Repetitive:</strong> happens many times a day, week, or month.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Rule-based:</strong> you can write the "how to do it" in clear steps.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Tedious:</strong> low cognitive value, high attention cost.</span></li>
+</ul>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Candidate thermometer</h3>
+<div class="font-mono text-sm space-y-2 text-neutral-300">
+<div>4 signals present  → <span class="text-emerald-400">excellent candidate</span></div>
+<div>2–3 signals       → <span class="text-blue-400">worth investigating</span></div>
+<div>0–1 signal        → <span class="text-red-400">leave it for later</span></div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Deterministic</div><div class="text-xs text-neutral-400">Predictable output</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Repetitive</div><div class="text-xs text-neutral-400">High frequency</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Clear rules</div><div class="text-xs text-neutral-400">Steps written out</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Tedious</div><div class="text-xs text-neutral-400">Low human value</div></div>
+</div>
+</section>
+<!-- TÓPICO 3 -->
+<section class="mb-16" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🎤 Interview the process owner</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        The process described in the manual is almost never the real process. To uncover the truth, you talk to
+        the person who does the task every day — and how you ask makes all the difference. Use a <strong class="text-blue-400">interview
+        sequence</strong> that reveals hidden steps, shortcuts, and pain points.
+      </p>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">"Show me how you do it"</h4>
+<p class="text-sm text-neutral-400 mb-3">Live demonstration</p>
+<p class="text-neutral-300 text-sm">Ask the person to perform the task while you observe. The informal shortcuts only show up in practice.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">"What annoys you most here?"</h4>
+<p class="text-sm text-neutral-400 mb-3">Pain map</p>
+<p class="text-neutral-300 text-sm">Frustration points directly to the bottleneck. Where it hurts, there’s value in automating.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">"When does this go wrong?"</h4>
+<p class="text-sm text-neutral-400 mb-3">Hunt for exceptions</p>
+<p class="text-neutral-300 text-sm">The exceptions you don't uncover now will break the automation later.</p>
+</div>
+</div>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Attention</h3>
+<p class="text-neutral-300">Never ask “how should it be?” That gets you theory, not practice. Ask “how does it work today, really?”—warts and all.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Observe</div><div class="text-xs text-neutral-400">See, don’t imagine</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Pain</div><div class="text-xs text-neutral-400">Frustration = value</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Exceptions</div><div class="text-xs text-neutral-400">What breaks</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">No judgment</div><div class="text-xs text-neutral-400">Understand, don’t fix</div></div>
+</div>
+</section>
+<!-- TÓPICO 4 -->
+<section class="mb-16" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">📋 Task inventory and frequency</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Without an inventory, you prioritize by intuition—and intuition gets it wrong. List every repetitive task with its
+        <strong class="text-blue-400">frequency</strong> e <strong class="text-blue-400">time per run</strong>.
+        Multiplying reveals where time really leaks over the course of the year.
+      </p>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Illustrative inventory</h3>
+<div class="font-mono text-sm overflow-x-auto">
+<table class="w-full text-left text-neutral-300">
+<thead class="text-blue-400 border-b border-dark-600">
+<tr><th class="py-2 pr-4">Task</th><th class="py-2 pr-4">Time</th><th class="py-2 pr-4">Frequency</th><th class="py-2">Total/year</th></tr>
+</thead>
+<tbody class="divide-y divide-dark-600">
+<tr><td class="py-2 pr-4">Build a weekly report</td><td class="py-2 pr-4">90 min</td><td class="py-2 pr-4">weekly</td><td class="py-2 text-blue-400">~78 h</td></tr>
+<tr><td class="py-2 pr-4">Copy orders to a spreadsheet</td><td class="py-2 pr-4">8 min</td><td class="py-2 pr-4">daily</td><td class="py-2 text-blue-400">~32 h</td></tr>
+<tr><td class="py-2 pr-4">Reply to a standard email</td><td class="py-2 pr-4">5 min</td><td class="py-2 pr-4">10×/day</td><td class="py-2 text-blue-400">~200 h</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-neutral-500 mt-3">illustrative — notice how a 5-minute task becomes the biggest on the list because of its volume</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Practical tip</h3>
+<p class="text-neutral-300">The formula is simple: <strong>time per run × annual frequency = total time</strong>. Small, frequent tasks almost always beat large, rare ones.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Task</div><div class="text-xs text-neutral-400">What repeats</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Time</div><div class="text-xs text-neutral-400">Per execution</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Frequency</div><div class="text-xs text-neutral-400">How many times</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Total/year</div><div class="text-xs text-neutral-400">What matters</div></div>
+</div>
+</section>
+<!-- TÓPICO 5 -->
+<section class="mb-16" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">📐 Effort × impact matrix</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        With the inventory in hand, you need to <strong class="text-blue-400">prioritize</strong>. The
+        effort × impact matrix compares how difficult something is to automate with how much the automation delivers. The golden corner
+        is <strong class="text-blue-400">high impact, low effort</strong> — always start there.
+      </p>
+<div class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-6 overflow-hidden">
+<svg aria-label="Effort-versus-impact matrix with four quadrants, highlighting the high-impact, low-effort quadrant as a quick win" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 600 380">
+<defs>
+<filter height="180%" id="m21mglow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+</defs>
+<line stroke="#9ca3af" stroke-width="2" x1="80" x2="80" y1="40" y2="320"></line>
+<line stroke="#9ca3af" stroke-width="2" x1="80" x2="560" y1="320" y2="320"></line>
+<text fill="#9ca3af" font-size="13" text-anchor="middle" transform="rotate(-90 40 180)" x="40" y="180">Impact →</text>
+<text fill="#9ca3af" font-size="13" text-anchor="middle" x="320" y="360">Effort →</text>
+<!-- quadrante ouro -->
+<g filter="url(#m21mglow)"><rect fill="#0e1622" height="125" rx="12" stroke="#3b82f6" stroke-width="2.5" width="220" x="90" y="50"></rect></g>
+<text fill="#60a5fa" font-size="15" font-weight="700" text-anchor="middle" x="200" y="105">Quick win</text>
+<text fill="#9ad6ff" font-size="12" text-anchor="middle" x="200" y="128">high impact · low effort</text>
+<text fill="#9ca3af" font-size="11" text-anchor="middle" x="200" y="150">start here</text>
+<!-- demais -->
+<rect fill="#1f2937" height="125" rx="12" stroke="#4b5563" stroke-width="2" width="220" x="330" y="50"></rect>
+<text fill="#e5e7eb" font-size="13" font-weight="600" text-anchor="middle" x="440" y="110">Large project</text>
+<text fill="#9ca3af" font-size="11" text-anchor="middle" x="440" y="132">high impact · high effort</text>
+<rect fill="#1f2937" height="115" rx="12" stroke="#4b5563" stroke-width="2" width="220" x="90" y="195"></rect>
+<text fill="#e5e7eb" font-size="13" font-weight="600" text-anchor="middle" x="200" y="248">Maybe later</text>
+<text fill="#9ca3af" font-size="11" text-anchor="middle" x="200" y="270">low impact · low effort</text>
+<rect fill="#1f2937" height="115" rx="12" stroke="#4b5563" stroke-width="2" width="220" x="330" y="195"></rect>
+<text fill="#e5e7eb" font-size="13" font-weight="600" text-anchor="middle" x="440" y="248">Avoid</text>
+<text fill="#9ca3af" font-size="11" text-anchor="middle" x="440" y="270">low impact · high effort</text>
+</svg>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Prioritize</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Quick wins: high return, little effort</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Large projects only after proving value</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Avoid</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>High effort, low return</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Start with the most complex process</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Impact</div><div class="text-xs text-neutral-400">How much it pays off</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Effort</div><div class="text-xs text-neutral-400">How hard it is</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Gold quadrant</div><div class="text-xs text-neutral-400">High + low</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Sequence</div><div class="text-xs text-neutral-400">Win before scaling</div></div>
+</div>
+</section>
+<!-- TÓPICO 6 -->
+<section class="mb-16" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">🥇 Choose the first process</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Your first project defines your reputation. It needs to be <strong class="text-blue-400">small
+        enough</strong> to deliver quickly, <strong class="text-blue-400">visible enough</strong>
+        so everyone notices and <strong class="text-blue-400">low risk</strong> to avoid causing damage if it fails.
+      </p>
+<div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🎯</span> First project criteria</h3>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Small:</strong> delivery in days, not months.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Visible:</strong> the benefit goes to whoever makes the decisions.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Low risk:</strong> if it fails, no one stops working.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Measurable:</strong> you can prove the before and after.</span></li>
+</ul>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Practical tip</h3>
+<p class="text-neutral-300">Think of the first project as a <strong>demonstration</strong>, not as the final solution. It exists to prove that automation works and pave the way for what comes next.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Small</div><div class="text-xs text-neutral-400">Fast delivery</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Visible</div><div class="text-xs text-neutral-400">Everyone notices</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Low risk</div><div class="text-xs text-neutral-400">Failure without damage</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Measurable</div><div class="text-xs text-neutral-400">Prove the gain</div></div>
+</div>
+</section>
+<!-- CONCEITOS-CHAVE DO MÓDULO -->
+<section class="mb-12">
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Key concepts of the module</h3>
+<div class="font-mono text-sm space-y-1 text-neutral-300">
+<div><span class="text-blue-400">opportunity</span> = routine · bottleneck · copy-paste</div>
+<div><span class="text-blue-400">candidate</span> = deterministic + repetitive + rules + tedious</div>
+<div><span class="text-blue-400">total time</span> = time/execution × annual frequency</div>
+<div><span class="text-blue-400">priority</span> = high impact ÷ low effort</div>
+<div><span class="text-blue-400">1st project</span> = small + visible + low risk + measurable</div>
+</div>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">🎯</span> Module Summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Opportunities are found in 3 places</strong><span class="text-neutral-400"> - routines, bottlenecks, and copy-paste.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">4 signals reveal the candidate</strong><span class="text-neutral-400"> - deterministic, repetitive, rule-based, and tedious.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Interview while observing</strong><span class="text-neutral-400"> - “how it is today,” never “how it should be.”</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Inventory with frequency</strong><span class="text-neutral-400"> - time × frequency reveals the real leak.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Effort × impact matrix</strong><span class="text-neutral-400"> - start with the quick win.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">First small, visible project</strong><span class="text-neutral-400"> - it's a demonstration, not the final solution.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-blue-400 mb-2">Next Module:</h3>
+<p class="text-neutral-300">2.2 · Process audit — time it, calculate cost and ROI, and document the as-is.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="index.html">← Back to Track</a>
+<a class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors" href="modulo-2-2.html">Next Module →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-8">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Training in Strategic AI Automation · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { html.classList.remove('dark'); darkIcon.classList.remove('hidden'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

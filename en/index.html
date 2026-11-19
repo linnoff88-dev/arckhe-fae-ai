@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Training in Strategic AI Automation | INEMA.CLUB</title>
+<meta content="Learn to identify, design, and build AI automations that save time and have commercial value. From 10 hours to 10 seconds." name="description"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#FACC15',
+        dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+      } } }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - acento de todas as trilhas */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .text-rose-400 { color: #9f1239; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5,150,105,0.12); }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37,99,235,0.12); }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124,58,237,0.12); }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217,119,6,0.12); }
+    html:not(.dark) .bg-teal-500\/20 { background-color: rgba(13,148,136,0.12); }
+    html:not(.dark) .bg-rose-500\/20 { background-color: rgba(225,29,72,0.12); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5,150,105,0.25); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37,99,235,0.25); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124,58,237,0.25); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217,119,6,0.25); }
+    html:not(.dark) .border-teal-500\/30 { border-color: rgba(13,148,136,0.25); }
+    html:not(.dark) .border-rose-500\/30 { border-color: rgba(225,29,72,0.25); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+    html:not(.dark) .hover\:text-rose-400:hover { color: #9f1239; }
+    html:not(.dark) .group:hover .group-hover\:text-emerald-400 { color: #059669; }
+    html:not(.dark) .group:hover .group-hover\:text-blue-400 { color: #2563eb; }
+    html:not(.dark) .group:hover .group-hover\:text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .group:hover .group-hover\:text-amber-400 { color: #92400e; }
+    html:not(.dark) .group:hover .group-hover\:text-teal-400 { color: #0d9488; }
+    html:not(.dark) .group:hover .group-hover\:text-rose-400 { color: #9f1239; }
+
+    /* Light mode - remove gradientes e cores especiais */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+
+    /* Dark mode - bordas suaves */
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .pulse-dot { animation: pulseDot 3s ease-in-out infinite; }
+      @keyframes pulseDot { 0%,100%{opacity:.35} 50%{opacity:1} }
+    }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+  </style>
+<link href="https://inematds.github.io/fae-ai/" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fae-ai/en/" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fae-ai/es/" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="./" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../es/" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="index.html">
+<span class="text-2xl">⚙️</span>
+<span class="font-bold text-lg hidden sm:inline">AI Automation</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="curso/trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentals</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="curso/trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Audit</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="curso/trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Design</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="curso/trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construction</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="curso/trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Commercial</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors" href="curso/trilha6/index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Practice</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- HERO -->
+<header class="bg-gradient-to-br from-emerald-900/20 via-dark-900 to-dark-900 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div>
+<span class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full mb-5 border border-primary/40">TRAINING · INEMA.CLUB · FREE</span>
+<h1 class="text-4xl sm:text-5xl font-bold mb-5 leading-tight">Strategic AI Automation</h1>
+<p class="text-xl text-neutral-300 mb-4 font-semibold">From <span class="text-red-400">10 hours</span> to <span class="text-emerald-400">10 seconds</span>.</p>
+<p class="text-lg text-neutral-400 mb-8 max-w-xl leading-relaxed">
+            It’s not about learning tools—it’s about knowing <strong class="text-neutral-300">what to build</strong>.
+            Learn to identify opportunities, map processes, design solutions, build automations, and
+            turn AI into productivity or a commercial service.
+          </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="text-center px-7 py-3.5 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors" href="curso/trilha1/index.html">Start with T1 →</a>
+<a class="text-center px-7 py-3.5 bg-dark-700 text-neutral-200 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="#trilhas">View the 6 tracks</a>
+</div>
+</div>
+<div class="rounded-2xl border border-emerald-500/30 bg-dark-900/40 p-4">
+<svg aria-label="Diagram: a 10-hour manual process reduced to 10 seconds with AI automation" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 520 320">
+<defs>
+<lineargradient id="heroFlow" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0" stop-color="#f87171"></stop><stop offset="1" stop-color="#34d399"></stop>
+</lineargradient>
+<filter height="180%" id="heroGlow" width="180%" x="-40%" y="-40%">
+<fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge>
+</filter>
+<pattern height="26" id="heroGrid" patternunits="userSpaceOnUse" width="26">
+<circle cx="1.2" cy="1.2" fill="#334155" opacity="0.5" r="1.2"></circle>
+</pattern>
+</defs>
+<rect fill="url(#heroGrid)" height="320" rx="16" width="520" x="0" y="0"></rect>
+<!-- manual -->
+<g>
+<rect fill="#1f2937" height="92" rx="12" stroke="#f87171" stroke-width="2" width="150" x="28" y="40"></rect>
+<text fill="#f87171" font-size="14" font-weight="600" text-anchor="middle" x="103" y="72">Manual process</text>
+<text fill="#9ca3af" font-size="12" text-anchor="middle" x="103" y="96">copy · paste</text>
+<text fill="#9ca3af" font-size="12" text-anchor="middle" x="103" y="114">repeat · wait</text>
+<text fill="#f87171" font-size="22" font-weight="700" text-anchor="middle" x="103" y="160">~10 h</text>
+</g>
+<!-- arrow / IA -->
+<line marker-end="url(#)" stroke="url(#heroFlow)" stroke-width="3" x1="186" x2="334" y1="86" y2="86"></line>
+<polygon fill="#34d399" points="334,86 322,80 322,92"></polygon>
+<g filter="url(#heroGlow)">
+<rect fill="#0f172a" height="58" rx="14" stroke="#38bdf8" stroke-width="2" width="104" x="208" y="150"></rect>
+<text fill="#38bdf8" font-size="13" font-weight="600" text-anchor="middle" x="260" y="178">Automation</text>
+<text fill="#7dd3fc" font-size="11" text-anchor="middle" x="260" y="196">AI + workflow</text>
+</g>
+<line stroke="#38bdf8" stroke-dasharray="4 3" stroke-width="2" x1="260" x2="260" y1="132" y2="150"></line>
+<!-- result -->
+<g filter="url(#heroGlow)">
+<rect fill="#062e22" height="92" rx="12" stroke="#34d399" stroke-width="2" width="150" x="342" y="40"></rect>
+<text fill="#34d399" font-size="14" font-weight="600" text-anchor="middle" x="417" y="72">Result</text>
+<text fill="#9ca3af" font-size="12" text-anchor="middle" x="417" y="96">automatic · reliable</text>
+<text fill="#9ca3af" font-size="12" text-anchor="middle" x="417" y="114">marketable</text>
+<text fill="#34d399" font-size="22" font-weight="700" text-anchor="middle" x="417" y="160">~10 s</text>
+</g>
+<g class="pulse-dot">
+<circle cx="417" cy="206" fill="#34d399" r="4"></circle>
+<circle cx="260" cy="232" fill="#38bdf8" r="4"></circle>
+<circle cx="103" cy="206" fill="#f87171" r="4"></circle>
+</g>
+<text fill="#64748b" font-size="11" text-anchor="middle" x="260" y="300">illustrative — the same work, 3,600× faster</text>
+</svg>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<!-- O ciclo das 5 etapas -->
+<section class="mb-20">
+<h2 class="text-2xl font-bold mb-3">The strategic automation cycle</h2>
+<p class="text-neutral-400 mb-8 max-w-3xl">Five steps that turn a manual task into an automated, sellable asset. The tracks follow this exact flow.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+<div class="bg-dark-800 rounded-xl border border-emerald-500/30 p-5"><div class="text-emerald-400 font-bold text-sm mb-2">01 · Identify</div><p class="text-sm text-neutral-400">Find the repetitive tasks that drain hours.</p></div>
+<div class="bg-dark-800 rounded-xl border border-blue-500/30 p-5"><div class="text-blue-400 font-bold text-sm mb-2">02 · Map</div><p class="text-sm text-neutral-400">Audit and diagram the as-is → to-be process.</p></div>
+<div class="bg-dark-800 rounded-xl border border-purple-500/30 p-5"><div class="text-purple-400 font-bold text-sm mb-2">03 · Design</div><p class="text-sm text-neutral-400">Solution blueprint: tools, models, logic.</p></div>
+<div class="bg-dark-800 rounded-xl border border-amber-500/30 p-5"><div class="text-amber-400 font-bold text-sm mb-2">04 · Build</div><p class="text-sm text-neutral-400">Build the end-to-end workflow and make it reliable.</p></div>
+<div class="bg-dark-800 rounded-xl border border-teal-500/30 p-5"><div class="text-teal-400 font-bold text-sm mb-2">05 · Commercialize</div><p class="text-sm text-neutral-400">Package, price, and sell it as a service.</p></div>
+</div>
+</section>
+<!-- Trilhas -->
+<section class="mb-20" id="trilhas">
+<h2 class="text-2xl font-bold mb-3">The 6 tracks</h2>
+<p class="text-neutral-400 mb-8 max-w-3xl">5 training tracks following the cycle + 1 practice track with exercises, prompts, and skills ready to use.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<a class="group bg-dark-800 rounded-xl border border-dark-600 hover:border-emerald-500/30 p-6 transition-all" href="curso/trilha1/index.html">
+<div class="flex items-center justify-between mb-3"><span class="text-3xl">🧭</span><span class="text-xs font-semibold text-emerald-400 bg-emerald-500/20 px-2 py-1 rounded-full">T1 · 3 modules</span></div>
+<h3 class="text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors">Fundamentals</h3>
+<p class="text-sm text-neutral-400">Strategic automation mindset: why automate, where AI creates value, and the map of the 5 steps.</p>
+</a>
+<a class="group bg-dark-800 rounded-xl border border-dark-600 hover:border-blue-500/30 p-6 transition-all" href="curso/trilha2/index.html">
+<div class="flex items-center justify-between mb-3"><span class="text-3xl">🔍</span><span class="text-xs font-semibold text-blue-400 bg-blue-500/20 px-2 py-1 rounded-full">T2 · 3 modules</span></div>
+<h3 class="text-xl font-bold mb-2 group-hover:text-blue-400 transition-colors">Audit &amp; Mapping</h3>
+<p class="text-sm text-neutral-400">Hunt for the 10-hour task, measure time and cost, and diagram the as-is → to-be process.</p>
+</a>
+<a class="group bg-dark-800 rounded-xl border border-dark-600 hover:border-purple-500/30 p-6 transition-all" href="curso/trilha3/index.html">
+<div class="flex items-center justify-between mb-3"><span class="text-3xl">📐</span><span class="text-xs font-semibold text-purple-400 bg-purple-500/20 px-2 py-1 rounded-full">T3 · 3 modules</span></div>
+<h3 class="text-xl font-bold mb-2 group-hover:text-purple-400 transition-colors">Solution Design</h3>
+<p class="text-sm text-neutral-400">From process to blueprint: architecture, tool and model selection, logic, and prompts.</p>
+</a>
+<a class="group bg-dark-800 rounded-xl border border-dark-600 hover:border-amber-500/30 p-6 transition-all" href="curso/trilha4/index.html">
+<div class="flex items-center justify-between mb-3"><span class="text-3xl">🛠️</span><span class="text-xs font-semibold text-amber-400 bg-amber-500/20 px-2 py-1 rounded-full">T4 · 4 modules</span></div>
+<h3 class="text-xl font-bold mb-2 group-hover:text-amber-400 transition-colors">Construction</h3>
+<p class="text-sm text-neutral-400">Environment setup, first end-to-end automation, integrations, and reliability.</p>
+</a>
+<a class="group bg-dark-800 rounded-xl border border-dark-600 hover:border-teal-500/30 p-6 transition-all" href="curso/trilha5/index.html">
+<div class="flex items-center justify-between mb-3"><span class="text-3xl">💰</span><span class="text-xs font-semibold text-teal-400 bg-teal-500/20 px-2 py-1 rounded-full">T5 · 3 modules</span></div>
+<h3 class="text-xl font-bold mb-2 group-hover:text-teal-400 transition-colors">Commercialization</h3>
+<p class="text-sm text-neutral-400">Package the automation as a service, price it based on the client’s ROI, deliver it, and scale.</p>
+</a>
+<a class="group bg-dark-800 rounded-xl border border-dark-600 hover:border-rose-500/30 p-6 transition-all" href="curso/trilha6/index.html">
+<div class="flex items-center justify-between mb-3"><span class="text-3xl">🧪</span><span class="text-xs font-semibold text-rose-400 bg-rose-500/20 px-2 py-1 rounded-full">T6 · 3 modules</span></div>
+<h3 class="text-xl font-bold mb-2 group-hover:text-rose-400 transition-colors">Practice</h3>
+<p class="text-sm text-neutral-400">Ready-to-use exercises, a prompt library, and reusable skills to apply at each step.</p>
+</a>
+</div>
+</section>
+<!-- Para quem -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-emerald-900/20 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6">By the end, you will be able to</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><p class="text-neutral-300">Identify repetitive tasks with high automation potential in any business.</p></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><p class="text-neutral-300">Audit and map processes, calculating time savings and ROI.</p></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><p class="text-neutral-300">Design the solution architecture and choose the right tools.</p></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><p class="text-neutral-300">Build reliable automations with AI, from trigger to action.</p></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><p class="text-neutral-300">Package and sell the automation as a high-value service.</p></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><p class="text-neutral-300">Apply everything with exercises, prompts, and skills ready to use today.</p></div>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-8">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Training in Strategic AI Automation · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+<!-- inema-backlink:v1 -->
+<p style="display:block;width:100%;text-align:center;font-size:.85rem;margin:.75rem 0 0;opacity:.85"><a href="https://www.inema.club/cursos/134-formacao-em-automacao-estrategica-com-ia/" style="color:inherit;text-decoration:underline">Complete course details on INEMA.CLUB</a> · <a href="https://www.inema.club/aprender-inteligencia-artificial/" style="color:inherit;text-decoration:underline">Guide: how to learn artificial intelligence</a></p>
+<!-- /inema-backlink:v1 -->
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { html.classList.remove('dark'); darkIcon.classList.remove('hidden'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

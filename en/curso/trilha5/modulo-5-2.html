@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Module 5.2 · Pricing and proposals | AI Automation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#FACC15',
+        dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+      } } }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .bg-teal-500\/20 { background-color: rgba(13,148,136,0.12); }
+    html:not(.dark) .bg-teal-500\/10 { background-color: rgba(13,148,136,0.08); }
+    html:not(.dark) .border-teal-500\/30 { border-color: rgba(13,148,136,0.25); }
+    html:not(.dark) .hover\:bg-teal-500\/30:hover { background-color: rgba(13,148,136,0.18); }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.3s} .wf-a:nth-child(3){animation-delay:.6s}
+      @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+  </style>
+<link href="https://inematds.github.io/fae-ai/curso/trilha5/modulo-5-2.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fae-ai/en/curso/trilha5/modulo-5-2.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fae-ai/es/curso/trilha5/modulo-5-2.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha5/modulo-5-2.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="modulo-5-2.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../../../es/curso/trilha5/modulo-5-2.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">⚙️</span>
+<span class="font-bold text-lg hidden sm:inline">AI Automation</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentals</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Audit</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Design</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construction</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-teal-400 bg-teal-500/10" href="index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Commercial</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors" href="../trilha6/index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Practice</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-teal-400" href="../../index.html">Start</a>
+<span>/</span>
+<a class="hover:text-teal-400" href="index.html">Track 5</a>
+<span>/</span>
+<span class="text-teal-400">Module 5.2</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-teal-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-teal-500/20 text-teal-400 text-xs font-semibold rounded-full mb-4">MODULE 5.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">💵 Set your price and make an offer</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">
+        Stop charging by the hour—that penalizes your efficiency. Learn to price based on the
+        <strong class="text-teal-400">value the automation generates</strong>, put together proposals that close on their own
+        and handle objections without resorting to discounts.
+      </p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">6</div><div class="text-xs text-neutral-400">Topics</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">60</div><div class="text-xs text-neutral-400">Minutes</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Applied</div><div class="text-xs text-neutral-400">Level</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Sales</div><div class="text-xs text-neutral-400">Type</div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- SVG ILUSTRATIVO: hora vs valor -->
+<div class="rounded-2xl border border-teal-500/30 bg-dark-900/40 p-3 sm:p-4 mb-12 overflow-hidden">
+<svg aria-label="Hourly pricing grows slowly and has a ceiling; value-based pricing tracks the client's gains and is much higher" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 1000 240">
+<defs>
+<lineargradient id="m52-grad" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0" stop-color="#2dd4bf"></stop><stop offset="1" stop-color="#14b8a6"></stop>
+</lineargradient>
+<filter height="180%" id="m52-glow" width="180%" x="-40%" y="-40%">
+<fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge>
+</filter>
+<pattern height="32" id="m52-grid" patternunits="userSpaceOnUse" width="32">
+<circle cx="1.3" cy="1.3" fill="#14b8a6" opacity="0.12" r="1.3"></circle>
+</pattern>
+</defs>
+<rect fill="url(#m52-grid)" height="240" width="1000" x="0" y="0"></rect>
+<!-- divisória -->
+<line stroke="#475569" stroke-dasharray="6 6" stroke-width="1.5" x1="500" x2="500" y1="20" y2="220"></line>
+<!-- esquerda: por hora -->
+<text fill="#9ca3af" font-size="15" font-weight="600" text-anchor="middle" x="250" y="40">Per hour — there’s a cap</text>
+<line stroke="#64748b" stroke-width="2" x1="80" x2="440" y1="190" y2="190"></line>
+<line stroke="#64748b" stroke-width="2" x1="80" x2="80" y1="190" y2="60"></line>
+<path d="M80,180 L200,160 L320,150 L440,148" fill="none" stroke="#9ca3af" stroke-width="2.5"></path>
+<line stroke="#f87171" stroke-dasharray="5 5" stroke-width="1.5" x1="80" x2="440" y1="120" y2="120"></line>
+<text fill="#f87171" font-size="12" x="320" y="112">limit: only 24 hours in a day</text>
+<!-- direita: por valor -->
+<text fill="#2dd4bf" font-size="15" font-weight="600" text-anchor="middle" x="750" y="40">By value — scale</text>
+<line stroke="#64748b" stroke-width="2" x1="560" x2="920" y1="190" y2="190"></line>
+<line stroke="#64748b" stroke-width="2" x1="560" x2="560" y1="190" y2="60"></line>
+<g filter="url(#m52-glow)"><path d="M560,182 L660,150 L760,108 L860,72 L920,60" fill="none" stroke="url(#m52-grad)" stroke-width="3"></path></g>
+<text fill="#9ce8df" font-size="12" x="740" y="150">tracks the client’s gains</text>
+<text fill="#64748b" font-size="11" text-anchor="middle" x="500" y="232">illustrative — decouple price from effort</text>
+</svg>
+</div>
+<!-- TÓPICO 1 -->
+<section class="mb-16" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">💎 Price based on value (not by the hour)</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Charging by the hour creates a cruel paradox: the more <strong class="text-teal-400">better</strong> you stay, deliver faster—and
+        <strong class="text-teal-400">less</strong> wins. Value-based pricing flips this around. The price is based on the value the client
+        receives, not the time you spent. An automation that saves R$ 4.000/month justifies a price well above the “cost to build.”
+      </p>
+<div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center"><span class="mr-2">🎯</span> The right anchor is ROI</h3>
+<p class="text-neutral-300 mb-4">A fair price falls between your cost (the floor) and the value to the client (the ceiling). You want to anchor near the ceiling, not the floor.</p>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Floor:</strong> what it costs you to deliver (time + tools).</span></li>
+<li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Limit:</strong> how much the automation is worth to the client per month.</span></li>
+<li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Price:</strong> a fair share of the limit—both of you profit.</span></li>
+</ul>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Value-based</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Efficiency increases your margin.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>A conversation about outcomes, not hours.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Price grows with the impact.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Per hour</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Efficiency cuts your revenue.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Turns into an auction over “how much do you charge per hour?”</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Income ceiling = hours in the day.</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Value-based</div><p class="text-xs text-neutral-400">Price based on the gains.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">ROI anchor</div><p class="text-xs text-neutral-400">The cap is the value to the client.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Value capture</div><p class="text-xs text-neutral-400">Fair share of the impact.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Price ≠ cost</div><p class="text-xs text-neutral-400">Effort doesn’t dictate price.</p></div>
+</div>
+</section>
+<!-- TÓPICO 2 -->
+<section class="mb-16" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">🧾 Billing models</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        There are four basic ways money comes in — and the best strategy is almost always to
+        <strong class="text-teal-400">combine them</strong>. The healthiest pattern for automation is
+        <strong class="text-teal-400">setup (once) + recurring (every month)</strong>: you recoup the initial effort and
+        build predictable income.
+      </p>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Setup fee (one-time fee)</h4>
+<p class="text-neutral-300 text-sm">Pays for building the automation. Covers your upfront effort and creates client commitment.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Recurring revenue (monthly fee)</h4>
+<p class="text-neutral-300 text-sm">Pays for maintenance, support, and keeping the service running. It's the heart of predictable income (MRR).</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">By usage / volume</h4>
+<p class="text-neutral-300 text-sm">You charge per processed lead, message sent, or document generated. It scales with the client’s success.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">4</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">By outcome (performance)</h4>
+<p class="text-neutral-300 text-sm">% of the gain generated. Attracts risk-averse clients, but requires reliable metrics and mutual trust.</p>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Practical tip</h3>
+<p class="text-neutral-300">Start with <strong>setup + recurring</strong>. It's the easiest to explain, the most predictable for you, and the most common in the market — avoid exotic models until you have a track record.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Setup fee</div><p class="text-xs text-neutral-400">Charge for the initial effort.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Recurring revenue</div><p class="text-xs text-neutral-400">Predictable MRR.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">By usage</div><p class="text-xs text-neutral-400">Scales with volume.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Hybrid</div><p class="text-xs text-neutral-400">Combine to strike a balance.</p></div>
+</div>
+</section>
+<!-- TÓPICO 3 -->
+<section class="mb-16" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🧮 Calculate the client's gain</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        The ROI calculation is your most powerful sales tool. When the client sees in numbers that
+        <strong class="text-teal-400">saves R$ 4.000/month and costs R$ 800</strong>, price stops being an objection and becomes obvious.
+        You’re not asking for money—you’re offering a multiple.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4">ROI calculation (single-model example)</h3>
+<pre class="font-mono text-sm text-neutral-300 whitespace-pre-wrap leading-relaxed">GANHO MENSAL DO CLIENTE
+  Tempo economizado:   40 h/mês
+  Custo da hora:       R$ 50
+  → Economia direta:   R$ 2.000/mês
+
+  Leads recuperados:   8/mês × R$ 300 ticket
+  → Receita extra:     R$ 2.400/mês
+
+  GANHO TOTAL:         R$ 4.400/mês  (R$ 52.800/ano)
+
+SEU PREÇO
+  Setup:               R$ 2.500 (uma vez)
+  Recorrência:         R$ 800/mês
+
+PAYBACK:               &lt; 1 mês
+ROI 1º ano:            ~5×</pre>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Don’t forget the cost of inaction</h3>
+<p class="text-neutral-300">The client is already losing this money <strong>every month</strong> without automation. Present the gain as "what you're leaving on the table today" — urgency sells better than future savings.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">ROI calculation</div><p class="text-xs text-neutral-400">Hours × cost + revenue.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Payback</div><p class="text-xs text-neutral-400">How long it takes to pay for itself.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Cost of inaction</div><p class="text-xs text-neutral-400">Cost of inaction.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Annualized</div><p class="text-xs text-neutral-400">×12 is impressive.</p></div>
+</div>
+</section>
+<!-- TÓPICO 4 -->
+<section class="mb-16" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">📄 Proposal structure</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        A well-crafted proposal <strong class="text-teal-400">sells itself</strong> when you're not in the room. The order matters:
+        start with the client's pain point (not your own), show the result and calculated savings before the price, and end with
+        one clear next step.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4">Proposal skeleton (mono)</h3>
+<pre class="font-mono text-sm text-neutral-300 whitespace-pre-wrap leading-relaxed">1. CONTEXTO / DOR    ← a situação dele, nas palavras dele
+2. RESULTADO         ← o que ele vai conseguir
+3. ESCOPO            ← entregáveis + o que fica de fora
+4. GANHO (ROI)       ← a conta: economiza X, paga Y
+5. INVESTIMENTO      ← setup + recorrência (3 pacotes)
+6. PROVA             ← demo, caso, depoimento
+7. PRÓXIMO PASSO     ← 1 CTA + prazo de validade</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Proposal that closes</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Lead with their pain point.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Price comes after the gains.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>A single CTA, with a deadline.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Proposal that stalls</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Lead by talking about yourself and your stack.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Price without context about value.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Five options and no direction.</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Structure</div><p class="text-xs text-neutral-400">An order that persuades.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Single CTA</div><p class="text-xs text-neutral-400">Just one next step.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Validity</div><p class="text-xs text-neutral-400">A deadline drives a decision.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Social proof</div><p class="text-xs text-neutral-400">Reduces perceived risk.</p></div>
+</div>
+</section>
+<!-- TÓPICO 5 -->
+<section class="mb-16" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">📊 Anchoring and packages (good / better / best)</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        When you offer <strong class="text-teal-400">three options</strong>, the client stops choosing between “yes” and “no” and
+        starts choosing “which one.” The expensive option <strong class="text-teal-400">anchor</strong> the value and make the middle one — where you want it
+        to land — look like a great deal.
+      </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+<div class="text-neutral-400 font-semibold text-sm mb-1">GOOD</div>
+<div class="text-2xl font-bold text-neutral-200 mb-3">R$ 800<span class="text-sm text-neutral-500">/month</span></div>
+<ul class="text-sm text-neutral-400 space-y-2">
+<li>• Main automation</li>
+<li>• Email support</li>
+<li>• 1 adjustment/month</li>
+</ul>
+</div>
+<div class="bg-gradient-to-br from-teal-900/40 to-dark-800 rounded-xl border-2 border-teal-500/50 p-6 relative">
+<span class="absolute -top-3 left-6 bg-teal-600 text-white text-xs font-semibold px-2 py-0.5 rounded-full">MOST CHOSEN</span>
+<div class="text-teal-400 font-semibold text-sm mb-1">BEST</div>
+<div class="text-2xl font-bold text-white mb-3">R$ 1.500<span class="text-sm text-neutral-400">/month</span></div>
+<ul class="text-sm text-neutral-300 space-y-2">
+<li>• Everything in Good</li>
+<li>• Priority support (WhatsApp)</li>
+<li>• Unlimited adjustments</li>
+<li>• Monthly impact report</li>
+</ul>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+<div class="text-neutral-400 font-semibold text-sm mb-1">GREAT</div>
+<div class="text-2xl font-bold text-neutral-200 mb-3">R$ 3.200<span class="text-sm text-neutral-500">/month</span></div>
+<ul class="text-sm text-neutral-400 space-y-2">
+<li>• Everything in Best</li>
+<li>• 2 extra automations</li>
+<li>• 2-hour SLA</li>
+<li>• Monthly strategic meeting</li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Practical tip</h3>
+<p class="text-neutral-300">Design the middle package to offer the best value for money. The "Great" option rarely sells—your role is to make the "Best" seem reasonable by comparison (the decoy effect).</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Anchoring</div><p class="text-xs text-neutral-400">The expensive part makes the rest worthwhile.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Decoy effect</div><p class="text-xs text-neutral-400">The option that guides the choice.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Tiered pricing</div><p class="text-xs text-neutral-400">Three clear levels.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Middle option</div><p class="text-xs text-neutral-400">Where the ticket is aimed.</p></div>
+</div>
+</section>
+<!-- TÓPICO 6 -->
+<section class="mb-16" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">🛡️ Common objections and responses</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        An objection isn't a rejection—it's a <strong class="text-teal-400">information request</strong>. People with a calm, prepared response
+        save most sales. The secret is always to re-anchor the conversation in the value and the cost of doing nothing.
+      </p>
+<div class="space-y-4 mb-6">
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<p class="text-red-400 font-semibold mb-2">"It’s expensive."</p>
+<p class="text-neutral-300 text-sm">→ "Compared to what? You're losing R$ 4.400/month on this today. The service pays for itself in less than a month—after that, it's all profit."</p>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<p class="text-red-400 font-semibold mb-2">"What if it breaks?"</p>
+<p class="text-neutral-300 text-sm">→ "That's why there's a monthly fee: monitoring, support, and fixes are included. If something fails, I'll resolve it within the SLA."</p>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<p class="text-red-400 font-semibold mb-2">"I’ll think about it."</p>
+<p class="text-neutral-300 text-sm">→ "Sure. Just so I understand: what would you need to feel confident making a decision? I can send you a demo using your own data."</p>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<p class="text-red-400 font-semibold mb-2">"I already have someone who does that."</p>
+<p class="text-neutral-300 text-sm">→ "Great that you already automate. What I bring is a focus on your niche and guaranteed support—can I review what you have and show you what you could gain?"</p>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Reframe</div><p class="text-xs text-neutral-400">Change the angle of the conversation.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Proof</div><p class="text-xs text-neutral-400">A demo kills "I'll think about it."</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Guarantee</div><p class="text-xs text-neutral-400">An SLA eases the fear.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Cost of inaction</div><p class="text-xs text-neutral-400">Re-anchor on the current loss.</p></div>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-teal-900/40 via-dark-800 to-dark-800 rounded-xl border border-teal-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">💵</span> Module Summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Price based on value</strong><span class="text-neutral-400"> — the price comes from the client's ROI, not your hourly rate.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Setup + recurring fee</strong><span class="text-neutral-400"> — the healthiest and most predictable model to start with.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Show the math</strong><span class="text-neutral-400"> — “saves X, pays for Y” makes the price an obvious choice.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Proposal in the right order</strong><span class="text-neutral-400"> — pain → result → benefit → price → 1 CTA.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Three packages</strong><span class="text-neutral-400"> — anchor with the expensive option and steer them toward the middle one.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">An objection is information</strong><span class="text-neutral-400"> — anchor the conversation again in value and the cost of inaction.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-teal-400 mb-2">Next Module:</h3>
+<p class="text-neutral-300">5.3 · Deliver, maintain, and scale — from signing the contract to growth with recurring revenue.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-5-1.html">← Previous Module</a>
+<a class="flex-1 text-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-500 transition-colors" href="modulo-5-3.html">Next Module →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Training in Strategic AI Automation · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { html.classList.remove('dark'); darkIcon.classList.remove('hidden'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

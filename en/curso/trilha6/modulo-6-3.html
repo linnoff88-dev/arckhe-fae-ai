@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Module 6.3 · Ready-to-use skills | AI Automation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#FACC15',
+        dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+      } } }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-rose-400 { color: #9f1239; }
+    html:not(.dark) .bg-rose-500\/20 { background-color: rgba(225,29,72,0.12); }
+    html:not(.dark) .bg-rose-500\/10 { background-color: rgba(225,29,72,0.08); }
+    html:not(.dark) .border-rose-500\/30 { border-color: rgba(225,29,72,0.25); }
+    html:not(.dark) .hover\:bg-rose-500\/30:hover { background-color: rgba(225,29,72,0.18); }
+    html:not(.dark) .hover\:text-rose-400:hover { color: #9f1239; }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+    html:not(.dark) .codebox { background-color: #f1f5f9; border-color: #cbd5e1; }
+    html:not(.dark) .codebox .mono { color: #0f172a; }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    .codebox { background-color: #0b1220; border: 1px solid #1e293b; }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+  </style>
+<link href="https://inematds.github.io/fae-ai/curso/trilha6/modulo-6-3.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fae-ai/en/curso/trilha6/modulo-6-3.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fae-ai/es/curso/trilha6/modulo-6-3.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha6/modulo-6-3.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="modulo-6-3.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../../../es/curso/trilha6/modulo-6-3.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">⚙️</span>
+<span class="font-bold text-lg hidden sm:inline">AI Automation</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentals</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Audit</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Design</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construction</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Commercial</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-rose-400 bg-rose-500/10" href="index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Practice</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-rose-400" href="../../index.html">Start</a>
+<span>/</span>
+<a class="hover:text-rose-400" href="index.html">Track 6</a>
+<span>/</span>
+<span class="text-rose-400">Module 6.3</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-rose-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-semibold rounded-full mb-4">MODULE 6.3</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🧩 Ready-made skills</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">
+        A <strong class="text-neutral-300">skill</strong> is a prompt packaged as a reusable component: input, rules, output, and examples together.
+        Here are four complete skills to copy, plus the anatomy to use as a template and the method for adapting and versioning them.
+      </p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">6</div><div class="text-xs text-neutral-400">Topics</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">65</div><div class="text-xs text-neutral-400">Minutes</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Practical</div><div class="text-xs text-neutral-400">Level</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Templates</div><div class="text-xs text-neutral-400">Type</div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- SVG: anatomia de skill -->
+<div class="rounded-2xl border border-rose-500/30 bg-dark-900/40 p-4 mb-12 overflow-hidden">
+<svg aria-label="Anatomy of a skill: input and context pass through rules and instructions, producing validated structured output" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 1000 220">
+<defs>
+<lineargradient id="m63grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fb7185"></stop><stop offset="1" stop-color="#f43f5e"></stop></lineargradient>
+<filter height="180%" id="m63glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m63grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#f43f5e" opacity="0.12" r="1.3"></circle></pattern>
+<marker id="m63ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#fb7185"></path></marker>
+</defs>
+<rect fill="url(#m63grid)" height="220" width="1000" x="0" y="0"></rect>
+<g fill="none" opacity="0.6" stroke="#fb7185" stroke-width="1.8">
+<path d="M210,110 L370,110" marker-end="url(#m63ah)"></path>
+<path d="M610,110 L770,110" marker-end="url(#m63ah)"></path>
+</g>
+<rect fill="#0e1b26" height="80" rx="12" stroke="#38bdf8" stroke-width="2" width="170" x="40" y="70"></rect>
+<text fill="#bfe6ff" font-size="14" font-weight="600" text-anchor="middle" x="125" y="104">Input</text>
+<text fill="#9ad6ff" font-size="12" text-anchor="middle" x="125" y="126">+ context</text>
+<g filter="url(#m63glow)"><rect fill="#2a0f16" height="104" rx="14" stroke="url(#m63grad)" stroke-width="2.5" width="240" x="370" y="58"></rect></g>
+<text fill="#fb7185" font-size="15" font-weight="600" text-anchor="middle" x="490" y="92">SKILL</text>
+<text fill="#fbb6c4" font-size="12" text-anchor="middle" x="490" y="114">role · rules · instruction</text>
+<text fill="#fbb6c4" font-size="12" text-anchor="middle" x="490" y="134">+ examples (few-shot)</text>
+<rect fill="#0e1b26" height="80" rx="12" stroke="#38bdf8" stroke-width="2" width="190" x="770" y="70"></rect>
+<text fill="#bfe6ff" font-size="14" font-weight="600" text-anchor="middle" x="865" y="104">Structured output</text>
+<text fill="#9ad6ff" font-size="12" text-anchor="middle" x="865" y="126">validated</text>
+<text fill="#64748b" font-size="11" text-anchor="middle" x="500" y="206">illustrative — same anatomy in every reusable skill</text>
+</svg>
+</div>
+<!-- TÓPICO 1 -->
+<section class="mb-16" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">🧬 Anatomy of a reusable skill</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Every well-crafted skill has the <strong class="text-rose-400">same parts</strong>. Memorize this skeleton and you'll create new skills in minutes.</p>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<pre class="mono text-sm text-neutral-300 leading-relaxed">SKILL: {{nome_da_skill}}            # v1.0
+PAPEL:    Você é {{especialista_em_X}}.
+OBJETIVO: {{o_que_a_skill_entrega}}.
+
+ENTRADA (variáveis):
+  - {{var_1}} : descrição
+  - {{var_2}} : descrição
+
+REGRAS:
+  - {{regra_1}}
+  - {{regra_2}}
+  - Quando não tiver certeza: {{fallback}}.
+
+FORMATO DE SAÍDA:
+  {{schema_ou_estrutura}}
+
+EXEMPLO (few-shot):
+  entrada -&gt; {{exemplo_in}}
+  saída   -&gt; {{exemplo_out}}
+
+ENTRADA REAL:
+"""
+{{entrada}}
+"""</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h4 class="font-bold text-blue-400 mb-3">When to use</h4>
+<p class="text-neutral-300 text-sm">Whenever you’re turning a standalone prompt into something reusable and versionable. It’s the template for the next four skills.</p>
+</div>
+<div class="bg-rose-500/10 rounded-xl border border-rose-500/30 p-6">
+<h4 class="font-bold text-rose-400 mb-3">Customization points</h4>
+<ul class="space-y-1 text-neutral-300 text-sm">
+<li><span class="mono text-rose-400">ROLE</span> e <span class="mono text-rose-400">RULES</span> — domain-specific</li>
+<li><span class="mono text-rose-400">FORMAT</span> — output schema</li>
+<li><span class="mono text-rose-400">EXAMPLE</span> — 1–2 client cases</li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Role</div><p class="text-xs text-neutral-400">Who the AI is</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Rules</div><p class="text-xs text-neutral-400">Limits and fallback</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Format</div><p class="text-xs text-neutral-400">Predictable output</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Few-shot</div><p class="text-xs text-neutral-400">Guide example</p></div>
+</div>
+</section>
+<!-- TÓPICO 2 -->
+<section class="mb-16" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">📨 Skill: classify and route emails/messages</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Reads a message, classifies it into fixed categories, and decides where to send it.</p>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<pre class="mono text-sm text-neutral-300 leading-relaxed">SKILL: Classificar &amp; Rotear            # v1.0
+PAPEL: Você é um classificador de mensagens de atendimento.
+
+REGRAS:
+  - Categorias permitidas: {{categorias}}   // ex: pedido, dúvida, reclamação, spam
+  - Escolha SOMENTE uma categoria da lista.
+  - Dê uma confiança de 0 a 1.
+  - Se confiança &lt; 0.6, destino = "humano".
+
+FORMATO DE SAÍDA (apenas JSON):
+  { "categoria": string, "confianca": number,
+    "destino": string, "resumo": string }
+
+Mensagem:
+"""
+{{mensagem}}
+"""</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h4 class="font-bold text-blue-400 mb-3">When to use</h4>
+<p class="text-neutral-300 text-sm">Triage for inboxes, WhatsApp, and tickets. Put it at the start of any workflow that needs to decide "where this goes."</p>
+</div>
+<div class="bg-rose-500/10 rounded-xl border border-rose-500/30 p-6">
+<h4 class="font-bold text-rose-400 mb-3">Customization points</h4>
+<ul class="space-y-1 text-neutral-300 text-sm">
+<li><span class="mono text-rose-400">{{categorias}}</span> — the client’s</li>
+<li>Confidence threshold (0.6) based on error tolerance</li>
+<li>Category → destination map in the flow</li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Categories</div><p class="text-xs text-neutral-400">Closed list</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Confidence</div><p class="text-xs text-neutral-400">0 a 1</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Fallback</div><p class="text-xs text-neutral-400">Human if low</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">JSON</div><p class="text-xs text-neutral-400">Routable in the flow</p></div>
+</div>
+</section>
+<!-- TÓPICO 3 -->
+<section class="mb-16" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">📄 Skill: summarize and extract data from documents</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Takes a long document and returns a summary + structured fields, citing the source.</p>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<pre class="mono text-sm text-neutral-300 leading-relaxed">SKILL: Resumir &amp; Extrair Documento     # v1.0
+PAPEL: Você extrai dados de documentos com precisão.
+
+REGRAS:
+  - Use SOMENTE o que está no documento. Não infira.
+  - Para cada campo extraído, cite o trecho de origem.
+  - Campo ausente = null.
+
+FORMATO DE SAÍDA (apenas JSON):
+  {
+    "resumo": string,                  // 3 a 5 linhas
+    "campos": { {{campos_alvo}} },     // ex: "valor", "vencimento", "partes"
+    "citacoes": { "campo": "trecho..." }
+  }
+
+Documento:
+"""
+{{documento}}
+"""</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h4 class="font-bold text-blue-400 mb-3">When to use</h4>
+<p class="text-neutral-300 text-sm">Contracts, invoices, proposals, long emails. For large documents, split them into chunks and process them in parts.</p>
+</div>
+<div class="bg-rose-500/10 rounded-xl border border-rose-500/30 p-6">
+<h4 class="font-bold text-rose-400 mb-3">Customization points</h4>
+<ul class="space-y-1 text-neutral-300 text-sm">
+<li><span class="mono text-rose-400">{{campos_alvo}}</span> — what to extract</li>
+<li>Summary length</li>
+<li>Toggle citations</li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Source only</div><p class="text-xs text-neutral-400">Anti-hallucination</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Citation</div><p class="text-xs text-neutral-400">Source excerpt</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Chunking</div><p class="text-xs text-neutral-400">Large docs</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Fields</div><p class="text-xs text-neutral-400">Structured output</p></div>
+</div>
+</section>
+<!-- TÓPICO 4 -->
+<section class="mb-16" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">📈 Skill: generate a report from a spreadsheet</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Takes tabular data and generates a narrative report with highlights and recommendations.</p>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<pre class="mono text-sm text-neutral-300 leading-relaxed">SKILL: Relatório de Planilha            # v1.0
+PAPEL: Você é um analista que vira dados em insight executivo.
+
+DADOS (CSV/tabela):
+"""
+{{dados}}
+"""
+Período: {{periodo}}   ·   Métricas-chave: {{metricas}}
+
+REGRAS:
+  - Baseie-se SÓ nos números fornecidos.
+  - Destaque variações relevantes (subiu/caiu) com o número.
+  - Tom executivo, direto. Sem jargão.
+
+FORMATO DE SAÍDA (markdown):
+  ## Resumo (2 linhas)
+  ## Destaques (3 bullets com números)
+  ## Pontos de atenção (1-2 bullets)
+  ## Recomendações (2 ações concretas)</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h4 class="font-bold text-blue-400 mb-3">When to use</h4>
+<p class="text-neutral-300 text-sm">Automatic weekly/monthly reports from a sales, finance, or traffic spreadsheet. A deliverable the client immediately sees the value in.</p>
+</div>
+<div class="bg-rose-500/10 rounded-xl border border-rose-500/30 p-6">
+<h4 class="font-bold text-rose-400 mb-3">Customization points</h4>
+<ul class="space-y-1 text-neutral-300 text-sm">
+<li><span class="mono text-rose-400">{{metricas}}</span> — what matters</li>
+<li>Report sections</li>
+<li>Tone (executive / technical)</li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Data only</div><p class="text-xs text-neutral-400">No made-up numbers</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Variations</div><p class="text-xs text-neutral-400">Went up/down with no.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Fixed sections</div><p class="text-xs text-neutral-400">Consistent output</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Actions</div><p class="text-xs text-neutral-400">Recommendations</p></div>
+</div>
+</section>
+<!-- TÓPICO 5 -->
+<section class="mb-16" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">🤖 Skill: answer FAQs using a knowledge base (RAG)</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Answers questions using <strong class="text-rose-400">only</strong> the supplied knowledge base—the RAG pattern that prevents hallucinations.</p>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<pre class="mono text-sm text-neutral-300 leading-relaxed">SKILL: FAQ com base (RAG)               # v1.0
+PAPEL: Você é o atendente de {{empresa}}. Responde com base na fonte.
+
+BASE DE CONHECIMENTO (trechos recuperados):
+"""
+{{contexto_recuperado}}
+"""
+
+REGRAS:
+  - Responda SOMENTE com o que está na base acima.
+  - Se a resposta não estiver na base, diga:
+    "Não tenho essa informação, vou te encaminhar para um atendente."
+  - Cite o trecho usado entre colchetes [fonte].
+  - Tom: {{tom}}   // ex: cordial e objetivo
+
+Pergunta do cliente:
+"""
+{{pergunta}}
+"""</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ What makes it work</h4>
+<ul class="space-y-2 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>"Use only the database" + an "I don’t know" phrase prevents fabrication</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Retrieving good passages first (search) is half the work</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Citing the source builds trust and makes auditing easier</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Where it breaks</h4>
+<ul class="space-y-2 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Poorly retrieved knowledge base = confidently wrong answer</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Without the “I don’t know” phrase, AI makes things up</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Too much context dilutes the answer</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Practical tip</h3>
+<p class="text-neutral-300 text-sm">RAG quality depends more on the <strong>recovery</strong> (which snippets you inject) than on the prompt. Start with a small, well-organized foundation before scaling.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Foundation</div><p class="text-xs text-neutral-400">Retrieved context</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Source only</div><p class="text-xs text-neutral-400">Without hallucinating</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">"I don’t know"</div><p class="text-xs text-neutral-400">Routes to a human</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Citation</div><p class="text-xs text-neutral-400">[source] of the excerpt</p></div>
+</div>
+</section>
+<!-- TÓPICO 6 -->
+<section class="mb-16" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">🔁 How to adapt and version your skills</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Reuse is what scales an automation business. You never start from scratch—you adapt a template and version it.</p>
+<h3 class="text-lg font-semibold mb-3">Adaptation workflow (step by step)</h3>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600"><p class="text-neutral-300 text-sm">Copy the closest skill and rename it for the client: <span class="mono text-rose-400">faq-paocia-v1</span>.</p></div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600"><p class="text-neutral-300 text-sm">Change only the customization points (role, rules, categories, format). Don’t change the skeleton.</p></div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-rose-500/20 flex items-center justify-center"><span class="text-rose-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600"><p class="text-neutral-300 text-sm">Run the regression tests (same inputs, check the output). Only then release the version.</p></div>
+</div>
+</div>
+<h3 class="text-lg font-semibold mb-3">Version header (paste at the top of the skill)</h3>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<pre class="mono text-sm text-neutral-300 leading-relaxed"># skill: faq-paocia
+# v1.0  2026-06-02  base inicial (5 categorias)
+# v1.1  2026-06-09  +categoria "entrega", limiar 0.6 -&gt; 0.65
+# v2.0  2026-07-01  schema de saída mudou: +campo "prioridade"
+#
+# CUSTOMIZAÇÕES deste cliente:
+#   - categorias = [pedido, dúvida, entrega, reclamação]
+#   - tom = cordial e curto
+# TESTES DE REGRESSÃO: ver casos/faq-paocia.csv (8 casos)</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h4 class="font-bold text-blue-400 mb-3">When to use</h4>
+<p class="text-neutral-300 text-sm">With every new client or rule change. Versioning prevents “I fixed it here and broke it there” and preserves a history of decisions.</p>
+</div>
+<div class="bg-rose-500/10 rounded-xl border border-rose-500/30 p-6">
+<h4 class="font-bold text-rose-400 mb-3">Customization points</h4>
+<ul class="space-y-1 text-neutral-300 text-sm">
+<li>Naming convention (skill-cliente-vX)</li>
+<li>Where to keep the changelog</li>
+<li>Regression test suite</li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Copy</div><p class="text-xs text-neutral-400">Never from scratch</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Customize</div><p class="text-xs text-neutral-400">The right points only</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Changelog</div><p class="text-xs text-neutral-400">v1 → v2</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Regression</div><p class="text-xs text-neutral-400">Test before deploying</p></div>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-rose-900/40 via-dark-800 to-dark-800 rounded-xl border border-rose-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">🎓</span> Module Summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">Skill = packaged prompt</strong><span class="text-neutral-400"> - input, rules, format, and examples in one reusable piece.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">Four ready-to-use, high-ROI skills</strong><span class="text-neutral-400"> - classify, extract from documents, generate reports and FAQs with RAG.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">Adapt using the customization points</strong><span class="text-neutral-400"> - keep the skeleton, change only what's necessary.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">Version and test for regressions</strong><span class="text-neutral-400"> - it's what makes reuse safe and the business scalable.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-rose-400 mb-2">You completed Track 6 — and the program!</h3>
+<p class="text-neutral-300">With ready-to-use exercises, prompts, and skills, you have everything you need to apply the full AI automation cycle in any business. Go back to the beginning to review any track.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-6-2.html">← Previous module</a>
+<a class="flex-1 text-center px-6 py-3 bg-rose-600 text-white rounded-lg font-semibold hover:bg-rose-500 transition-colors" href="../../index.html">Complete training →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-8">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Training in Strategic AI Automation · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { html.classList.remove('dark'); darkIcon.classList.remove('hidden'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

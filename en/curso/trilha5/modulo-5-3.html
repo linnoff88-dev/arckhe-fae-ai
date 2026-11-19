@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Module 5.3 · Delivering, maintaining, and scaling | AI Automation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#FACC15',
+        dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+      } } }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .bg-teal-500\/20 { background-color: rgba(13,148,136,0.12); }
+    html:not(.dark) .bg-teal-500\/10 { background-color: rgba(13,148,136,0.08); }
+    html:not(.dark) .border-teal-500\/30 { border-color: rgba(13,148,136,0.25); }
+    html:not(.dark) .hover\:bg-teal-500\/30:hover { background-color: rgba(13,148,136,0.18); }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.3s} .wf-a:nth-child(3){animation-delay:.6s} .wf-a:nth-child(4){animation-delay:.9s}
+      @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+  </style>
+<link href="https://inematds.github.io/fae-ai/curso/trilha5/modulo-5-3.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fae-ai/en/curso/trilha5/modulo-5-3.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fae-ai/es/curso/trilha5/modulo-5-3.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha5/modulo-5-3.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="modulo-5-3.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../../../es/curso/trilha5/modulo-5-3.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">⚙️</span>
+<span class="font-bold text-lg hidden sm:inline">AI Automation</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentals</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Audit</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Design</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construction</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-teal-400 bg-teal-500/10" href="index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Commercial</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors" href="../trilha6/index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Practice</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-teal-400" href="../../index.html">Start</a>
+<span>/</span>
+<a class="hover:text-teal-400" href="index.html">Track 5</a>
+<span>/</span>
+<span class="text-teal-400">Module 5.3</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-teal-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-teal-500/20 text-teal-400 text-xs font-semibold rounded-full mb-4">MODULE 5.3</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🚀 Deliver, maintain, and scale</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">
+        Selling is the beginning. Here you’ll learn to deliver well, provide ongoing support, and
+        <strong class="text-teal-400">recurring revenue</strong>, and productize it so you can repeat and scale with templates and a team—
+        without becoming the bottleneck in your own business.
+      </p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">6</div><div class="text-xs text-neutral-400">Topics</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">60</div><div class="text-xs text-neutral-400">Minutes</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Applied</div><div class="text-xs text-neutral-400">Level</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Scale</div><div class="text-xs text-neutral-400">Type</div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- SVG ILUSTRATIVO: ciclo entregar→manter→produtizar→escalar -->
+<div class="rounded-2xl border border-teal-500/30 bg-dark-900/40 p-3 sm:p-4 mb-12 overflow-hidden">
+<svg aria-label="Cycle: delivery leads to retention, which leads to productization, which feeds back into delivery and scales with a team" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 1000 220">
+<defs>
+<lineargradient id="m53-grad" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0" stop-color="#2dd4bf"></stop><stop offset="1" stop-color="#14b8a6"></stop>
+</lineargradient>
+<filter height="180%" id="m53-glow" width="180%" x="-40%" y="-40%">
+<fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge>
+</filter>
+<pattern height="32" id="m53-grid" patternunits="userSpaceOnUse" width="32">
+<circle cx="1.3" cy="1.3" fill="#14b8a6" opacity="0.12" r="1.3"></circle>
+</pattern>
+<marker id="m53-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#2dd4bf"></path></marker>
+<marker id="m53-ahc" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#38bdf8"></path></marker>
+</defs>
+<rect fill="url(#m53-grid)" height="220" width="1000" x="0" y="0"></rect>
+<!-- 4 caixas em linha -->
+<g font-size="14" font-weight="600">
+<rect fill="#0e1b26" height="56" rx="12" stroke="#38bdf8" stroke-width="2" width="170" x="40" y="80"></rect><text fill="#bfe6ff" text-anchor="middle" x="125" y="113">Onboarding</text>
+<rect fill="#0e1b26" height="56" rx="12" stroke="#38bdf8" stroke-width="2" width="170" x="280" y="80"></rect><text fill="#bfe6ff" text-anchor="middle" x="365" y="113">Maintain (SLA)</text>
+<g filter="url(#m53-glow)"><rect fill="#0c1f1c" height="56" rx="12" stroke="url(#m53-grad)" stroke-width="2.5" width="170" x="520" y="80"></rect></g><text fill="#2dd4bf" text-anchor="middle" x="605" y="113">Productize</text>
+<rect fill="#0e1b26" height="56" rx="12" stroke="#38bdf8" stroke-width="2" width="190" x="760" y="80"></rect><text fill="#bfe6ff" text-anchor="middle" x="855" y="113">Scale + team</text>
+</g>
+<!-- setas entre elas -->
+<g fill="none" opacity="0.6" stroke="#2dd4bf" stroke-width="2">
+<path d="M210,108 L280,108" marker-end="url(#m53-ah)"></path>
+<path d="M450,108 L520,108" marker-end="url(#m53-ah)"></path>
+<path d="M690,108 L760,108" marker-end="url(#m53-ah)"></path>
+</g>
+<!-- realimentação (ciano, volta) -->
+<path d="M855,80 C855,30 365,30 365,80" fill="none" marker-end="url(#m53-ahc)" opacity="0.5" stroke="#38bdf8" stroke-dasharray="6 5" stroke-width="1.8"></path>
+<text fill="#9ad6ff" font-size="12" text-anchor="middle" x="600" y="26">templates feed into each new delivery</text>
+<text fill="#64748b" font-size="11" text-anchor="middle" x="500" y="206">illustrative — recurring revenue sustains the cycle</text>
+</svg>
+</div>
+<!-- TÓPICO 1 -->
+<section class="mb-16" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">🚪 Onboarding and expectations</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        The first impression determines retention. Structured onboarding in the first few days—
+        <strong class="text-teal-400">access gathering, setup, first delivery, and alignment</strong> — turns an
+        anxious client into a confident client. Poor onboarding leads to churn even with an excellent product.
+      </p>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Kickoff and access checklist</h4>
+<p class="text-neutral-300 text-sm">A short meeting + a clear list of what you need (logins, APIs, examples). Without access, the clock doesn’t start.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">First quick win</h4>
+<p class="text-neutral-300 text-sm">Deliver something visible early. Seeing the automation run right away builds confidence and eases the “will this work?” anxiety.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Align expectations</h4>
+<p class="text-neutral-300 text-sm">Make deadlines, scope, and how support works explicit. Aligned expectations are half the battle for satisfaction.</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Kickoff</div><p class="text-xs text-neutral-400">Organized start.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Access checklist</div><p class="text-xs text-neutral-400">Unblocks delivery.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Quick win</div><p class="text-xs text-neutral-400">Value visible early.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Expectation</div><p class="text-xs text-neutral-400">Aligned = satisfied.</p></div>
+</div>
+</section>
+<!-- TÓPICO 2 -->
+<section class="mb-16" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">🔧 SLA, support, and maintenance</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Automations aren’t “install and forget”: APIs change, sites break, and business rules evolve.
+        One <strong class="text-teal-400">Clear SLA</strong> (response time, availability) and a monitoring routine are exactly
+        what justify and sustain recurring revenue. Predictable support is as much the product as the automation.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4">SLA example (mono)</h3>
+<pre class="font-mono text-sm text-neutral-300 whitespace-pre-wrap leading-relaxed">DISPONIBILIDADE alvo:   99% / mês
+TEMPO DE RESPOSTA:
+  • Crítico (parado):   2 h úteis
+  • Alto (degradado):   1 dia útil
+  • Normal (ajuste):    3 dias úteis
+CANAIS:                 WhatsApp + e-mail
+MANUTENÇÃO PREVENTIVA:  revisão mensal de fluxos
+INCLUI:                 correção de quebras por
+                        mudança de API/integração</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Support that retains customers</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Monitor before the client notices.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Response time defined in writing.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Scheduled preventive review.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Support that loses customers</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Only discovers the failure when the customer complains.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>"I’ll get back to you when I can."</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Zero monitoring, everything is reactive.</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">SLA</div><p class="text-xs text-neutral-400">Service promise.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Monitoring</div><p class="text-xs text-neutral-400">Find the failure before it does.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Channels</div><p class="text-xs text-neutral-400">Where to get help.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Preventive</div><p class="text-xs text-neutral-400">Review before it breaks.</p></div>
+</div>
+</section>
+<!-- TÓPICO 3 -->
+<section class="mb-16" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🔁 Recurring revenue (retainer / subscription)</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        A one-off project makes you start from scratch every month. <strong class="text-teal-400">Recurring revenue</strong> — retainer or
+        subscription—provides predictable cash flow, increases business value, and turns sales effort into a growing base.
+        It's the difference between chasing deals and building up momentum.
+      </p>
+<div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center"><span class="mr-2">📈</span> Why recurring work changes the game</h3>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Predictable MRR</strong> — you know how much is coming in next month.</span></li>
+<li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Higher LTV</strong> — each client is worth much more over time.</span></li>
+<li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Compound effort</strong> — new sales add up; they don't replace existing ones.</span></li>
+</ul>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> The math of recurring revenue</h3>
+<ul class="space-y-2 text-neutral-300">
+<li><strong>10 clients × R$ 800/month</strong> = R$ 8.000 in predictable MRR.</li>
+<li><strong>Low churn</strong> (client stays for 18 months) → LTV ≈ R$ 14.400 per client.</li>
+<li><strong>Each new client</strong> adds to the base — doesn't start from scratch.</li>
+</ul>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">MRR</div><p class="text-xs text-neutral-400">Monthly recurring revenue.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Retainer</div><p class="text-xs text-neutral-400">Fixed monthly package.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Churn</div><p class="text-xs text-neutral-400">Who cancels — keep an eye on them.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">LTV</div><p class="text-xs text-neutral-400">Total value per customer.</p></div>
+</div>
+</section>
+<!-- TÓPICO 4 -->
+<section class="mb-16" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">📚 Document and hand off</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        If everything only works because it’s in your head, you’re hostage to your own service—you can’t get sick, travel, or delegate.
+        <strong class="text-teal-400">Document and hand off</strong> (how the flow works, credentials, failure runbook) is a prerequisite
+        for scaling and reduces the business's "bus factor".
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4">What every service needs to document (mono)</h3>
+<pre class="font-mono text-sm text-neutral-300 whitespace-pre-wrap leading-relaxed">RUNBOOK DO CLIENTE X
+  • Arquitetura: o que cada nó faz
+  • Credenciais: onde estão (cofre), quem acessa
+  • Gatilhos: o que dispara o fluxo
+  • Falhas comuns: sintoma → causa → correção
+  • Contatos: cliente, suporte das ferramentas
+  • Histórico: mudanças e datas
+
+OBJETIVO: outra pessoa opera sem te ligar</pre>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Practical tip</h3>
+<p class="text-neutral-300">Document <strong>while you build</strong>, not afterward. The best documentation test: ask someone who has never seen the workflow to resolve a simulated failure using only your runbook.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Runbook</div><p class="text-xs text-neutral-400">Operations manual.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Documentation</div><p class="text-xs text-neutral-400">Gets you out of the bottleneck.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Handover</div><p class="text-xs text-neutral-400">Hand it off to the person who operates it.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Bus factor</div><p class="text-xs text-neutral-400">Don’t depend only on yourself.</p></div>
+</div>
+</section>
+<!-- TÓPICO 5 -->
+<section class="mb-16" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">🏭 Productize and standardize for repeatability</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Infinite customization doesn’t scale. <strong class="text-teal-400">Productize</strong> is turning the custom deliverable into a standardized package
+        — same scope, same price, same process — that you can replicate from client to client. Standardizing is what
+        lets you serve more clients without working proportionally more.
+      </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Custom-built (doesn't scale)</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Each client, a unique project from scratch.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Price and scope negotiated every time.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Unpredictable delivery time.</span></li>
+</ul>
+</div>
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Productized (scales)</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Fixed package with a known scope.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>List price, no need to reinvent it.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Repeatable, timed process.</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Practical tip</h3>
+<p class="text-neutral-300">After the 3rd similar client, stop and ask: <em>"what did I rebuild that could have been a template?"</em>. Anything that repeats is a candidate for standardization — base flow, proposal, onboarding, runbook.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Productization</div><p class="text-xs text-neutral-400">A service becomes a package.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Standardization</div><p class="text-xs text-neutral-400">Same scope every time.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Repeatable</div><p class="text-xs text-neutral-400">Predictable process.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Package offer</div><p class="text-xs text-neutral-400">Easy to buy and deliver.</p></div>
+</div>
+</section>
+<!-- TÓPICO 6 -->
+<section class="mb-16" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">📈 Scale with templates and a team</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Scaling by doing everything yourself has a ceiling—and leads to burnout. The leverage comes from combining
+        <strong class="text-teal-400">templates</strong> (of the flow, proposal, onboarding) with <strong class="text-teal-400">delegation to a team</strong>.
+        Templates remove repetitive work; people remove the capacity limit.
+      </p>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Create the template library</h4>
+<p class="text-neutral-300 text-sm">Base workflow, proposal template, onboarding checklist, standard runbook. Each new client starts from an advanced point, not from scratch.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Delegate repeatable tasks first</h4>
+<p class="text-neutral-300 text-sm">Start by transferring standardized tasks (setup from a template, first-level support) and keep only what requires your judgment.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Become the manager, not the bottleneck</h4>
+<p class="text-neutral-300 text-sm">Your role shifts from execution to ensuring quality and selling. Delivery capacity no longer depends only on your hours.</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Templates</div><p class="text-xs text-neutral-400">Don’t start from scratch.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Delegation</div><p class="text-xs text-neutral-400">Repeatable work comes from you.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Hiring</div><p class="text-xs text-neutral-400">A team multiplies output.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Leverage</div><p class="text-xs text-neutral-400">Grow without burning out.</p></div>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-teal-900/40 via-dark-800 to-dark-800 rounded-xl border border-teal-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">🚀</span> Module Summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Onboarding retains customers</strong><span class="text-neutral-400"> — access, a quick win, and aligned expectations in the first few days.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">SLA sustains recurring revenue</strong><span class="text-neutral-400"> — predictable support and maintenance are part of the product.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Recurring revenue changes the game</strong><span class="text-neutral-400"> — MRR and LTV bring stability and value to the business.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Document and hand off</strong><span class="text-neutral-400"> — a runbook reduces the bus factor and frees you to delegate.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Productize to repeat</strong><span class="text-neutral-400"> — a standardized package scales where custom work gets stuck.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Scale with templates + a team</strong><span class="text-neutral-400"> — become a manager, not a bottleneck.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-teal-400 mb-2">Next Track:</h3>
+<p class="text-neutral-300">Track 6 · Practice — exercises, a prompt library, and ready-to-use skills to apply everything you’ve learned.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-5-2.html">← Previous Module</a>
+<a class="flex-1 text-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-500 transition-colors" href="../trilha6/index.html">Next Track →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Training in Strategic AI Automation · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { html.classList.remove('dark'); darkIcon.classList.remove('hidden'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

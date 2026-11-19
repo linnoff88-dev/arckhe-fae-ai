@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Module 5.1 · Packaging automation as a service | AI Automation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#FACC15',
+        dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+      } } }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - acento teal */
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .bg-teal-500\/20 { background-color: rgba(13,148,136,0.12); }
+    html:not(.dark) .bg-teal-500\/10 { background-color: rgba(13,148,136,0.08); }
+    html:not(.dark) .border-teal-500\/30 { border-color: rgba(13,148,136,0.25); }
+    html:not(.dark) .hover\:bg-teal-500\/30:hover { background-color: rgba(13,148,136,0.18); }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+
+    /* Light mode - remove gradientes e cores especiais */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+
+    /* Dark mode - bordas suaves */
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.3s} .wf-a:nth-child(3){animation-delay:.6s}
+      @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+  </style>
+<link href="https://inematds.github.io/fae-ai/curso/trilha5/modulo-5-1.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fae-ai/en/curso/trilha5/modulo-5-1.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fae-ai/es/curso/trilha5/modulo-5-1.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha5/modulo-5-1.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="modulo-5-1.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../../../es/curso/trilha5/modulo-5-1.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">⚙️</span>
+<span class="font-bold text-lg hidden sm:inline">AI Automation</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentals</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Audit</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Design</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construction</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-teal-400 bg-teal-500/10" href="index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Commercial</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors" href="../trilha6/index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Practice</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-teal-400" href="../../index.html">Start</a>
+<span>/</span>
+<a class="hover:text-teal-400" href="index.html">Track 5</a>
+<span>/</span>
+<span class="text-teal-400">Module 5.1</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-teal-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-teal-500/20 text-teal-400 text-xs font-semibold rounded-full mb-4">MODULE 5.1</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">📦 Package automation as a service</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">
+        Building is only half the work. Now you'll learn to turn a working solution into a
+        <strong class="text-teal-400">a clear, niche, sellable offer</strong> — selling the result, not the technology behind it.
+      </p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">6</div><div class="text-xs text-neutral-400">Topics</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">55</div><div class="text-xs text-neutral-400">Minutes</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Applied</div><div class="text-xs text-neutral-400">Level</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Offer</div><div class="text-xs text-neutral-400">Type</div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- SVG ILUSTRATIVO -->
+<div class="rounded-2xl border border-teal-500/30 bg-dark-900/40 p-3 sm:p-4 mb-12 overflow-hidden">
+<svg aria-label="Automation at the center is wrapped in results, niche, scope, and proof, forming a sellable offer" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 1000 230">
+<defs>
+<lineargradient id="m51-grad" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0" stop-color="#2dd4bf"></stop><stop offset="1" stop-color="#14b8a6"></stop>
+</lineargradient>
+<filter height="180%" id="m51-glow" width="180%" x="-40%" y="-40%">
+<fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge>
+</filter>
+<pattern height="32" id="m51-grid" patternunits="userSpaceOnUse" width="32">
+<circle cx="1.3" cy="1.3" fill="#14b8a6" opacity="0.12" r="1.3"></circle>
+</pattern>
+<marker id="m51-ahc" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#38bdf8"></path></marker>
+</defs>
+<rect fill="url(#m51-grid)" height="230" width="1000" x="0" y="0"></rect>
+<!-- núcleo: automação -->
+<g filter="url(#m51-glow)"><rect fill="#0c1f1c" height="64" rx="16" stroke="url(#m51-grad)" stroke-width="2.5" width="180" x="410" y="83"></rect></g>
+<text fill="#2dd4bf" font-size="17" font-weight="600" text-anchor="middle" x="500" y="111">Automation</text>
+<text fill="#9ce8df" font-size="12.5" text-anchor="middle" x="500" y="132">that works</text>
+<!-- 4 envoltórios convergindo -->
+<g fill="none" opacity="0.5" stroke="#38bdf8" stroke-width="1.8">
+<path d="M220,55 C330,55 350,100 410,105" marker-end="url(#m51-ahc)"></path>
+<path d="M220,175 C330,175 350,128 410,125" marker-end="url(#m51-ahc)"></path>
+<path d="M780,55 C670,55 650,100 590,105" marker-end="url(#m51-ahc)"></path>
+<path d="M780,175 C670,175 650,128 590,125" marker-end="url(#m51-ahc)"></path>
+</g>
+<g font-size="13" font-weight="600">
+<g class="wf-a"><rect fill="#0e1b26" height="36" rx="10" stroke="#38bdf8" stroke-width="2" width="160" x="60" y="38"></rect><text fill="#bfe6ff" text-anchor="middle" x="140" y="61">🎯 Outcome</text></g>
+<g class="wf-a"><rect fill="#0e1b26" height="36" rx="10" stroke="#38bdf8" stroke-width="2" width="160" x="60" y="158"></rect><text fill="#bfe6ff" text-anchor="middle" x="140" y="181">🎯 Niche</text></g>
+<g class="wf-a"><rect fill="#0e1b26" height="36" rx="10" stroke="#38bdf8" stroke-width="2" width="160" x="780" y="38"></rect><text fill="#bfe6ff" text-anchor="middle" x="860" y="61">📋 Scope</text></g>
+<g class="wf-a"><rect fill="#0e1b26" height="36" rx="10" stroke="#38bdf8" stroke-width="2" width="160" x="780" y="158"></rect><text fill="#bfe6ff" text-anchor="middle" x="860" y="181">🔬 Proof</text></g>
+</g>
+<text fill="#64748b" font-size="11" text-anchor="middle" x="500" y="218">illustrative — packaging = wrapping the technology in an offer</text>
+</svg>
+</div>
+<!-- TÓPICO 1 -->
+<section class="mb-16" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">🔁 From internal solution to sellable offering</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        You built something that saves hours. But “it works for me” isn’t a business — it’s an expensive hobby.
+        The commercial leap happens when you stop thinking <strong class="text-teal-400">"what I solved"</strong> and starts thinking
+        <strong class="text-teal-400">"who else would pay for this"</strong>. The same automation, packaged as an offer, becomes a product.
+      </p>
+<div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center"><span class="mr-2">🧱</span> The 3 parts of an offer</h3>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Promise</strong> — the concrete result the client gets.</span></li>
+<li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Mechanism</strong> — the automation that delivers on the promise (your “black box”).</span></li>
+<li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Package</strong> — scope, timeline, and price that make it easy to say "yes" to the purchase.</span></li>
+</ul>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Offer mindset</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>"I solve X for businesses like Y."</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>The client never sees the inside of n8n.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Replicable: I build once, sell many times.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Hobbyist mindset</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>"I know how to work with automation; hire me."</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Each project starts from scratch, by hand.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>You charge by the hour and depend on effort.</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Replicable</div><p class="text-xs text-neutral-400">Same solution, multiple clients.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Offer ≠ solution</div><p class="text-xs text-neutral-400">Packaging that makes it sellable.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Transfer</div><p class="text-xs text-neutral-400">Value moves from custom work to product.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Billable</div><p class="text-xs text-neutral-400">"Works" becomes "sells."</p></div>
+</div>
+</section>
+<!-- TÓPICO 2 -->
+<section class="mb-16" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">🎯 Define the promised outcome</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Nobody wakes up wanting to buy “n8n with an OpenAI node.” People buy
+        <strong class="text-teal-400">results</strong>: leads answered within 2 minutes, reports ready every Monday, zero
+        missed orders. The outcome is what’s for sale — technology is just the how.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4">Output vs. Outcome — the translation that sells</h3>
+<div class="font-mono text-sm space-y-3">
+<div class="flex flex-col sm:flex-row sm:items-center gap-2">
+<span class="text-red-400 sm:w-1/2">✗ "n8n workflow with GPT-4 and webhook"</span>
+<span class="text-teal-400 sm:w-1/2">✓ "Every lead gets a response in 2 min, 24/7"</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center gap-2">
+<span class="text-red-400 sm:w-1/2">✗ "Spreadsheet integration with the API"</span>
+<span class="text-teal-400 sm:w-1/2">✓ "Sales report ready every Monday, 8 a.m."</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center gap-2">
+<span class="text-red-400 sm:w-1/2">✗ "WhatsApp bot with a queue"</span>
+<span class="text-teal-400 sm:w-1/2">✓ "No customer waits more than 1 min"</span>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Practical tip</h3>
+<p class="text-neutral-300">Complete the sentence: <em>"After hiring me, you’ll be able to ___ without needing to ___."</em> If you can’t fill this in with something measurable, the result still isn’t clear enough to sell.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Outcome</div><p class="text-xs text-neutral-400">What changes in their life.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Their language</div><p class="text-xs text-neutral-400">Talk about the pain point, not the tech stack.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Before/after</div><p class="text-xs text-neutral-400">Concrete contrast.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Metric</div><p class="text-xs text-neutral-400">A number that proves success.</p></div>
+</div>
+</section>
+<!-- TÓPICO 3 -->
+<section class="mb-16" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🎯 Find a niche: one problem, one audience</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        "Automation for any business" doesn’t sell — it’s too generic for anyone to see themselves in it.
+        <strong class="text-teal-400">"Automatic scheduling for dental clinics"</strong> sells: the clinic owner reads it and thinks
+        "this is for me." Niching down may seem to shrink the market, but it actually makes you indispensable within it.
+      </p>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Choose a pressing pain point</h4>
+<p class="text-sm text-neutral-400 mb-2">Not just any inefficiency—one that makes the owner lose money or lose sleep.</p>
+<p class="text-neutral-300 text-sm">Ex.: ad leads who go unanswered over the weekend and lose interest.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Choose a specific audience</h4>
+<p class="text-sm text-neutral-400 mb-2">A segment you can name, find, and describe.</p>
+<p class="text-neutral-300 text-sm">Ex.: aesthetic clinics with paid traffic and a small team.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Repeat until you become the go-to</h4>
+<p class="text-sm text-neutral-400 mb-2">With each similar client, you get faster and more convincing.</p>
+<p class="text-neutral-300 text-sm">Ex.: “the person who handles lead responses for clinics” — word of mouth within the niche.</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Specialization</div><p class="text-xs text-neutral-400">Deep &gt; broad.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Acute pain</div><p class="text-xs text-neutral-400">It’s expensive to ignore.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Repeatability</div><p class="text-xs text-neutral-400">Same solution again.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Strong in the niche</div><p class="text-xs text-neutral-400">Segment owner.</p></div>
+</div>
+</section>
+<!-- TÓPICO 4 -->
+<section class="mb-16" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">📋 Clear scope and deliverables</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        The biggest margin killer in services isn’t low pricing — it’s <strong class="text-teal-400">vague scope</strong>.
+        When the client doesn't know where what they bought ends, every "just one more little thing" comes out of your pocket.
+        Defining deliverables and boundaries protects your time and their expectations at the same time.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4">Scope model (mono)</h3>
+<pre class="font-mono text-sm text-neutral-300 whitespace-pre-wrap leading-relaxed">SERVIÇO: Resposta automática de leads — clínicas
+
+INCLUÍDO (entregáveis):
+  • Fluxo que responde lead em &lt; 2 min, 24/7
+  • Integração com WhatsApp + planilha de leads
+  • 1 rodada de ajuste de mensagens
+  • Documentação + vídeo de uso (5 min)
+PRAZO: 10 dias úteis após acessos liberados
+
+FORA DO ESCOPO (orçamento à parte):
+  • Novos canais (Instagram DM, e-mail)
+  • Integração com CRM não listado
+  • Mudanças após a entrega final assinada
+PRONTO QUANDO: 10 leads de teste respondidos OK</pre>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Watch out for scope creep</h3>
+<p class="text-neutral-300">"Since you’re already here, could you also do...?" It’s a friendly question, but without a written boundary, it erodes the project. Always have a response ready: <em>"Great idea — that’s outside the current scope. I’ll send you a separate quote."</em></p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Deliverable</div><p class="text-xs text-neutral-400">Concrete, verifiable item.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Out of scope</div><p class="text-xs text-neutral-400">Just as important as what’s inside.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Scope creep</div><p class="text-xs text-neutral-400">The silent enemy of profit margins.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">"Done"</div><p class="text-xs text-neutral-400">Objective acceptance criterion.</p></div>
+</div>
+</section>
+<!-- TÓPICO 5 -->
+<section class="mb-16" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">🔬 Demonstration and proof of value</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        The client is afraid of paying and having it not work. The cheapest way to eliminate that fear is to
+        <strong class="text-teal-400">show it working</strong> before asking for the big "yes": a live demo, a
+        short video, or a low-risk paid pilot. Showing beats convincing.
+      </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-3 flex items-center"><span class="mr-2">🎥</span> Demo / Loom</h3>
+<p class="text-neutral-300 text-sm">A 5-minute video showing the automation in action with an example from their world. Inexpensive, reusable, and addresses objections right away.</p>
+</div>
+<div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-3 flex items-center"><span class="mr-2">🚀</span> Paid pilot</h3>
+<p class="text-neutral-300 text-sm">A reduced scope, with an introductory price, that proves value using the client’s real data. It becomes a natural bridge to the full contract.</p>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Practical tip</h3>
+<p class="text-neutral-300">Record the demo using a case <strong>realistic for the niche</strong>, not generic data. “Watch this lead from your clinic get a response in 90 seconds” is worth ten times more than “watch the system work.”</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Demo</div><p class="text-xs text-neutral-400">Show &gt; tell.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Pilot</div><p class="text-xs text-neutral-400">Low risk, real proof.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Evidence</div><p class="text-xs text-neutral-400">Concrete case from the niche.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">5-minute Loom</div><p class="text-xs text-neutral-400">Reusable sales asset.</p></div>
+</div>
+</section>
+<!-- TÓPICO 6 -->
+<section class="mb-16" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">📣 Positioning and messaging</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Positioning is the one-line statement that makes the right customer stop and think, "That’s exactly what I need."
+        It brings together <strong class="text-teal-400">for whom</strong> you are, <strong class="text-teal-400">what problem</strong> solves and
+        <strong class="text-teal-400">why</strong> is different — and gets you out of the price war.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4">One-line pitch formula</h3>
+<pre class="font-mono text-sm text-neutral-300 whitespace-pre-wrap leading-relaxed">"Eu ajudo [PÚBLICO] a [RESULTADO]
+ sem [DOR/ESFORÇO], usando [MECANISMO]."
+
+Ex.: "Ajudo clínicas de estética a responder
+ todo lead em 2 minutos, sem contratar
+ atendente, com automação de IA."</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Strong positioning</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Names the audience and the outcome.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Has a clear differentiator.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Fits on one line, spoken from memory.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Weak positioning</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>"I build automations in general."</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Talk about the tool, not the value.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Sounds like every competitor.</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Value proposition</div><p class="text-xs text-neutral-400">Why buy from you.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">One-line pitch</div><p class="text-xs text-neutral-400">The hook that grabs you.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Differentiation</div><p class="text-xs text-neutral-400">What sets you apart from the rest.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Anchor message</div><p class="text-xs text-neutral-400">How you’re remembered.</p></div>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-teal-900/40 via-dark-800 to-dark-800 rounded-xl border border-teal-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📦</span> Module Summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Offer &gt; solution</strong><span class="text-neutral-400"> — packaging means wrapping the technology in a sellable, replicable product.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Sell the outcome</strong><span class="text-neutral-400"> — the client buys the outcome, never the stack.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Niche down</strong><span class="text-neutral-400"> — one problem, one audience; specializing makes you indispensable.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Protected scope</strong><span class="text-neutral-400"> — define what’s in and what’s out to protect your margin and set expectations.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Prove it by showing</strong><span class="text-neutral-400"> — a demo or pilot dispels fear better than any slide.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Position yourself in one line</strong><span class="text-neutral-400"> — audience + result + differentiator get you out of the price war.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-teal-400 mb-2">Next Module:</h3>
+<p class="text-neutral-300">5.2 · Set your pricing and make your proposal — charge for the value you create, not the hours you work.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="index.html">← Back to Track</a>
+<a class="flex-1 text-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-500 transition-colors" href="modulo-5-2.html">Next Module →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Training in Strategic AI Automation · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { html.classList.remove('dark'); darkIcon.classList.remove('hidden'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Módulo 1.2 · Onde a IA cria valor real | Automação com IA</title>
+<meta content="Módulo 1.2 — Onde a IA cria valor real: ROI de automação, jagged intelligence, o que não automatizar, humano-no-loop e como priorizar oportunidades." name="description"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#FACC15',
+        dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+      } } }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5,150,105,0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5,150,105,0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5,150,105,0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5,150,105,0.18); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+    html:not(.dark) .hover\:text-rose-400:hover { color: #9f1239; }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.3s} .wf-a:nth-child(3){animation-delay:.6s}
+      @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    }
+  </style>
+<link href="https://inematds.github.io/fae-ai/curso/trilha1/modulo-1-2.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fae-ai/en/curso/trilha1/modulo-1-2.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fae-ai/es/curso/trilha1/modulo-1-2.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="modulo-1-2.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">PT</a><a href="../../en/curso/trilha1/modulo-1-2.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="../../es/curso/trilha1/modulo-1-2.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">⚙️</span>
+<span class="font-bold text-lg hidden sm:inline">Automação com IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10" href="index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Auditoria</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Desenho</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construção</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Comercial</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors" href="../trilha6/index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Prática</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-emerald-400" href="../../index.html">Início</a>
+<span>/</span>
+<a class="hover:text-emerald-400" href="index.html">Trilha 1</a>
+<span>/</span>
+<span class="text-emerald-400">Módulo 1.2</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">MÓDULO 1.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🎯 Onde a IA cria valor real</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">
+        Nem toda tarefa merece automação, e nem toda automação merece IA. Aqui você aprende os critérios objetivos:
+        onde a IA <strong class="text-neutral-300">brilha</strong>, onde ela <strong class="text-neutral-300">falha</strong>,
+        e como ordenar suas oportunidades para atacar a de maior retorno primeiro.
+      </p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">6</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">~40</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Básico</div><div class="text-xs text-neutral-400">Nível</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Teoria</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- SVG FUTURISTA: jagged intelligence (brilha x falha) -->
+<div class="rounded-2xl border border-emerald-500/30 bg-dark-900/40 p-3 sm:p-4 mb-12 overflow-hidden">
+<svg aria-label="Inteligência serrilhada: a IA tem picos altos em tarefas de linguagem e padrão e vales baixos em contagem, lógica rígida e contexto ausente" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 1000 240">
+<defs>
+<lineargradient id="m12-grad" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#34d399"></stop><stop offset="1" stop-color="#10b981"></stop></lineargradient>
+<filter height="180%" id="m12-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m12-grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#10b981" opacity="0.12" r="1.3"></circle></pattern>
+</defs>
+<rect fill="url(#m12-grid)" height="240" width="1000" x="0" y="0"></rect>
+<line opacity="0.4" stroke="#9ca3af" stroke-width="1.5" x1="60" x2="940" y1="180" y2="180"></line>
+<!-- jagged line -->
+<polyline fill="none" filter="url(#m12-glow)" points="80,150 200,60 320,165 440,55 560,170 680,70 800,160 920,80" stroke="url(#m12-grad)" stroke-width="2.5"></polyline>
+<!-- picos (brilha) -->
+<g class="wf-a"><circle cx="200" cy="60" fill="#34d399" r="6"></circle></g>
+<g class="wf-a"><circle cx="440" cy="55" fill="#34d399" r="6"></circle></g>
+<g class="wf-a"><circle cx="680" cy="70" fill="#34d399" r="6"></circle></g>
+<text fill="#34d399" font-size="12.5" font-weight="600" text-anchor="middle" x="200" y="46">linguagem</text>
+<text fill="#34d399" font-size="12.5" font-weight="600" text-anchor="middle" x="440" y="41">resumo</text>
+<text fill="#34d399" font-size="12.5" font-weight="600" text-anchor="middle" x="680" y="56">padrão</text>
+<!-- vales (falha) -->
+<circle cx="320" cy="165" fill="#f87171" r="6"></circle>
+<circle cx="560" cy="170" fill="#f87171" r="6"></circle>
+<circle cx="800" cy="160" fill="#f87171" r="6"></circle>
+<text fill="#f87171" font-size="12.5" font-weight="600" text-anchor="middle" x="320" y="200">contar</text>
+<text fill="#f87171" font-size="12.5" font-weight="600" text-anchor="middle" x="560" y="200">lógica rígida</text>
+<text fill="#f87171" font-size="12.5" font-weight="600" text-anchor="middle" x="800" y="200">sem contexto</text>
+<text fill="#64748b" font-size="11" text-anchor="middle" x="500" y="228">ilustrativo — a capacidade da IA é "serrilhada": automatize nos picos, supervisione nos vales</text>
+</svg>
+</div>
+<!-- ===================== TÓPICO 1 ===================== -->
+<section class="mb-16" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">🔁 Tarefas repetitivas e padronizáveis</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        A IA cria valor real onde há <strong class="text-emerald-400">repetição e padrão</strong>. Quanto mais uma tarefa
+        segue o mesmo passo a passo, com entradas e saídas previsíveis, mais ela é candidata natural à automação. Sem
+        padrão, não há o que ensinar à máquina de forma confiável.
+      </p>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🧱</span> Os 3 sinais de uma tarefa padronizável</h3>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Entrada previsível:</strong> os dados de entrada têm sempre o mesmo formato.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Regras estáveis:</strong> o "como fazer" não muda a cada execução.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Saída clara:</strong> dá para descrever o resultado esperado em uma frase.</span></li>
+</ul>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Padronizável</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Classificar e-mails por assunto.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Extrair dados de notas fiscais.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Gerar resumos de reuniões.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Não padronizável</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Negociar um contrato sensível.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Decidir uma estratégia de carreira.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Resolver um conflito de equipe.</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Padrão</div><p class="text-xs text-neutral-400">O mesmo a cada vez.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Previsível</div><p class="text-xs text-neutral-400">Entrada e saída estáveis.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Frequente</div><p class="text-xs text-neutral-400">Acontece muitas vezes.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Descritível</div><p class="text-xs text-neutral-400">Cabe em uma frase.</p></div>
+</div>
+</section>
+<!-- ===================== TÓPICO 2 ===================== -->
+<section class="mb-16" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">💵 ROI de automação: tempo × frequência × custo</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        O ROI é o filtro que separa oportunidade de hobby. A conta é simples e poderosa: o
+        <strong class="text-emerald-400">tempo</strong> gasto por execução, multiplicado pela
+        <strong class="text-emerald-400">frequência</strong>, multiplicado pelo <strong class="text-emerald-400">custo</strong>
+        da hora. O resultado diz se vale a pena automatizar — e em quanto tempo o setup se paga.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-3 flex items-center"><span class="mr-2">🧮</span> A fórmula do retorno</h3>
+<div class="font-mono text-sm bg-dark-900/60 rounded-lg p-4 text-neutral-300 leading-relaxed">
+<span class="text-neutral-500"># economia anual da automação</span><br/>
+          ganho = tempo_por_exec × frequencia_ano × custo_hora<br/><br/>
+<span class="text-neutral-500"># exemplo</span><br/>
+          0,5 h × 250 vezes/ano × R$ 60/h = <span class="text-emerald-400 font-bold">R$ 7.500/ano</span><br/><br/>
+<span class="text-neutral-500"># payback (se setup custa 8 h ≈ R$ 480)</span><br/>
+          480 / 7500 ≈ <span class="text-emerald-400">~3 semanas para se pagar</span>
+</div>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Como ler o número</h3>
+<ul class="space-y-2 text-neutral-300">
+<li><strong>Alta frequência</strong> é o que mais infla o retorno — priorize o que se repete muito.</li>
+<li><strong>Payback curto</strong> (semanas) = automatize já. Payback longo (anos) = repense.</li>
+<li><strong>Custo da hora</strong> inclui o seu tempo: ele não é de graça.</li>
+</ul>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">🎯</span> Dica prática</h3>
+<p class="text-neutral-300">Monte uma planilha simples com três colunas — tempo, frequência, custo — e uma linha por tarefa. A automação com o maior ganho anual e o menor payback é por onde você começa.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Tempo</div><p class="text-xs text-neutral-400">Horas por execução.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Frequência</div><p class="text-xs text-neutral-400">Vezes por período.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Custo</div><p class="text-xs text-neutral-400">Valor da hora gasta.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Payback</div><p class="text-xs text-neutral-400">Quando o setup se paga.</p></div>
+</div>
+</section>
+<!-- ===================== TÓPICO 3 ===================== -->
+<section class="mb-16" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🧩 Jagged intelligence: onde a IA brilha e onde falha</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        A inteligência da IA não é uniforme — ela é <strong class="text-emerald-400">serrilhada</strong>
+        (<em>jagged</em>). Em algumas tarefas ela supera um humano com folga; em outras, surpreendentemente simples, ela
+        erra feio. Entender o formato dessa serra é o que evita confiar a IA em algo que ela faz mal.
+      </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Onde a IA brilha</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Resumir, reescrever e traduzir texto.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Classificar e extrair informação.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Reconhecer padrões em linguagem.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Gerar rascunhos a partir de exemplos.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Onde a IA falha</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Contar e fazer cálculos exatos.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Seguir lógica rígida sem desvio.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Saber fatos que ela não recebeu.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Garantir que nunca vai inventar.</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">🚨</span> Atenção: a falha silenciosa</h3>
+<p class="text-neutral-300">O perigo da IA não é errar — é errar com confiança. Ela entrega um resultado errado com a mesma firmeza de um certo. Por isso, em tarefas de "vale" (cálculo, fato crítico), sempre coloque uma verificação antes de confiar.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Picos</div><p class="text-xs text-neutral-400">Linguagem e padrão.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Vales</div><p class="text-xs text-neutral-400">Contagem e lógica rígida.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Falha silenciosa</div><p class="text-xs text-neutral-400">Erra com confiança.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Verificação</div><p class="text-xs text-neutral-400">Checar antes de confiar.</p></div>
+</div>
+</section>
+<!-- ===================== TÓPICO 4 ===================== -->
+<section class="mb-16" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">🚫 O que NÃO automatizar: julgamento, exceções, risco</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Saber dizer "isto não" é tão valioso quanto saber o que automatizar. Três categorias devem ficar fora da
+        automação total: tarefas de <strong class="text-emerald-400">julgamento</strong>, cheias de
+        <strong class="text-emerald-400">exceções</strong> imprevisíveis, ou com <strong class="text-emerald-400">risco</strong>
+        de erro irreversível.
+      </p>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Julgamento</h4>
+<p class="text-sm text-neutral-400 mb-3">Decisões que dependem de valores, contexto e bom senso</p>
+<p class="text-neutral-300 text-sm">Demitir alguém, definir prioridade estratégica, dar um diagnóstico. A IA pode ajudar a organizar a informação, mas a decisão final é humana.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Exceções imprevisíveis</h4>
+<p class="text-sm text-neutral-400 mb-3">Casos raros que nunca seguem o padrão</p>
+<p class="text-neutral-300 text-sm">Se metade dos casos é "exceção", não há padrão para automatizar. Automatize o caso comum e roteie o estranho para um humano.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Risco irreversível</h4>
+<p class="text-sm text-neutral-400 mb-3">Ações que não dá para desfazer</p>
+<p class="text-neutral-300 text-sm">Transferir dinheiro, apagar dados, enviar comunicação pública. Aqui, no mínimo, exija aprovação humana antes da ação.</p>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">🎯</span> Dica prática</h3>
+<p class="text-neutral-300">Faça a pergunta do arrependimento: "se isto der errado sozinho, qual o tamanho do estrago?". Estrago grande e irreversível = não automatize sem um humano no caminho.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Julgamento</div><p class="text-xs text-neutral-400">Decisão fica com o humano.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Exceção</div><p class="text-xs text-neutral-400">Sem padrão, sem automação.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Risco</div><p class="text-xs text-neutral-400">Irreversível pede aprovação.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Zona proibida</div><p class="text-xs text-neutral-400">O que deixar de fora.</p></div>
+</div>
+</section>
+<!-- ===================== TÓPICO 5 ===================== -->
+<section class="mb-16" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">🧑‍⚖️ Humano-no-loop vs. totalmente autônomo</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Nem tudo é "automatizar tudo" ou "fazer à mão". Entre os dois extremos existe o
+        <strong class="text-emerald-400">humano-no-loop</strong>: a IA prepara o trabalho, mas um humano aprova antes da
+        ação sensível. Saber onde colocar esse ponto de aprovação dá coragem para automatizar muito mais.
+      </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Humano-no-loop</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>IA rascunha, humano revisa e libera.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Ideal para ações sensíveis ou públicas.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Constrói confiança aos poucos.</span></li>
+</ul>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h4 class="font-bold text-blue-400 mb-4">⚙ Totalmente autônomo</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-blue-400">•</span><span>Roda do início ao fim sem parar.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400">•</span><span>Ideal para baixo risco e alto volume.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400">•</span><span>Exige verificação e logs sólidos.</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🎚️</span> Autonomia é um botão, não um interruptor</h3>
+<p class="text-neutral-300 mb-4">Comece com mais supervisão e vá soltando conforme a automação prova que é confiável:</p>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Nível 1:</strong> a IA só sugere; você faz tudo.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Nível 2:</strong> a IA executa, mas pede aprovação.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Nível 3:</strong> a IA age sozinha em casos de baixo risco.</span></li>
+</ul>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">No-loop</div><p class="text-xs text-neutral-400">Aprovação antes da ação.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Autônomo</div><p class="text-xs text-neutral-400">Roda sem parar.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Gradual</div><p class="text-xs text-neutral-400">Solte conforme confiança.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Risco × volume</div><p class="text-xs text-neutral-400">Decide o nível certo.</p></div>
+</div>
+</section>
+<!-- ===================== TÓPICO 6 ===================== -->
+<section class="mb-16" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">🧮 Critérios para priorizar oportunidades</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Você vai ter mais ideias de automação do que tempo para construí-las. Priorizar bem é o que garante que a sua
+        primeira automação gere resultado visível — e financie as próximas. Quatro critérios ordenam qualquer lista:
+        <strong class="text-emerald-400">retorno, esforço, risco e frequência</strong>.
+      </p>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📐</span> A matriz retorno × esforço</h3>
+<p class="text-neutral-300 mb-4">Cruze retorno (eixo vertical) com esforço (eixo horizontal) e ataque os quadrantes nesta ordem:</p>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">1.</span><span><strong>Alto retorno · baixo esforço:</strong> os <em>quick wins</em>. Comece por aqui.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">2.</span><span><strong>Alto retorno · alto esforço:</strong> projetos grandes, faça depois do primeiro ganho.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">3.</span><span><strong>Baixo retorno · baixo esforço:</strong> só se sobrar tempo.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">4.</span><span><strong>Baixo retorno · alto esforço:</strong> ignore.</span></li>
+</ul>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🏆</span> Por que começar pelo quick win</h3>
+<p class="text-neutral-300">A primeira automação precisa provar valor rápido. Um quick win entrega resultado em dias, gera confiança e libera tempo para atacar os projetos maiores. Começar por um projeto longo é a receita para desistir antes do retorno aparecer.</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">🎯</span> Dica prática</h3>
+<p class="text-neutral-300">Dê a cada oportunidade uma nota de 1 a 5 em retorno, esforço (invertido), risco (invertido) e frequência. Some. A de maior pontuação é a próxima a construir — e essa é exatamente a tarefa que a Trilha 2 vai te ensinar a auditar.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Retorno</div><p class="text-xs text-neutral-400">Ganho que gera.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Esforço</div><p class="text-xs text-neutral-400">Quão difícil de fazer.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Risco</div><p class="text-xs text-neutral-400">O que pode dar errado.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Quick win</div><p class="text-xs text-neutral-400">Resultado rápido primeiro.</p></div>
+</div>
+</section>
+<!-- RESUMO DO MÓDULO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Resumo do Módulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Padrão e repetição</strong><span class="text-neutral-400"> - a IA cria valor onde a tarefa é previsível e se repete.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">ROI</strong><span class="text-neutral-400"> - tempo × frequência × custo decide o que vale automatizar.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Jagged intelligence</strong><span class="text-neutral-400"> - picos em linguagem, vales em cálculo e lógica rígida.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">O que não automatizar</strong><span class="text-neutral-400"> - julgamento, exceções e risco irreversível.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Humano-no-loop</strong><span class="text-neutral-400"> - autonomia gradual conforme a confiança cresce.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Priorização</strong><span class="text-neutral-400"> - comece pelo quick win de alto retorno e baixo esforço.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-emerald-400 mb-2">Próximo Módulo:</h3>
+<p class="text-neutral-300">1.3 — O mapa das 5 etapas: identificar, mapear, desenhar, construir, comercializar.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-1-1.html">← Módulo anterior</a>
+<a class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors" href="modulo-1-3.html">Próximo Módulo →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Formação em Automação Estratégica com IA · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const htmlEl = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { htmlEl.classList.remove('dark'); darkIcon.classList.remove('hidden'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      htmlEl.classList.toggle('dark');
+      localStorage.setItem('theme', htmlEl.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

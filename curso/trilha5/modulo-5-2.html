@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Módulo 5.2 · Precificar e propor | Automação com IA</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#FACC15',
+        dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+      } } }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-teal-400 { color: #0d9488; }
+    html:not(.dark) .bg-teal-500\/20 { background-color: rgba(13,148,136,0.12); }
+    html:not(.dark) .bg-teal-500\/10 { background-color: rgba(13,148,136,0.08); }
+    html:not(.dark) .border-teal-500\/30 { border-color: rgba(13,148,136,0.25); }
+    html:not(.dark) .hover\:bg-teal-500\/30:hover { background-color: rgba(13,148,136,0.18); }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.3s} .wf-a:nth-child(3){animation-delay:.6s}
+      @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+  </style>
+<link href="https://inematds.github.io/fae-ai/curso/trilha5/modulo-5-2.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fae-ai/en/curso/trilha5/modulo-5-2.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fae-ai/es/curso/trilha5/modulo-5-2.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="modulo-5-2.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">PT</a><a href="../../en/curso/trilha5/modulo-5-2.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="../../es/curso/trilha5/modulo-5-2.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">⚙️</span>
+<span class="font-bold text-lg hidden sm:inline">Automação com IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Auditoria</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Desenho</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construção</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-teal-400 bg-teal-500/10" href="index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Comercial</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors" href="../trilha6/index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Prática</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-teal-400" href="../../index.html">Início</a>
+<span>/</span>
+<a class="hover:text-teal-400" href="index.html">Trilha 5</a>
+<span>/</span>
+<span class="text-teal-400">Módulo 5.2</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-teal-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-teal-500/20 text-teal-400 text-xs font-semibold rounded-full mb-4">MÓDULO 5.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">💵 Precificar e propor</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">
+        Pare de cobrar por hora — isso pune sua eficiência. Aprenda a precificar pelo
+        <strong class="text-teal-400">valor que a automação gera</strong>, montar propostas que fecham sozinhas
+        e responder objeções sem recorrer ao desconto.
+      </p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">6</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">60</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Aplicado</div><div class="text-xs text-neutral-400">Nível</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-teal-400">Vendas</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- SVG ILUSTRATIVO: hora vs valor -->
+<div class="rounded-2xl border border-teal-500/30 bg-dark-900/40 p-3 sm:p-4 mb-12 overflow-hidden">
+<svg aria-label="Preço por hora cresce devagar e tem teto; preço por valor acompanha o ganho do cliente e é muito maior" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 1000 240">
+<defs>
+<lineargradient id="m52-grad" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0" stop-color="#2dd4bf"></stop><stop offset="1" stop-color="#14b8a6"></stop>
+</lineargradient>
+<filter height="180%" id="m52-glow" width="180%" x="-40%" y="-40%">
+<fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge>
+</filter>
+<pattern height="32" id="m52-grid" patternunits="userSpaceOnUse" width="32">
+<circle cx="1.3" cy="1.3" fill="#14b8a6" opacity="0.12" r="1.3"></circle>
+</pattern>
+</defs>
+<rect fill="url(#m52-grid)" height="240" width="1000" x="0" y="0"></rect>
+<!-- divisória -->
+<line stroke="#475569" stroke-dasharray="6 6" stroke-width="1.5" x1="500" x2="500" y1="20" y2="220"></line>
+<!-- esquerda: por hora -->
+<text fill="#9ca3af" font-size="15" font-weight="600" text-anchor="middle" x="250" y="40">Por hora — tem teto</text>
+<line stroke="#64748b" stroke-width="2" x1="80" x2="440" y1="190" y2="190"></line>
+<line stroke="#64748b" stroke-width="2" x1="80" x2="80" y1="190" y2="60"></line>
+<path d="M80,180 L200,160 L320,150 L440,148" fill="none" stroke="#9ca3af" stroke-width="2.5"></path>
+<line stroke="#f87171" stroke-dasharray="5 5" stroke-width="1.5" x1="80" x2="440" y1="120" y2="120"></line>
+<text fill="#f87171" font-size="12" x="320" y="112">teto: só 24h no dia</text>
+<!-- direita: por valor -->
+<text fill="#2dd4bf" font-size="15" font-weight="600" text-anchor="middle" x="750" y="40">Por valor — escala</text>
+<line stroke="#64748b" stroke-width="2" x1="560" x2="920" y1="190" y2="190"></line>
+<line stroke="#64748b" stroke-width="2" x1="560" x2="560" y1="190" y2="60"></line>
+<g filter="url(#m52-glow)"><path d="M560,182 L660,150 L760,108 L860,72 L920,60" fill="none" stroke="url(#m52-grad)" stroke-width="3"></path></g>
+<text fill="#9ce8df" font-size="12" x="740" y="150">acompanha o ganho do cliente</text>
+<text fill="#64748b" font-size="11" text-anchor="middle" x="500" y="232">ilustrativo — desacople preço de esforço</text>
+</svg>
+</div>
+<!-- TÓPICO 1 -->
+<section class="mb-16" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">💎 Precificar por valor (não por hora)</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Cobrar por hora cria um paradoxo cruel: quanto <strong class="text-teal-400">melhor</strong> você fica, mais rápido entrega — e
+        <strong class="text-teal-400">menos</strong> ganha. Precificar por valor inverte isso. O preço passa a vir do ganho que o cliente
+        recebe, não do tempo que você gastou. Uma automação que economiza R$ 4.000/mês justifica um preço bem acima do "custo de fazer".
+      </p>
+<div class="bg-gradient-to-br from-teal-900/30 to-dark-800 rounded-xl border border-teal-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4 flex items-center"><span class="mr-2">🎯</span> A âncora certa é o ROI</h3>
+<p class="text-neutral-300 mb-4">O preço justo fica entre o seu custo (piso) e o valor para o cliente (teto). Você quer ancorar perto do teto, não do piso.</p>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Piso:</strong> o que te custa entregar (tempo + ferramentas).</span></li>
+<li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Teto:</strong> quanto a automação vale por mês para o cliente.</span></li>
+<li class="flex items-start space-x-2"><span class="text-teal-400 mt-1">•</span><span><strong>Preço:</strong> uma fração justa do teto — ele lucra, você lucra.</span></li>
+</ul>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Por valor</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Eficiência aumenta sua margem.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Conversa sobre resultado, não horas.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Preço cresce com o impacto.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Por hora</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Eficiência corta sua receita.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Vira leilão de "quanto custa a hora".</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Teto de renda = horas no dia.</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Value-based</div><p class="text-xs text-neutral-400">Preço a partir do ganho.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Âncora no ROI</div><p class="text-xs text-neutral-400">O teto é o valor pro cliente.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Captura de valor</div><p class="text-xs text-neutral-400">Fração justa do impacto.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Preço ≠ custo</div><p class="text-xs text-neutral-400">Esforço não dita preço.</p></div>
+</div>
+</section>
+<!-- TÓPICO 2 -->
+<section class="mb-16" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">🧾 Modelos de cobrança</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Existem quatro formas básicas de o dinheiro entrar — e a melhor estratégia quase sempre é
+        <strong class="text-teal-400">combiná-las</strong>. O padrão mais saudável para automação é
+        <strong class="text-teal-400">setup (uma vez) + recorrência (todo mês)</strong>: você recupera o esforço inicial e
+        constrói renda previsível.
+      </p>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Setup fee (taxa única)</h4>
+<p class="text-neutral-300 text-sm">Paga a construção da automação. Cobre seu esforço inicial e cria comprometimento do cliente.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Recorrência (mensalidade)</h4>
+<p class="text-neutral-300 text-sm">Paga manutenção, suporte e o serviço rodando. É o coração da renda previsível (MRR).</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Por uso / volume</h4>
+<p class="text-neutral-300 text-sm">Cobra por lead processado, mensagem enviada, documento gerado. Escala com o sucesso do cliente.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center"><span class="text-teal-400 font-bold">4</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Por resultado (performance)</h4>
+<p class="text-neutral-300 text-sm">% sobre o ganho gerado. Atrai clientes avessos a risco, mas exige métricas confiáveis e confiança mútua.</p>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica prática</h3>
+<p class="text-neutral-300">Comece com <strong>setup + recorrência</strong>. É o mais simples de explicar, o mais previsível pra você e o mais comum no mercado — evite modelos exóticos antes de ter histórico.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Setup fee</div><p class="text-xs text-neutral-400">Cobre o esforço inicial.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Recorrência</div><p class="text-xs text-neutral-400">MRR previsível.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Por uso</div><p class="text-xs text-neutral-400">Escala com volume.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Híbrido</div><p class="text-xs text-neutral-400">Combine para equilibrar.</p></div>
+</div>
+</section>
+<!-- TÓPICO 3 -->
+<section class="mb-16" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🧮 Calcular o ganho do cliente</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        A conta do ROI é sua ferramenta de venda mais poderosa. Quando o cliente vê em números que
+        <strong class="text-teal-400">economiza R$ 4.000/mês e paga R$ 800</strong>, o preço deixa de ser objeção e vira óbvio.
+        Você não está pedindo dinheiro — está oferecendo um múltiplo.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4">Cálculo de ROI (exemplo mono)</h3>
+<pre class="font-mono text-sm text-neutral-300 whitespace-pre-wrap leading-relaxed">GANHO MENSAL DO CLIENTE
+  Tempo economizado:   40 h/mês
+  Custo da hora:       R$ 50
+  → Economia direta:   R$ 2.000/mês
+
+  Leads recuperados:   8/mês × R$ 300 ticket
+  → Receita extra:     R$ 2.400/mês
+
+  GANHO TOTAL:         R$ 4.400/mês  (R$ 52.800/ano)
+
+SEU PREÇO
+  Setup:               R$ 2.500 (uma vez)
+  Recorrência:         R$ 800/mês
+
+PAYBACK:               &lt; 1 mês
+ROI 1º ano:            ~5×</pre>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Não esqueça o custo da inação</h3>
+<p class="text-neutral-300">O cliente já está perdendo esse dinheiro <strong>todo mês</strong> sem a automação. Apresente o ganho como "o que você está deixando na mesa hoje" — urgência vende mais que economia futura.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Cálculo de ROI</div><p class="text-xs text-neutral-400">Horas × custo + receita.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Payback</div><p class="text-xs text-neutral-400">Em quanto tempo se paga.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Custo da inação</div><p class="text-xs text-neutral-400">Perda de não agir.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Anualizado</div><p class="text-xs text-neutral-400">×12 impressiona.</p></div>
+</div>
+</section>
+<!-- TÓPICO 4 -->
+<section class="mb-16" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">📄 Estrutura de uma proposta</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Uma proposta bem montada <strong class="text-teal-400">vende sozinha</strong> quando você não está na sala. A ordem importa:
+        comece pela dor do cliente (não por você), mostre o resultado e o ganho calculado antes do preço, e termine com
+        um único próximo passo claro.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h3 class="text-lg font-semibold text-teal-400 mb-4">Esqueleto da proposta (mono)</h3>
+<pre class="font-mono text-sm text-neutral-300 whitespace-pre-wrap leading-relaxed">1. CONTEXTO / DOR    ← a situação dele, nas palavras dele
+2. RESULTADO         ← o que ele vai conseguir
+3. ESCOPO            ← entregáveis + o que fica de fora
+4. GANHO (ROI)       ← a conta: economiza X, paga Y
+5. INVESTIMENTO      ← setup + recorrência (3 pacotes)
+6. PROVA             ← demo, caso, depoimento
+7. PRÓXIMO PASSO     ← 1 CTA + prazo de validade</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Proposta que fecha</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Abre com a dor dele.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Preço vem depois do ganho.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Um único CTA, com prazo.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Proposta que trava</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Abre falando de você e do stack.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Preço solto, sem contexto de valor.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Cinco opções e nenhuma direção.</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Estrutura</div><p class="text-xs text-neutral-400">Ordem que convence.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">CTA único</div><p class="text-xs text-neutral-400">Um próximo passo só.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Validade</div><p class="text-xs text-neutral-400">Prazo cria decisão.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Prova social</div><p class="text-xs text-neutral-400">Reduz o risco percebido.</p></div>
+</div>
+</section>
+<!-- TÓPICO 5 -->
+<section class="mb-16" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">📊 Ancoragem e pacotes (bom / melhor / ótimo)</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Quando você oferece <strong class="text-teal-400">três opções</strong>, o cliente para de decidir entre "sim" e "não" e
+        passa a decidir "qual". A opção cara <strong class="text-teal-400">ancora</strong> o valor e faz a do meio — onde você quer que ele
+        fique — parecer um ótimo negócio.
+      </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+<div class="text-neutral-400 font-semibold text-sm mb-1">BOM</div>
+<div class="text-2xl font-bold text-neutral-200 mb-3">R$ 800<span class="text-sm text-neutral-500">/mês</span></div>
+<ul class="text-sm text-neutral-400 space-y-2">
+<li>• Automação principal</li>
+<li>• Suporte por e-mail</li>
+<li>• 1 ajuste/mês</li>
+</ul>
+</div>
+<div class="bg-gradient-to-br from-teal-900/40 to-dark-800 rounded-xl border-2 border-teal-500/50 p-6 relative">
+<span class="absolute -top-3 left-6 bg-teal-600 text-white text-xs font-semibold px-2 py-0.5 rounded-full">MAIS ESCOLHIDO</span>
+<div class="text-teal-400 font-semibold text-sm mb-1">MELHOR</div>
+<div class="text-2xl font-bold text-white mb-3">R$ 1.500<span class="text-sm text-neutral-400">/mês</span></div>
+<ul class="text-sm text-neutral-300 space-y-2">
+<li>• Tudo do Bom</li>
+<li>• Suporte prioritário (WhatsApp)</li>
+<li>• Ajustes ilimitados</li>
+<li>• Relatório mensal de impacto</li>
+</ul>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+<div class="text-neutral-400 font-semibold text-sm mb-1">ÓTIMO</div>
+<div class="text-2xl font-bold text-neutral-200 mb-3">R$ 3.200<span class="text-sm text-neutral-500">/mês</span></div>
+<ul class="text-sm text-neutral-400 space-y-2">
+<li>• Tudo do Melhor</li>
+<li>• 2 automações extras</li>
+<li>• SLA de 2h</li>
+<li>• Reunião estratégica mensal</li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica prática</h3>
+<p class="text-neutral-300">Desenhe o pacote do meio para ser a melhor relação valor/preço. A opção "Ótimo" raramente vende — seu papel é fazer a "Melhor" parecer razoável por comparação (efeito chamariz).</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Ancoragem</div><p class="text-xs text-neutral-400">O caro valoriza o resto.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Efeito chamariz</div><p class="text-xs text-neutral-400">A opção que guia a escolha.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Tiered pricing</div><p class="text-xs text-neutral-400">Três níveis claros.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Opção do meio</div><p class="text-xs text-neutral-400">Onde o ticket mira.</p></div>
+</div>
+</section>
+<!-- TÓPICO 6 -->
+<section class="mb-16" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">🛡️ Objeções comuns e respostas</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Objeção não é rejeição — é um <strong class="text-teal-400">pedido de informação</strong>. Quem tem resposta calma e preparada
+        salva a maioria das vendas. O segredo é sempre reancorar no valor e no custo de não agir.
+      </p>
+<div class="space-y-4 mb-6">
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<p class="text-red-400 font-semibold mb-2">"Está caro."</p>
+<p class="text-neutral-300 text-sm">→ "Comparado a quê? Você está perdendo R$ 4.400/mês com isso hoje. O serviço se paga em menos de um mês — depois é só lucro."</p>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<p class="text-red-400 font-semibold mb-2">"E se quebrar?"</p>
+<p class="text-neutral-300 text-sm">→ "Por isso existe a mensalidade: monitoramento, suporte e correção estão inclusos. Se algo falha, eu resolvo dentro do SLA."</p>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<p class="text-red-400 font-semibold mb-2">"Vou pensar."</p>
+<p class="text-neutral-300 text-sm">→ "Claro. Só pra eu entender: o que falta pra você ter segurança de decidir? Posso te mandar uma demo com seus próprios dados."</p>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+<p class="text-red-400 font-semibold mb-2">"Já tenho alguém que faz."</p>
+<p class="text-neutral-300 text-sm">→ "Ótimo que já automatiza. O que eu trago é foco no seu nicho e suporte garantido — posso revisar o que existe e mostrar o que dá pra ganhar?"</p>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Reframe</div><p class="text-xs text-neutral-400">Mude o ângulo da conversa.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Prova</div><p class="text-xs text-neutral-400">Demo mata "vou pensar".</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Garantia</div><p class="text-xs text-neutral-400">SLA acalma o medo.</p></div>
+<div class="bg-dark-800 rounded-lg border border-dark-600 p-4"><div class="text-teal-400 font-bold text-sm mb-1">Custo da inação</div><p class="text-xs text-neutral-400">Reancore na perda atual.</p></div>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-teal-900/40 via-dark-800 to-dark-800 rounded-xl border border-teal-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">💵</span> Resumo do Módulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Precifique por valor</strong><span class="text-neutral-400"> — o preço vem do ROI do cliente, não da sua hora.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Setup + recorrência</strong><span class="text-neutral-400"> — o modelo mais saudável e previsível para começar.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Mostre a conta</strong><span class="text-neutral-400"> — "economiza X, paga Y" transforma preço em óbvio.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Proposta na ordem certa</strong><span class="text-neutral-400"> — dor → resultado → ganho → preço → 1 CTA.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Três pacotes</strong><span class="text-neutral-400"> — ancore com o caro e direcione para o do meio.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-teal-400 mt-1">✓</span><div><strong class="text-white">Objeção é informação</strong><span class="text-neutral-400"> — reancore no valor e no custo de não agir.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-teal-400 mb-2">Próximo Módulo:</h3>
+<p class="text-neutral-300">5.3 · Entregar, manter e escalar — da assinatura ao crescimento com receita recorrente.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-5-1.html">← Módulo Anterior</a>
+<a class="flex-1 text-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-500 transition-colors" href="modulo-5-3.html">Próximo Módulo →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Formação em Automação Estratégica com IA · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { html.classList.remove('dark'); darkIcon.classList.remove('hidden'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

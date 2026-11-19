@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Module 1.2 · Where AI creates real value | AI Automation</title>
+<meta content="Module 1.2 — Where AI creates real value: automation ROI, jagged intelligence, what not to automate, human-in-the-loop, and how to prioritize opportunities." name="description"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#FACC15',
+        dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+      } } }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5,150,105,0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5,150,105,0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5,150,105,0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5,150,105,0.18); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+    html:not(.dark) .hover\:text-rose-400:hover { color: #9f1239; }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.3s} .wf-a:nth-child(3){animation-delay:.6s}
+      @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    }
+  </style>
+<link href="https://inematds.github.io/fae-ai/curso/trilha1/modulo-1-2.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fae-ai/en/curso/trilha1/modulo-1-2.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fae-ai/es/curso/trilha1/modulo-1-2.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha1/modulo-1-2.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="modulo-1-2.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../../../es/curso/trilha1/modulo-1-2.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">⚙️</span>
+<span class="font-bold text-lg hidden sm:inline">AI Automation</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10" href="index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentals</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Audit</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Design</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construction</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Commercial</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors" href="../trilha6/index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Practice</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-emerald-400" href="../../index.html">Start</a>
+<span>/</span>
+<a class="hover:text-emerald-400" href="index.html">Track 1</a>
+<span>/</span>
+<span class="text-emerald-400">Module 1.2</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">MODULE 1.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🎯 Where AI creates real value</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">
+        Not every task deserves automation, and not every automation deserves AI. Here you’ll learn the objective criteria:
+        where AI <strong class="text-neutral-300">shines</strong>, where it <strong class="text-neutral-300">failure</strong>,
+        and how to rank your opportunities so you tackle the highest-return one first.
+      </p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">6</div><div class="text-xs text-neutral-400">Topics</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">~40</div><div class="text-xs text-neutral-400">Minutes</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Basic</div><div class="text-xs text-neutral-400">Level</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Theory</div><div class="text-xs text-neutral-400">Type</div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- SVG FUTURISTA: jagged intelligence (brilha x falha) -->
+<div class="rounded-2xl border border-emerald-500/30 bg-dark-900/40 p-3 sm:p-4 mb-12 overflow-hidden">
+<svg aria-label="Jagged intelligence: AI has peaks in language and pattern tasks, and valleys in counting, strict logic, and missing context" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 1000 240">
+<defs>
+<lineargradient id="m12-grad" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#34d399"></stop><stop offset="1" stop-color="#10b981"></stop></lineargradient>
+<filter height="180%" id="m12-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m12-grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#10b981" opacity="0.12" r="1.3"></circle></pattern>
+</defs>
+<rect fill="url(#m12-grid)" height="240" width="1000" x="0" y="0"></rect>
+<line opacity="0.4" stroke="#9ca3af" stroke-width="1.5" x1="60" x2="940" y1="180" y2="180"></line>
+<!-- jagged line -->
+<polyline fill="none" filter="url(#m12-glow)" points="80,150 200,60 320,165 440,55 560,170 680,70 800,160 920,80" stroke="url(#m12-grad)" stroke-width="2.5"></polyline>
+<!-- picos (brilha) -->
+<g class="wf-a"><circle cx="200" cy="60" fill="#34d399" r="6"></circle></g>
+<g class="wf-a"><circle cx="440" cy="55" fill="#34d399" r="6"></circle></g>
+<g class="wf-a"><circle cx="680" cy="70" fill="#34d399" r="6"></circle></g>
+<text fill="#34d399" font-size="12.5" font-weight="600" text-anchor="middle" x="200" y="46">language</text>
+<text fill="#34d399" font-size="12.5" font-weight="600" text-anchor="middle" x="440" y="41">summary</text>
+<text fill="#34d399" font-size="12.5" font-weight="600" text-anchor="middle" x="680" y="56">default</text>
+<!-- vales (falha) -->
+<circle cx="320" cy="165" fill="#f87171" r="6"></circle>
+<circle cx="560" cy="170" fill="#f87171" r="6"></circle>
+<circle cx="800" cy="160" fill="#f87171" r="6"></circle>
+<text fill="#f87171" font-size="12.5" font-weight="600" text-anchor="middle" x="320" y="200">count</text>
+<text fill="#f87171" font-size="12.5" font-weight="600" text-anchor="middle" x="560" y="200">rigid logic</text>
+<text fill="#f87171" font-size="12.5" font-weight="600" text-anchor="middle" x="800" y="200">without context</text>
+<text fill="#64748b" font-size="11" text-anchor="middle" x="500" y="228">illustrative — AI capability is "jagged": automate at the peaks, supervise in the valleys</text>
+</svg>
+</div>
+<!-- ===================== TÓPICO 1 ===================== -->
+<section class="mb-16" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">🔁 Repetitive, standardizable tasks</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        AI creates real value where there is <strong class="text-emerald-400">repetition and patterns</strong>. The more a task
+        follows the same step-by-step process, with predictable inputs and outputs, the more naturally it lends itself to automation. Without
+        a pattern, there's nothing you can reliably teach the machine.
+      </p>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🧱</span> The 3 signs of a task that can be standardized</h3>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Predictable input:</strong> input data always has the same format.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Stable rules:</strong> the "how to do it" doesn't change with each run.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Clear output:</strong> you can describe the expected result in one sentence.</span></li>
+</ul>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Standardizable</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Classify emails by subject.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Extract data from invoices.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Generate meeting summaries.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Cannot be standardized</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Negotiating a sensitive contract.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Decide on a career strategy.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Resolve a team conflict.</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Pattern</div><p class="text-xs text-neutral-400">The same every time.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Predictable</div><p class="text-xs text-neutral-400">Stable input and output.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Frequent</div><p class="text-xs text-neutral-400">Happens often.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Describable</div><p class="text-xs text-neutral-400">Fits in one sentence.</p></div>
+</div>
+</section>
+<!-- ===================== TÓPICO 2 ===================== -->
+<section class="mb-16" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">💵 Automation ROI: time × frequency × cost</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        ROI is the filter that separates opportunity from hobby. The calculation is simple and powerful: the
+        <strong class="text-emerald-400">time</strong> time spent per run, multiplied by the
+        <strong class="text-emerald-400">frequency</strong>, multiplied by the <strong class="text-emerald-400">cost</strong>
+        per hour. The result tells you whether it’s worth automating—and how long it will take for the setup to pay for itself.
+      </p>
+<div class="bg-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-3 flex items-center"><span class="mr-2">🧮</span> The ROI formula</h3>
+<div class="font-mono text-sm bg-dark-900/60 rounded-lg p-4 text-neutral-300 leading-relaxed">
+<span class="text-neutral-500"># annual automation savings</span><br/>
+          value = time_per_run × annual_frequency × hourly_cost<br/><br/>
+<span class="text-neutral-500"># example</span><br/>
+          0.5 h × 250 times/year × R$ 60/h = <span class="text-emerald-400 font-bold">R$ 7.500/year</span><br/><br/>
+<span class="text-neutral-500"># payback (if setup costs 8 h ≈ R$ 480)</span><br/>
+          480 / 7500 ≈ <span class="text-emerald-400">~3 weeks to pay for itself</span>
+</div>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> How to read the number</h3>
+<ul class="space-y-2 text-neutral-300">
+<li><strong>High frequency</strong> is what boosts returns the most — prioritize what happens often.</li>
+<li><strong>Short payback period</strong> (weeks) = automate now. Long payback (years) = rethink it.</li>
+<li><strong>Hourly cost</strong> includes your time: it isn’t free.</li>
+</ul>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">🎯</span> Practical tip</h3>
+<p class="text-neutral-300">Create a simple spreadsheet with three columns—time, frequency, cost—and one row per task. Start with the automation that has the highest annual savings and the shortest payback period.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Time</div><p class="text-xs text-neutral-400">Hours per run.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Frequency</div><p class="text-xs text-neutral-400">Times per period.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Cost</div><p class="text-xs text-neutral-400">Value per hour spent.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Payback</div><p class="text-xs text-neutral-400">When the setup pays for itself.</p></div>
+</div>
+</section>
+<!-- ===================== TÓPICO 3 ===================== -->
+<section class="mb-16" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🧩 Jagged intelligence: where AI excels and where it fails</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        AI’s intelligence isn’t uniform—it’s <strong class="text-emerald-400">jagged</strong>
+        (<em>jagged</em>). In some tasks, it outperforms a human by far; in others, surprisingly simple ones, it
+        fails badly. Understanding the shape of this sawtooth is what keeps you from trusting AI with something it does poorly.
+      </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Where AI shines</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Summarize, rewrite, and translate text.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Classify and extract information.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Recognize patterns in language.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Generate drafts from examples.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Where AI fails</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Count and perform exact calculations.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Following rigid logic without deviation.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Knowing facts it wasn’t given.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Ensure it will never make things up.</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">🚨</span> Attention: the silent failure</h3>
+<p class="text-neutral-300">The danger of AI isn’t getting something wrong — it’s getting it wrong with confidence. It delivers a wrong result with the same certainty as a right one. So, for “high-stakes” tasks (calculations, critical facts), always add a check before relying on it.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Peaks</div><p class="text-xs text-neutral-400">Language and standard.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Vouchers</div><p class="text-xs text-neutral-400">Counting and rigid logic.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Silent failure</div><p class="text-xs text-neutral-400">Fails with confidence.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Verification</div><p class="text-xs text-neutral-400">Check before you trust.</p></div>
+</div>
+</section>
+<!-- ===================== TÓPICO 4 ===================== -->
+<section class="mb-16" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">🚫 What NOT to automate: judgment, exceptions, risk</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Knowing when to say “not this” is as valuable as knowing what to automate. Three categories should stay out of
+        full automation: tasks involving <strong class="text-emerald-400">judgment</strong>, full of
+        <strong class="text-emerald-400">exceptions</strong> unpredictable, or with <strong class="text-emerald-400">risk</strong>
+        irreversible error.
+      </p>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Judgment</h4>
+<p class="text-sm text-neutral-400 mb-3">Decisions that depend on values, context, and good judgment</p>
+<p class="text-neutral-300 text-sm">Firing someone, setting strategic priorities, making a diagnosis. AI can help organize the information, but the final decision is human.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Unpredictable exceptions</h4>
+<p class="text-sm text-neutral-400 mb-3">Rare cases that never follow the pattern</p>
+<p class="text-neutral-300 text-sm">If half the cases are “exceptions,” there’s no pattern to automate. Automate the common case and route unusual ones to a human.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">Irreversible risk</h4>
+<p class="text-sm text-neutral-400 mb-3">Actions you can’t undo</p>
+<p class="text-neutral-300 text-sm">Transfer money, delete data, send public communications. At a minimum, require human approval before taking action here.</p>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">🎯</span> Practical tip</h3>
+<p class="text-neutral-300">Ask the regret question: "if this goes wrong on its own, how much damage will it cause?". Major, irreversible damage = don’t automate without a human in the loop.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Judgment</div><p class="text-xs text-neutral-400">The decision stays with the human.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Exception</div><p class="text-xs text-neutral-400">No standards, no automation.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Risk</div><p class="text-xs text-neutral-400">Irreversible actions require approval.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Forbidden zone</div><p class="text-xs text-neutral-400">What to leave out.</p></div>
+</div>
+</section>
+<!-- ===================== TÓPICO 5 ===================== -->
+<section class="mb-16" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">🧑‍⚖️ Human-in-the-loop vs. fully autonomous</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Not everything is “automate everything” or “do it by hand.” Between those two extremes is the
+        <strong class="text-emerald-400">human-in-the-loop</strong>: AI prepares the work, but a human approves it before the
+        sensitive action. Knowing where to put this approval point gives you the confidence to automate much more.
+      </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Human-in-the-loop</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>AI drafts, human reviews and approves.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Ideal for sensitive or public-facing actions.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Builds trust gradually.</span></li>
+</ul>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h4 class="font-bold text-blue-400 mb-4">⚙ Fully autonomous</h4>
+<ul class="space-y-3 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-blue-400">•</span><span>Runs from start to finish without stopping.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400">•</span><span>Ideal for low-risk, high-volume tasks.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400">•</span><span>Requires verification and solid logs.</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🎚️</span> Autonomy is a dial, not a switch</h3>
+<p class="text-neutral-300 mb-4">Start with more supervision and ease off as the automation proves it’s reliable:</p>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Level 1:</strong> the AI only suggests; you do everything.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Level 2:</strong> the AI executes, but asks for approval.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Level 3:</strong> the AI acts on its own in low-risk cases.</span></li>
+</ul>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">No-loop</div><p class="text-xs text-neutral-400">Approval before the action.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Autonomous</div><p class="text-xs text-neutral-400">Runs nonstop.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Gradual</div><p class="text-xs text-neutral-400">Release as confidence grows.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Risk × volume</div><p class="text-xs text-neutral-400">Chooses the right level.</p></div>
+</div>
+</section>
+<!-- ===================== TÓPICO 6 ===================== -->
+<section class="mb-16" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">🧮 Criteria for prioritizing opportunities</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        You’ll have more automation ideas than time to build them. Prioritizing well ensures your
+        first automation delivers visible results—and funds the next ones. Four criteria can organize any list:
+        <strong class="text-emerald-400">return, effort, risk, and frequency</strong>.
+      </p>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📐</span> The return × effort matrix</h3>
+<p class="text-neutral-300 mb-4">Cross return (vertical axis) with effort (horizontal axis) and tackle the quadrants in this order:</p>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">1.</span><span><strong>High return · low effort:</strong> the <em>quick wins</em>. Start here.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">2.</span><span><strong>High return · high effort:</strong> large projects, do this after the first win.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">3.</span><span><strong>Low return · low effort:</strong> only if there's time left.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">4.</span><span><strong>Low return · high effort:</strong> ignore.</span></li>
+</ul>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🏆</span> Why start with the quick win</h3>
+<p class="text-neutral-300">The first automation needs to prove its value quickly. A quick win delivers results in days, builds confidence, and frees up time to tackle bigger projects. Starting with a long project is a recipe for giving up before you see a return.</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">🎯</span> Practical tip</h3>
+<p class="text-neutral-300">Score each opportunity from 1 to 5 for return, effort (inverted), risk (inverted), and frequency. Add them up. The highest-scoring one is the next to build—and that’s exactly the task Trail 2 will teach you to audit.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Return</div><p class="text-xs text-neutral-400">A gain that generates.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Effort</div><p class="text-xs text-neutral-400">How hard it is to build.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Risk</div><p class="text-xs text-neutral-400">What could go wrong.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold text-sm mb-1">Quick win</div><p class="text-xs text-neutral-400">Quick result first.</p></div>
+</div>
+</section>
+<!-- RESUMO DO MÓDULO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Module Summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Pattern and repetition</strong><span class="text-neutral-400"> - AI creates value where the task is predictable and repetitive.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">ROI</strong><span class="text-neutral-400"> - time × frequency × cost determines what’s worth automating.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Jagged intelligence</strong><span class="text-neutral-400"> - peaks in language, valleys in calculation and rigid logic.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">What not to automate</strong><span class="text-neutral-400"> - judgment, exceptions, and irreversible risk.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Human-in-the-loop</strong><span class="text-neutral-400"> - gradual autonomy as confidence grows.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Prioritization</strong><span class="text-neutral-400"> - start with the high-return, low-effort quick win.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-emerald-400 mb-2">Next Module:</h3>
+<p class="text-neutral-300">1.3 — The 5-step map: identify, map, design, build, commercialize.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-1-1.html">← Previous module</a>
+<a class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors" href="modulo-1-3.html">Next Module →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Training in Strategic AI Automation · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const htmlEl = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { htmlEl.classList.remove('dark'); darkIcon.classList.remove('hidden'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      htmlEl.classList.toggle('dark');
+      localStorage.setItem('theme', htmlEl.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

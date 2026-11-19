@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Módulo 4.2 · Primera automatización de principio a fin | Automatización con IA</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { colors: {
+      primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+    } } } }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217,119,6,0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217,119,6,0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217,119,6,0.25); }
+    html:not(.dark) .hover\:bg-amber-500\/30:hover { background-color: rgba(217,119,6,0.18); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217,119,6,0.08); }
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37,99,235,0.25); }
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+    .codebox { background:#0b1220; border:1px solid rgba(245,158,11,0.25); }
+    html:not(.dark) .codebox { background:#0f172a; }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+  </style>
+<link href="https://inematds.github.io/fae-ai/curso/trilha4/modulo-4-2.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fae-ai/en/curso/trilha4/modulo-4-2.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fae-ai/es/curso/trilha4/modulo-4-2.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha4/modulo-4-2.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="../../../en/curso/trilha4/modulo-4-2.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="modulo-4-2.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">ES</a></div>
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">⚙️</span>
+<span class="font-bold text-lg hidden sm:inline">Automatización con IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Auditoría</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Diseño</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-400 bg-amber-500/10" href="index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construcción</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Comercial</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors" href="../trilha6/index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Práctica</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-amber-400" href="../../index.html">Inicio</a><span>/</span>
+<a class="hover:text-amber-400" href="index.html">Ruta 4</a><span>/</span>
+<span class="text-amber-400">Módulo 4.2</span>
+</div>
+</nav>
+<header class="bg-gradient-to-br from-amber-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full mb-4">MÓDULO 4.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🔁 Primera automatización de punta a punta</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Ahora vas a crear un flujo de verdad: desde el disparador hasta la acción visible, con la IA en medio. Trigger por webhook o programación, recopilación de la entrada, llamada al LLM, análisis de la salida, ejecución de la acción y lectura de la ejecución.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">6</div><div class="text-xs text-neutral-400">Temas</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">50</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Práctico</div><div class="text-xs text-neutral-400">Nivel</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Manos a la obra</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- SVG: pipeline linear 6 passos -->
+<div class="rounded-2xl border border-amber-500/30 bg-dark-900/40 p-3 sm:p-4 mb-12 overflow-hidden">
+<svg aria-label="Pipeline de seis pasos: trigger, recolectar, IA, parse, acción y observar" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 1000 160">
+<defs>
+<lineargradient id="m42-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fbbf24"></stop><stop offset="1" stop-color="#f59e0b"></stop></lineargradient>
+<filter height="180%" id="m42-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m42-grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#f59e0b" opacity="0.12" r="1.3"></circle></pattern>
+<marker id="m42-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#fbbf24"></path></marker>
+</defs>
+<rect fill="url(#m42-grid)" height="160" width="1000" x="0" y="0"></rect>
+<g font-size="12.5" font-weight="600">
+<rect fill="#1f1604" height="44" rx="11" stroke="#fbbf24" stroke-width="2" width="120" x="14" y="58"></rect><text fill="#fbbf24" text-anchor="middle" x="74" y="85">Trigger</text>
+<rect fill="#0e1b26" height="44" rx="11" stroke="#38bdf8" stroke-width="2" width="120" x="170" y="58"></rect><text fill="#bfe6ff" text-anchor="middle" x="230" y="85">Recopilar</text>
+</g>
+<g filter="url(#m42-glow)"><rect fill="#1f1604" height="52" rx="13" stroke="url(#m42-grad)" stroke-width="2.5" width="124" x="326" y="54"></rect></g>
+<text fill="#fbbf24" font-size="14" font-weight="700" text-anchor="middle" x="388" y="85">IA / LLM</text>
+<g font-size="12.5" font-weight="600">
+<rect fill="#0e1b26" height="44" rx="11" stroke="#38bdf8" stroke-width="2" width="120" x="486" y="58"></rect><text fill="#bfe6ff" text-anchor="middle" x="546" y="85">Parse</text>
+<rect fill="#0e2018" height="44" rx="11" stroke="#34d399" stroke-width="2" width="120" x="642" y="58"></rect><text fill="#34d399" text-anchor="middle" x="702" y="85">Acción</text>
+<rect fill="#26201a" height="44" rx="11" stroke="#9ca3af" stroke-width="2" width="120" x="798" y="58"></rect><text fill="#e5e7eb" text-anchor="middle" x="858" y="85">Observar</text>
+</g>
+<g fill="none" opacity="0.6" stroke="#fbbf24" stroke-width="2">
+<line marker-end="url(#m42-ah)" x1="134" x2="170" y1="80" y2="80"></line>
+<line marker-end="url(#m42-ah)" x1="290" x2="326" y1="80" y2="80"></line>
+<line marker-end="url(#m42-ah)" x1="450" x2="486" y1="80" y2="80"></line>
+<line marker-end="url(#m42-ah)" x1="606" x2="642" y1="80" y2="80"></line>
+<line marker-end="url(#m42-ah)" x1="762" x2="798" y1="80" y2="80"></line>
+</g>
+</svg>
+<p class="text-center text-neutral-500 text-xs mt-2">Ilustrativo: los seis pasos de este módulo, en el orden en que se convierten en un solo flujo.</p>
+</div>
+<!-- TÓPICO 1 -->
+<section class="mb-16" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">⚡ Trigger</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">O <strong class="text-amber-400">trigger</strong> define la naturaleza de la automatización. Un <strong class="text-amber-400">Webhook</strong> la hace reactiva (alguien envía datos y ella responde); un <strong class="text-amber-400">Schedule</strong> la hace proactiva (se ejecuta sola en horarios definidos).</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Webhook (reactivo)</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Formulario enviado, pago aprobado, mensaje recibido.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Respuesta en tiempo real al evento.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Recibes un payload listo para usar.</span></li>
+</ul>
+</div>
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Schedule (proactivo)</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Informe diario, revisión de correos electrónicos cada 15 min.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>No depende de que alguien lo active.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Definido por cron: <span class="font-mono">0 9 * * 1-5</span> (9 h en días hábiles).</span></li>
+</ul>
+</div>
+</div>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<div class="text-xs text-neutral-500 mb-2 font-mono"># payload que llega a un Webhook trigger</div>
+<pre class="font-mono text-sm text-neutral-300 leading-relaxed">POST /webhook/novo-lead
+{ <span class="text-amber-400">"nome"</span>: "Ana", <span class="text-amber-400">"email"</span>: "ana@x.com", <span class="text-amber-400">"mensagem"</span>: "Quero um orçamento" }
+<span class="text-emerald-400">// disponível no fluxo como: ={{ $json.body.email }}</span></pre>
+</div>
+</section>
+<!-- TÓPICO 2 -->
+<section class="mb-16" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">📥 Recopilar datos de entrada</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Antes de llamar a la IA, extrae y normaliza los <strong class="text-amber-400">campos que importan</strong>. La calidad de la respuesta del modelo es proporcional al contexto que le proporcionas: basura entra, basura sale.</p>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<div class="text-xs text-neutral-500 mb-2 font-mono"># Set node — creando un contexto limpio</div>
+<pre class="font-mono text-sm text-neutral-300 leading-relaxed">{
+  <span class="text-amber-400">"nome"</span>:     "={{ $json.body.nome }}",
+  <span class="text-amber-400">"email"</span>:    "={{ $json.body.email.toLowerCase() }}",
+  <span class="text-amber-400">"mensagem"</span>: "={{ $json.body.mensagem.trim() }}"
+}</pre>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Por qué normalizar al ingresar los datos</h3>
+<ul class="space-y-2 text-neutral-300 text-sm">
+<li><strong>Consistencia</strong> - escribir el correo electrónico en minúsculas evita duplicados al guardar.</li>
+<li><strong>Economía de tokens</strong> - enviar solo los campos útiles reduce el costo de la llamada de IA.</li>
+<li><strong>Validación temprana</strong> - bloquear aquí las entradas vacías evita gastar una llamada en vano.</li>
+</ul>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600"><div class="text-amber-400 font-semibold text-sm mb-1">$json.body</div><p class="text-xs text-neutral-400">Acceder al payload</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600"><div class="text-amber-400 font-semibold text-sm mb-1">Nodo Set</div><p class="text-xs text-neutral-400">Crear contexto</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600"><div class="text-amber-400 font-semibold text-sm mb-1">={{ }}</div><p class="text-xs text-neutral-400">Expresiones</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600"><div class="text-amber-400 font-semibold text-sm mb-1">Validación</div><p class="text-xs text-neutral-400">Bloquear la basura pronto</p></div>
+</div>
+</section>
+<!-- TÓPICO 3 -->
+<section class="mb-16" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🤖 Llamar a la IA</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">El corazón de la automatización con IA. Usa el <strong class="text-amber-400">node nativo</strong> (OpenAI/Anthropic) cuando existe; si no, el <strong class="text-amber-400">HTTP Request</strong> llama a la API directamente. Pide <strong class="text-amber-400">salida en JSON</strong> para no sufrir durante el parseo después.</p>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<div class="text-xs text-neutral-500 mb-2 font-mono"># HTTP Request a un LLM (cuerpo de la solicitud)</div>
+<pre class="font-mono text-sm text-neutral-300 leading-relaxed">{
+  <span class="text-amber-400">"model"</span>: "gpt-4o-mini",
+  <span class="text-amber-400">"response_format"</span>: { "type": "json_object" },
+  <span class="text-amber-400">"messages"</span>: [
+    { "role": "system", "content": "Classifique o lead. Responda JSON: {intencao, prioridade}." },
+    { "role": "user", "content": "={{ $json.mensagem }}" }
+  ]
+}</pre>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Consejo práctico</h3>
+<p class="text-neutral-300">Coloca la <strong>estructura exacta del JSON</strong> que esperas en el system prompt y conecta el <span class="font-mono">json_object</span> modo. Eso reduce drásticamente las salidas mal formadas — y <span class="font-mono">temperature: 0</span> hace que la clasificación sea más estable.</p>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600"><div class="text-amber-400 font-semibold text-sm mb-1">System prompt</div><p class="text-xs text-neutral-400">Define el rol y el formato</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600"><div class="text-amber-400 font-semibold text-sm mb-1">Modo JSON</div><p class="text-xs text-neutral-400">Salida estructurada</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600"><div class="text-amber-400 font-semibold text-sm mb-1">Temperature</div><p class="text-xs text-neutral-400">0 = estable</p></div>
+<div class="bg-dark-800 rounded-lg p-3 border border-dark-600"><div class="text-amber-400 font-semibold text-sm mb-1">Costo/token</div><p class="text-xs text-neutral-400">Más contexto = más $</p></div>
+</div>
+</section>
+<!-- TÓPICO 4 -->
+<section class="mb-16" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">🔍 Parsear la salida</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">La respuesta llega como <strong class="text-amber-400">texto</strong> (incluso en modo JSON, viene como una cadena dentro de un campo). Tienes que transformarla en campos reales para que los siguientes nodos puedan usarlos — con un <strong class="text-amber-400">fallback</strong> por si llega rota.</p>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<div class="text-xs text-neutral-500 mb-2 font-mono"># Code node — parseo defensivo</div>
+<pre class="font-mono text-sm text-neutral-300 leading-relaxed"><span class="text-emerald-400">const</span> raw = $json.choices[0].message.content;
+<span class="text-emerald-400">let</span> parsed;
+<span class="text-emerald-400">try</span> { parsed = JSON.parse(raw); }
+<span class="text-emerald-400">catch</span> (e) { parsed = { intencao: "indefinida", prioridade: "baixa" }; }
+<span class="text-emerald-400">return</span> [{ json: parsed }];</pre>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Atención</h3>
+<p class="text-neutral-300">A veces, los modelos envuelven el JSON en <span class="font-mono">```json ... ```</span> o agregan un texto antes. Siempre trata el error de parseo; nunca confíes al 100% en que la salida será perfecta.</p>
+</div>
+</section>
+<!-- TÓPICO 5 -->
+<section class="mb-16" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">🎯 Ejecuta la acción</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">A <strong class="text-amber-400">acción</strong> es lo que el cliente percibe y paga: enviar el correo, guardar la fila, insertar el registro. Es el único paso visible; todo lo anterior fue preparación.</p>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<div class="text-xs text-neutral-500 mb-2 font-mono"># asignando campos en el node de salida (correo electrónico)</div>
+<pre class="font-mono text-sm text-neutral-300 leading-relaxed">Para:     ={{ $json.email }}
+Assunto:  Recebemos seu pedido — prioridade ={{ $json.prioridade }}
+Corpo:    Olá ={{ $json.nome }}, classificamos como "={{ $json.intencao }}".</pre>
+</div>
+<div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">🎯</span> Elige la acción según el destinatario</h3>
+<ul class="space-y-2 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Correo electrónico</strong> — cuando hay que notificar a una persona.</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Hoja de cálculo</strong> — cuando el equipo hace seguimiento visual.</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong>Base de datos</strong> — cuando otro sistema va a consumir el dato.</span></li>
+</ul>
+</div>
+</section>
+<!-- TÓPICO 6 -->
+<section class="mb-16" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">▶️ Ejecutar y observar</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Ejecuta el flujo de verdad y <strong class="text-amber-400">inspecciona elemento por elemento</strong>. En automatización no usas breakpoints: lees la entrada y la salida de cada node en el panel de ejecución. El bug casi siempre está en el formato de los datos entre dos nodes.</p>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Probar el workflow con datos reales</h4>
+<p class="text-neutral-300 text-sm">Dispara una vez con un payload de ejemplo. Mira cómo el flujo «se enciende» node por node.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Abre cada node y lee la entrada y la salida</h4>
+<p class="text-neutral-300 text-sm">Compara lo que entró con lo que salió. Donde el dato «desapareció» es donde está el error.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Pin data para iterar rápido</h4>
+<p class="text-neutral-300 text-sm">Fija la salida del trigger (pin) y vuelve a ejecutar solo los nodos siguientes sin gastar una nueva llamada de IA.</p>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Consejo práctico</h3>
+<p class="text-neutral-300">Usa <strong>pin data</strong> en el trigger durante el desarrollo. Congelas una entrada de ejemplo e iteras en los nodes siguientes en segundos, sin activar webhooks reales ni consumir tokens en cada prueba.</p>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-amber-900/40 via-dark-800 to-dark-800 rounded-xl border border-amber-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📌</span> Resumen del módulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-neutral-100">Trigger</strong><span class="text-neutral-400"> - webhook (reactivo) o schedule (proactivo) define la naturaleza del flujo.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-neutral-100">Recopilar</strong><span class="text-neutral-400"> - extraer y normalizar solo los campos útiles; basura en la entrada = basura en la salida.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-neutral-100">Llamar a la IA</strong><span class="text-neutral-400"> - node nativo o HTTP, JSON mode y temperature 0 para mayor estabilidad.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-neutral-100">Parsear</strong><span class="text-neutral-400"> - texto → JSON con try/catch y alternativa; nunca confíes al 100% en la salida.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-neutral-100">Acción</strong><span class="text-neutral-400"> - correo electrónico, hoja de cálculo o base de datos; el único paso que el cliente percibe.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-neutral-100">Observar</strong><span class="text-neutral-400"> - leer I/O por node y usar pin data para iterar rápido y a bajo costo.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-amber-400 mb-2">Próximo Módulo:</h3>
+<p class="text-neutral-300">4.3 - Integraciones y datos (APIs REST, autenticación, base de datos, hojas de cálculo, paginación)</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-4-1.html">← Módulo 4.1</a>
+<a class="flex-1 text-center px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-500 transition-colors" href="modulo-4-3.html">Próximo Módulo →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-8">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Formación en Automatización Estratégica con IA · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { html.classList.remove('dark'); darkIcon.classList.remove('hidden'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Módulo 2.1 · Búsqueda de la tarea de 10 horas | Automatización con IA</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#FACC15',
+        dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+      } } }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37,99,235,0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37,99,235,0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37,99,235,0.25); }
+    html:not(.dark) .hover\:bg-blue-500\/30:hover { background-color: rgba(37,99,235,0.18); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37,99,235,0.08); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:text-teal-400:hover { color: #0d9488; }
+    html:not(.dark) .hover\:text-rose-400:hover { color: #9f1239; }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-of-type(2){animation-delay:.3s} .wf-a:nth-of-type(3){animation-delay:.6s} .wf-a:nth-of-type(4){animation-delay:.9s}
+      @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+  </style>
+<link href="https://inematds.github.io/fae-ai/curso/trilha2/modulo-2-1.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fae-ai/en/curso/trilha2/modulo-2-1.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fae-ai/es/curso/trilha2/modulo-2-1.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha2/modulo-2-1.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="../../../en/curso/trilha2/modulo-2-1.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="modulo-2-1.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">ES</a></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">⚙️</span>
+<span class="font-bold text-lg hidden sm:inline">Automatización con IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10" href="index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Auditoría</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Diseño</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construcción</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Comercial</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors" href="../trilha6/index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Práctica</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-blue-400" href="../../index.html">Inicio</a>
+<span>/</span>
+<a class="hover:text-blue-400" href="index.html">Ruta 2</a>
+<span>/</span>
+<span class="text-blue-400">Módulo 2.1</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MÓDULO 2.1</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🎯 Busca una tarea de 10 horas</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">
+        Toda empresa tiene tareas invisibles que consumen horas al mes sin que nadie sume el costo.
+        En este módulo aprenderás a detectar estas oportunidades, distinguir qué vale la pena automatizar y qué no,
+        y elegir el primer proceso con criterio, no a ojo.
+      </p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">6</div><div class="text-xs text-neutral-400">Temas</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">40</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Básico</div><div class="text-xs text-neutral-400">Nivel</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Teoría</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- TÓPICO 1 -->
+<section class="mb-16" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">🗺️ Dónde están las oportunidades</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Las oportunidades de automatización no están escondidas en lugares exóticos: están a la vista, en el
+        trabajo que nadie quiere hacer. Tres áreas concentran casi todo: <strong class="text-blue-400">rutinas</strong>
+        que se repiten, <strong class="text-blue-400">cuellos de botella</strong> donde se acumula el trabajo y
+        <strong class="text-blue-400">copiar y pegar</strong> entre sistemas que no se comunican.
+      </p>
+<div class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-8 overflow-hidden">
+<svg aria-label="Tres focos de oportunidades — rutinas, cuellos de botella y copiar y pegar — que convergen en una tarea candidata a la automatización" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 1000 240">
+<defs>
+<lineargradient id="m21grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#60a5fa"></stop><stop offset="1" stop-color="#3b82f6"></stop></lineargradient>
+<filter height="180%" id="m21glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m21grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#3b82f6" opacity="0.12" r="1.3"></circle></pattern>
+<marker id="m21ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#60a5fa"></path></marker>
+</defs>
+<rect fill="url(#m21grid)" height="240" width="1000" x="0" y="0"></rect>
+<g font-size="13" font-weight="600">
+<g class="wf-a"><rect fill="#0e1622" height="46" rx="10" stroke="#38bdf8" stroke-width="2" width="190" x="40" y="30"></rect><text fill="#bfe6ff" text-anchor="middle" x="135" y="58">Rutinas diarias</text></g>
+<g class="wf-a"><rect fill="#0e1622" height="46" rx="10" stroke="#38bdf8" stroke-width="2" width="190" x="40" y="97"></rect><text fill="#bfe6ff" text-anchor="middle" x="135" y="125">Cuellos de botella / colas</text></g>
+<g class="wf-a"><rect fill="#0e1622" height="46" rx="10" stroke="#38bdf8" stroke-width="2" width="190" x="40" y="164"></rect><text fill="#bfe6ff" text-anchor="middle" x="135" y="192">Copiar y pegar entre apps</text></g>
+</g>
+<g fill="none" opacity="0.55" stroke="#60a5fa" stroke-width="1.8">
+<path d="M230,53  C420,53 470,120 600,120" marker-end="url(#m21ah)"></path>
+<path d="M230,120 L600,120" marker-end="url(#m21ah)"></path>
+<path d="M230,187 C420,187 470,120 600,120" marker-end="url(#m21ah)"></path>
+</g>
+<g filter="url(#m21glow)"><rect fill="#0e1622" height="72" rx="14" stroke="url(#m21grad)" stroke-width="2.5" width="220" x="600" y="84"></rect></g>
+<text fill="#60a5fa" font-size="17" font-weight="700" text-anchor="middle" x="710" y="116">Tarea candidata</text>
+<text fill="#9ca3af" font-size="12" text-anchor="middle" x="710" y="138">repetitiva · costosa · automatizable</text>
+</svg>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Dónde buscar</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Informes preparados a mano cada semana</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Datos copiados de un sistema a otro</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Correos electrónicos estandarizados respondidos uno por uno</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Hojas de cálculo actualizadas manualmente todos los días</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Donde suele ser una pérdida de tiempo</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Decisiones estratégicas que cambian todo el tiempo</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Tareas que se realizan una vez al año</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Negociaciones que requieren interpretar a las personas</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Procesos sin ninguna regla estable</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Consejo práctico</h3>
+<p class="text-neutral-300">Pregúntale a cualquier persona del equipo: «¿qué parte de tu día odias hacer?». La respuesta casi siempre apunta directamente a una rutina automatizable.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Rutina</div><div class="text-xs text-neutral-400">Se repite en un ciclo fijo</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Cuello de botella</div><div class="text-xs text-neutral-400">El trabajo se acumula aquí</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Copiar y pegar</div><div class="text-xs text-neutral-400">Puente manual entre apps</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Volumen</div><div class="text-xs text-neutral-400">Sucede muchas veces</div></div>
+</div>
+</section>
+<!-- TÓPICO 2 -->
+<section class="mb-16" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">🚦 Señales de una tarea automatizable</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        No toda tarea tediosa vale la pena automatizar. Las que sí lo valen tienen <strong class="text-blue-400">señales claras</strong>:
+        reglas estables, alto volumen, datos estructurados y resultados predecibles. Cuantas más señales se junten,
+        mejor candidato será.
+      </p>
+<div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🎯</span> Las 4 señales que importan</h3>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Determinística:</strong> la misma entrada siempre genera la misma salida.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Repetitiva:</strong> ocurre muchas veces al día, a la semana o al mes.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Basada en reglas:</strong> puedes escribir el «cómo hacerlo» en pasos claros.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Tediosa:</strong> bajo valor cognitivo, alto costo de atención.</span></li>
+</ul>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Termómetro del candidato</h3>
+<div class="font-mono text-sm space-y-2 text-neutral-300">
+<div>4 señales presentes  → <span class="text-emerald-400">candidato excelente</span></div>
+<div>2–3 señales       → <span class="text-blue-400">vale la pena investigar</span></div>
+<div>0–1 señal        → <span class="text-red-400">déjalo para después</span></div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Determinística</div><div class="text-xs text-neutral-400">Salida predecible</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Repetitiva</div><div class="text-xs text-neutral-400">Alta frecuencia</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Reglas claras</div><div class="text-xs text-neutral-400">Pasos escritos</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Tediosa</div><div class="text-xs text-neutral-400">Bajo valor humano</div></div>
+</div>
+</section>
+<!-- TÓPICO 3 -->
+<section class="mb-16" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🎤 Entrevista al dueño del proceso</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        El proceso descrito en el manual casi nunca es el proceso real. Para descubrir la verdad, hablas con
+        quien realiza la tarea todos los días, y la forma de preguntar cambia todo. Usa una <strong class="text-blue-400">secuencia
+        de entrevista</strong> que revela pasos, atajos y problemas ocultos.
+      </p>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">"Muéstrame cómo lo haces"</h4>
+<p class="text-sm text-neutral-400 mb-3">Demostración en vivo</p>
+<p class="text-neutral-300 text-sm">Pídele a la persona que realice la tarea mientras observas. Los atajos informales solo aparecen en la práctica.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">"¿Qué es lo que más te molesta aquí?"</h4>
+<p class="text-sm text-neutral-400 mb-3">Mapa del problema</p>
+<p class="text-neutral-300 text-sm">La frustración señala directamente el cuello de botella. Donde duele, hay valor en automatizar.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-white mb-2">"¿Cuándo sale mal esto?"</h4>
+<p class="text-sm text-neutral-400 mb-3">Búsqueda de excepciones</p>
+<p class="text-neutral-300 text-sm">Las excepciones que no descubras ahora romperán la automatización después.</p>
+</div>
+</div>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Atención</h3>
+<p class="text-neutral-300">Nunca preguntes «¿cómo debería ser?». Eso trae la teoría, no la práctica. Pregunta «¿cómo es hoy, en realidad?» —con todos sus defectos.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Observar</div><div class="text-xs text-neutral-400">Míralo, no lo imagines</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Dolor</div><div class="text-xs text-neutral-400">Frustración = valor</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Excepciones</div><div class="text-xs text-neutral-400">Qué falla</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Sin juzgar</div><div class="text-xs text-neutral-400">Entiende, no corrijas</div></div>
+</div>
+</section>
+<!-- TÓPICO 4 -->
+<section class="mb-16" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">📋 Inventario de tareas y frecuencia</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Sin inventario, priorizas por intuición, y la intuición se equivoca. Enumera todas las tareas repetitivas con su
+        <strong class="text-blue-400">frecuencia</strong> e <strong class="text-blue-400">tiempo por ejecución</strong>.
+        La multiplicación revela dónde se pierde realmente el tiempo a lo largo del año.
+      </p>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Inventario ilustrativo</h3>
+<div class="font-mono text-sm overflow-x-auto">
+<table class="w-full text-left text-neutral-300">
+<thead class="text-blue-400 border-b border-dark-600">
+<tr><th class="py-2 pr-4">Tarea</th><th class="py-2 pr-4">Tiempo</th><th class="py-2 pr-4">Frecuencia</th><th class="py-2">Total/año</th></tr>
+</thead>
+<tbody class="divide-y divide-dark-600">
+<tr><td class="py-2 pr-4">Crear informe semanal</td><td class="py-2 pr-4">90 min</td><td class="py-2 pr-4">semanal</td><td class="py-2 text-blue-400">~78 h</td></tr>
+<tr><td class="py-2 pr-4">Copiar pedidos a una hoja de cálculo</td><td class="py-2 pr-4">8 min</td><td class="py-2 pr-4">diaria</td><td class="py-2 text-blue-400">~32 h</td></tr>
+<tr><td class="py-2 pr-4">Responder un correo electrónico estándar</td><td class="py-2 pr-4">5 min</td><td class="py-2 pr-4">10×/día</td><td class="py-2 text-blue-400">~200 h</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-neutral-500 mt-3">ilustrativo — nota cómo una tarea de 5 min se convierte en la más grande de la lista debido al volumen</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Consejo práctico</h3>
+<p class="text-neutral-300">La fórmula es simple: <strong>tiempo por ejecución × frecuencia anual = tiempo total</strong>. Las tareas pequeñas y frecuentes casi siempre superan a las grandes e infrecuentes.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Tarea</div><div class="text-xs text-neutral-400">Qué se repite</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Tiempo</div><div class="text-xs text-neutral-400">Por ejecución</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Frecuencia</div><div class="text-xs text-neutral-400">Cuántas veces</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Total/año</div><div class="text-xs text-neutral-400">Qué importa</div></div>
+</div>
+</section>
+<!-- TÓPICO 5 -->
+<section class="mb-16" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">📐 Matriz de esfuerzo × impacto</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        Con el inventario en mano, necesitas <strong class="text-blue-400">priorizar</strong>. La matriz
+        esfuerzo × impacto cruza qué tan difícil es automatizar con cuánto rinde la automatización. El punto ideal
+        es <strong class="text-blue-400">alto impacto, bajo esfuerzo</strong> — empieza siempre por ahí.
+      </p>
+<div class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-6 overflow-hidden">
+<svg aria-label="Matriz de esfuerzo e impacto con cuatro cuadrantes, destacando el cuadrante de alto impacto y bajo esfuerzo como una victoria rápida" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 600 380">
+<defs>
+<filter height="180%" id="m21mglow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+</defs>
+<line stroke="#9ca3af" stroke-width="2" x1="80" x2="80" y1="40" y2="320"></line>
+<line stroke="#9ca3af" stroke-width="2" x1="80" x2="560" y1="320" y2="320"></line>
+<text fill="#9ca3af" font-size="13" text-anchor="middle" transform="rotate(-90 40 180)" x="40" y="180">Impacto →</text>
+<text fill="#9ca3af" font-size="13" text-anchor="middle" x="320" y="360">Esfuerzo →</text>
+<!-- quadrante ouro -->
+<g filter="url(#m21mglow)"><rect fill="#0e1622" height="125" rx="12" stroke="#3b82f6" stroke-width="2.5" width="220" x="90" y="50"></rect></g>
+<text fill="#60a5fa" font-size="15" font-weight="700" text-anchor="middle" x="200" y="105">Victoria rápida</text>
+<text fill="#9ad6ff" font-size="12" text-anchor="middle" x="200" y="128">alto impacto · bajo esfuerzo</text>
+<text fill="#9ca3af" font-size="11" text-anchor="middle" x="200" y="150">empieza aquí</text>
+<!-- demais -->
+<rect fill="#1f2937" height="125" rx="12" stroke="#4b5563" stroke-width="2" width="220" x="330" y="50"></rect>
+<text fill="#e5e7eb" font-size="13" font-weight="600" text-anchor="middle" x="440" y="110">Proyecto grande</text>
+<text fill="#9ca3af" font-size="11" text-anchor="middle" x="440" y="132">alto impacto · alto esfuerzo</text>
+<rect fill="#1f2937" height="115" rx="12" stroke="#4b5563" stroke-width="2" width="220" x="90" y="195"></rect>
+<text fill="#e5e7eb" font-size="13" font-weight="600" text-anchor="middle" x="200" y="248">Quizás después</text>
+<text fill="#9ca3af" font-size="11" text-anchor="middle" x="200" y="270">bajo impacto · bajo esfuerzo</text>
+<rect fill="#1f2937" height="115" rx="12" stroke="#4b5563" stroke-width="2" width="220" x="330" y="195"></rect>
+<text fill="#e5e7eb" font-size="13" font-weight="600" text-anchor="middle" x="440" y="248">Evita</text>
+<text fill="#9ca3af" font-size="11" text-anchor="middle" x="440" y="270">bajo impacto · alto esfuerzo</text>
+</svg>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Prioriza</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Victorias rápidas: mucho retorno, poco trabajo</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Proyectos grandes solo después de demostrar valor</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Evita</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Mucho esfuerzo con bajo retorno</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Empezar por el proceso más complejo</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Impacto</div><div class="text-xs text-neutral-400">Cuánto rinde</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Esfuerzo</div><div class="text-xs text-neutral-400">Qué tan difícil es</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Cuadrante de oro</div><div class="text-xs text-neutral-400">Alto + bajo</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Secuencia</div><div class="text-xs text-neutral-400">Victoria antes de escalar</div></div>
+</div>
+</section>
+<!-- TÓPICO 6 -->
+<section class="mb-16" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">🥇 Elegir el primer proceso</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">
+        El primer proyecto define tu reputación. Debe ser <strong class="text-blue-400">lo suficientemente
+        pequeño</strong> para entregar rápido, <strong class="text-blue-400">lo bastante visible</strong>
+        para que todos lo noten y <strong class="text-blue-400">de bajo riesgo</strong> para no causar daños si falla.
+      </p>
+<div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🎯</span> Criterios del primer proyecto</h3>
+<ul class="space-y-2 text-neutral-300">
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Pequeño:</strong> entrega en días, no meses.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Visible:</strong> el beneficio se nota para quien decide.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Bajo riesgo:</strong> si falla, nadie deja de trabajar.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong>Medible:</strong> puedes demostrar el antes y el después.</span></li>
+</ul>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Consejo práctico</h3>
+<p class="text-neutral-300">Piensa en el primer proyecto como una <strong>demostración</strong>, no como la solución definitiva. Existe para demostrar que la automatización funciona y abrir camino a las siguientes.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Pequeño</div><div class="text-xs text-neutral-400">Entrega rápida</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Visible</div><div class="text-xs text-neutral-400">Todos lo notan</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Bajo riesgo</div><div class="text-xs text-neutral-400">Falla sin daños</div></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-blue-400 font-bold mb-1">Medible</div><div class="text-xs text-neutral-400">Demuestra la ganancia</div></div>
+</div>
+</section>
+<!-- CONCEITOS-CHAVE DO MÓDULO -->
+<section class="mb-12">
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceptos clave del módulo</h3>
+<div class="font-mono text-sm space-y-1 text-neutral-300">
+<div><span class="text-blue-400">oportunidad</span> = rutina · cuello de botella · copiar y pegar</div>
+<div><span class="text-blue-400">candidato</span> = determinístico + repetitivo + reglas + tedioso</div>
+<div><span class="text-blue-400">tiempo total</span> = tiempo/ejecución × frecuencia anual</div>
+<div><span class="text-blue-400">prioridad</span> = alto impacto ÷ bajo esfuerzo</div>
+<div><span class="text-blue-400">1.er proyecto</span> = pequeño + visible + de bajo riesgo + medible</div>
+</div>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">🎯</span> Resumen del módulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Las oportunidades están en 3 lugares</strong><span class="text-neutral-400"> - rutinas, cuellos de botella y copiar y pegar.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">4 señales revelan el candidato</strong><span class="text-neutral-400"> - determinística, repetitiva, con reglas y tediosa.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Entrevista mientras observas</strong><span class="text-neutral-400"> - «cómo es hoy», nunca «cómo debería ser».</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Inventario con frecuencia</strong><span class="text-neutral-400"> - tiempo × frecuencia revela la fuga real.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Matriz de esfuerzo × impacto</strong><span class="text-neutral-400"> - empieza por la victoria rápida.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Primer proyecto pequeño y visible</strong><span class="text-neutral-400"> - es una demostración, no la solución final.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-blue-400 mb-2">Próximo Módulo:</h3>
+<p class="text-neutral-300">2.2 · Auditoría de procesos — cronometrar, calcular el costo y el ROI, y documentar el as-is.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="index.html">← Volver a la ruta</a>
+<a class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors" href="modulo-2-2.html">Próximo Módulo →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-8">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Formación en Automatización Estratégica con IA · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { html.classList.remove('dark'); darkIcon.classList.remove('hidden'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

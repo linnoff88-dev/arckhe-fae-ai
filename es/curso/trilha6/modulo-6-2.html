@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Módulo 6.2 · Prompts listos | Automatización con IA</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#FACC15',
+        dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+      } } }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-rose-400 { color: #9f1239; }
+    html:not(.dark) .bg-rose-500\/20 { background-color: rgba(225,29,72,0.12); }
+    html:not(.dark) .bg-rose-500\/10 { background-color: rgba(225,29,72,0.08); }
+    html:not(.dark) .border-rose-500\/30 { border-color: rgba(225,29,72,0.25); }
+    html:not(.dark) .hover\:bg-rose-500\/30:hover { background-color: rgba(225,29,72,0.18); }
+    html:not(.dark) .hover\:text-rose-400:hover { color: #9f1239; }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+    html:not(.dark) .codebox { background-color: #f1f5f9; border-color: #cbd5e1; }
+    html:not(.dark) .codebox .mono { color: #0f172a; }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    .codebox { background-color: #0b1220; border: 1px solid #1e293b; }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+  </style>
+<link href="https://inematds.github.io/fae-ai/curso/trilha6/modulo-6-2.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/fae-ai/en/curso/trilha6/modulo-6-2.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/fae-ai/es/curso/trilha6/modulo-6-2.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha6/modulo-6-2.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="../../../en/curso/trilha6/modulo-6-2.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="modulo-6-2.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">ES</a></div>
+<!-- NAVIGATION -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">⚙️</span>
+<span class="font-bold text-lg hidden sm:inline">Automatización con IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Auditoría</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Diseño</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construcción</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Comercial</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-rose-400 bg-rose-500/10" href="index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Práctica</span></a>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-rose-400" href="../../index.html">Inicio</a>
+<span>/</span>
+<a class="hover:text-rose-400" href="index.html">Ruta 6</a>
+<span>/</span>
+<span class="text-rose-400">Módulo 6.2</span>
+</div>
+</nav>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-rose-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-semibold rounded-full mb-4">MÓDULO 6.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">📋 Biblioteca de prompts listos</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">
+        Seis prompts completos, listos para <strong class="text-neutral-300">copiar, pegar y ejecutar</strong>. Cada uno cubre una etapa del ciclo.
+        Todo entre <span class="mono text-rose-400">{{chaves}}</span> es variable: cámbiala por tu caso y estará listo.
+      </p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">6</div><div class="text-xs text-neutral-400">Prompts</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">55</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Práctico</div><div class="text-xs text-neutral-400">Nivel</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Copiar y pegar</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- Como usar a biblioteca -->
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-12">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Cómo usar esta biblioteca</h3>
+<ul class="space-y-2 text-neutral-300 text-sm">
+<li>1. Copia el prompt completo del cuadro de código.</li>
+<li>2. Reemplaza todo <span class="mono text-primary">{{texto_entre_chaves}}</span> según tus datos.</li>
+<li>3. Para la automatización, conserva las instrucciones de formato: garantizan una salida analizable.</li>
+<li>4. Prueba con 3 entradas reales diferentes antes de ponerla en producción.</li>
+</ul>
+</div>
+<!-- PROMPT 1 -->
+<section class="mb-16" id="topico-1">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">🔎 Prompt de auditoría de procesos</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Recibe la descripción de un proceso y devuelve pasos, tiempos y posibles automatizaciones.</p>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<pre class="mono text-sm text-neutral-300 leading-relaxed">Você é um analista de processos especializado em automação com IA.
+
+Processo a auditar (setor: {{setor}}):
+"""
+{{descricao_do_processo}}
+"""
+
+Tarefa:
+1. Quebre o processo em passos numerados (ator + ação).
+2. Para cada passo, estime tempo (min) e classifique:
+   [MANUAL] / [AUTOMATIZÁVEL] / [DECISÃO HUMANA].
+3. Aponte os 3 maiores gargalos.
+4. Liste os passos AUTOMATIZÁVEIS em ordem de impacto.
+
+Responda em tabela markdown + um parágrafo de recomendação final.</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h4 class="font-bold text-blue-400 mb-3">Cómo usar</h4>
+<p class="text-neutral-300 text-sm">Pega la descripción en bruto del proceso (puede ser lo que el cliente te contó en el audio transcrito). Úsala al inicio de la fase de auditoría para ahorrar tiempo.</p>
+</div>
+<div class="bg-rose-500/10 rounded-xl border border-rose-500/30 p-6">
+<h4 class="font-bold text-rose-400 mb-3">Variables por cambiar</h4>
+<ul class="space-y-1 text-neutral-300 text-sm">
+<li><span class="mono text-rose-400">{{setor}}</span> — sector del negocio</li>
+<li><span class="mono text-rose-400">{{descricao_do_processo}}</span> — texto libre del paso a paso actual</li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Papel</div><p class="text-xs text-neutral-400">Define quién «es» la IA</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Tarea numerada</div><p class="text-xs text-neutral-400">Reduce las omisiones</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Etiquetas fijas</div><p class="text-xs text-neutral-400">Salida comparable</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Formato</div><p class="text-xs text-neutral-400">Tabla + recomendación</p></div>
+</div>
+</section>
+<!-- PROMPT 2 -->
+<section class="mb-16" id="topico-2">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">💡 Prompt para identificar oportunidades</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Enumera y clasifica las oportunidades de automatización por esfuerzo × impacto.</p>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<pre class="mono text-sm text-neutral-300 leading-relaxed">Você é um consultor de automação. Dado o contexto do negócio abaixo,
+proponha oportunidades de automação com IA.
+
+Negócio: {{nome_negocio}}
+Setor: {{setor}}
+Tarefas/dores conhecidas:
+{{lista_de_tarefas}}
+
+Para cada oportunidade, devolva:
+- nome curto
+- problema que resolve
+- esforço de build (BAIXO/MÉDIO/ALTO)
+- impacto (BAIXO/MÉDIO/ALTO)
+- "quick win"? (sim/não)
+
+Ordene por (impacto alto + esforço baixo) primeiro.
+No fim, recomende UMA para começar e justifique em 2 linhas.</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h4 class="font-bold text-blue-400 mb-3">Cómo usar</h4>
+<p class="text-neutral-300 text-sm">Ejecútala justo después de la auditoría. La «UNA para empezar» se convierte en tu primer proyecto, por lo general un quick win para demostrar valor.</p>
+</div>
+<div class="bg-rose-500/10 rounded-xl border border-rose-500/30 p-6">
+<h4 class="font-bold text-rose-400 mb-3">Variables por cambiar</h4>
+<ul class="space-y-1 text-neutral-300 text-sm">
+<li><span class="mono text-rose-400">{{nome_negocio}}</span> · <span class="mono text-rose-400">{{setor}}</span></li>
+<li><span class="mono text-rose-400">{{lista_de_tarefas}}</span> — bullets sobre los dolores del ejercicio 6.1</li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Esfuerzo</div><p class="text-xs text-neutral-400">Costo de construir</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Impacto</div><p class="text-xs text-neutral-400">Valor generado</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Quick win</div><p class="text-xs text-neutral-400">Alto impacto, poco esfuerzo</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Ordenamiento</div><p class="text-xs text-neutral-400">Decide el comienzo</p></div>
+</div>
+</section>
+<!-- PROMPT 3 -->
+<section class="mb-16" id="topico-3">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">📐 Prompt para diseñar el blueprint</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Recibe el objetivo y devuelve el trigger, las herramientas, el modelo, la lógica y las acciones.</p>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<pre class="mono text-sm text-neutral-300 leading-relaxed">Você é um arquiteto de automações. Desenhe o blueprint para o objetivo
+abaixo, usando SOMENTE as ferramentas disponíveis.
+
+Objetivo: {{objetivo_da_automacao}}
+Ferramentas disponíveis: {{stack}}     // ex: n8n, WhatsApp API, Sheets
+Restrições: {{restricoes}}             // ex: orçamento, latência, dados sensíveis
+
+Entregue nesta estrutura:
+TRIGGER     : (1 gatilho)
+FERRAMENTAS : (da stack)
+MODELO IA   : (qual e por quê)
+LÓGICA      : (passos numerados, com decisões "se/senão")
+AÇÕES       : (saídas finais)
+FALLBACK    : (o que fazer quando a IA não tiver confiança)
+PONTOS DE FALHA: (3+)
+
+Seja específico e não invente ferramentas fora da stack.</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h4 class="font-bold text-blue-400 mb-3">Cómo usar</h4>
+<p class="text-neutral-300 text-sm">Usa la salida como borrador de blueprint del ejercicio 6.1.4 y refínala a mano. La restricción "solo usa el stack" evita propuestas poco realistas.</p>
+</div>
+<div class="bg-rose-500/10 rounded-xl border border-rose-500/30 p-6">
+<h4 class="font-bold text-rose-400 mb-3">Variables por cambiar</h4>
+<ul class="space-y-1 text-neutral-300 text-sm">
+<li><span class="mono text-rose-400">{{objetivo_da_automacao}}</span></li>
+<li><span class="mono text-rose-400">{{stack}}</span> · <span class="mono text-rose-400">{{restricoes}}</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Stack fija</div><p class="text-xs text-neutral-400">Evita una herramienta poco realista</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Estructura</div><p class="text-xs text-neutral-400">Salida en bloques</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Fallback</div><p class="text-xs text-neutral-400">Plan B obligatorio</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Fallas</div><p class="text-xs text-neutral-400">Anticipa problemas</p></div>
+</div>
+</section>
+<!-- PROMPT 4 -->
+<section class="mb-16" id="topico-4">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">⚙️ Prompt para generar config/lógica de automatización</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Traduce una regla de negocio en texto a la lógica condicional implementable de un nodo.</p>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<pre class="mono text-sm text-neutral-300 leading-relaxed">Você converte regras de negócio em lógica de automação clara.
+
+Regra de negócio:
+"""
+{{regra_em_texto}}
+"""
+
+Campos disponíveis no item: {{campos}}   // ex: valor, status, categoria
+
+Devolva:
+1. A lógica em pseudocódigo (if/else, sem framework específico).
+2. Os campos usados e de onde vêm.
+3. Casos de borda (valores nulos, vazios, fora do esperado) e o que fazer.
+4. Um exemplo de entrada e a saída esperada.
+
+Não use bibliotecas externas. Mantenha simples e legível.</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h4 class="font-bold text-blue-400 mb-3">Cómo usar</h4>
+<p class="text-neutral-300 text-sm">Pega la regla tal como la dice el cliente ("si el pedido supera los R$ 200, dar envío gratis"). La salida se convierte directamente en el nodo de lógica en n8n/Make.</p>
+</div>
+<div class="bg-rose-500/10 rounded-xl border border-rose-500/30 p-6">
+<h4 class="font-bold text-rose-400 mb-3">Variables por cambiar</h4>
+<ul class="space-y-1 text-neutral-300 text-sm">
+<li><span class="mono text-rose-400">{{regra_em_texto}}</span></li>
+<li><span class="mono text-rose-400">{{campos}}</span> — columnas/propiedades del item</li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Pseudocódigo</div><p class="text-xs text-neutral-400">Neutral de framework</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Campos</div><p class="text-xs text-neutral-400">Mapeo explícito</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Bordes</div><p class="text-xs text-neutral-400">Valores nulos y excepciones</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Ejemplo</div><p class="text-xs text-neutral-400">Entrada → salida</p></div>
+</div>
+</section>
+<!-- PROMPT 5 -->
+<section class="mb-16" id="topico-5">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">🧱 Prompt de extracción estructurada (JSON)</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">El prompt más importante para la automatización: extrae campos de texto libre y devuelve <strong class="text-rose-400">JSON válido</strong> con esquema fijo.</p>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<pre class="mono text-sm text-neutral-300 leading-relaxed">Extraia os dados do texto e responda APENAS com um JSON válido,
+sem markdown, sem comentários, exatamente neste schema:
+
+{
+  "cliente": string | null,
+  "itens": [ { "produto": string, "qtd": number } ],
+  "total_estimado": number | null,
+  "urgente": boolean
+}
+
+Regras:
+- Se um campo não existir no texto, use null (ou [] para listas).
+- Não invente valores. qtd é número, não texto.
+- Não escreva nada além do JSON.
+
+Texto:
+"""
+{{texto_de_entrada}}
+"""</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Por qué funciona</h4>
+<ul class="space-y-2 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>"SOLO JSON" evita texto extra que rompe el parseo</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Un schema explícito con tipos reduce las alucinaciones</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>La regla de null garantiza que el campo siempre esté presente</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Errores comunes</h4>
+<ul class="space-y-2 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Olvidar prohibir markdown (viene ```json y se rompe)</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>No indicar el tipo de cada campo</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Confiar sin validar el JSON después</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Consejo práctico</h3>
+<p class="text-neutral-300 text-sm">En el flujo, siempre coloca un <span class="mono text-primary">try/parse</span> después. Si el JSON falla, repite la llamada una vez o envíaselo a una persona — nunca dejes que el flujo siga con datos basura.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Schema</div><p class="text-xs text-neutral-400">Tipos explícitos</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Solo JSON</div><p class="text-xs text-neutral-400">Sin Markdown</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Null</div><p class="text-xs text-neutral-400">Para ausencia</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Validación</div><p class="text-xs text-neutral-400">Parse en el flujo</p></div>
+</div>
+</section>
+<!-- PROMPT 6 -->
+<section class="mb-16" id="topico-6">
+<div class="flex items-center space-x-4 mb-6">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">💼 Prompt para una propuesta comercial</h2>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Crea una propuesta comercial completa a partir del problema, la solución y el ROI.</p>
+<div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
+<pre class="mono text-sm text-neutral-300 leading-relaxed">Você é especialista em propostas de automação. Escreva uma proposta
+de UMA página, tom direto e confiante, em PT-BR.
+
+Cliente: {{cliente}}
+Problema atual: {{problema}}
+Solução proposta: {{solucao}}
+Resultado/ROI: {{roi}}            // ex: economiza 14h/mês, R$ 510/mês
+Preço: setup {{preco_setup}} · mensal {{preco_mensal}}
+Prazo de entrega: {{prazo}}
+
+Estrutura obrigatória:
+1. O problema (na dor do cliente, sem jargão)
+2. A solução (o que muda no dia a dia)
+3. Resultado esperado (ancore no ROI)
+4. Investimento (preço, posicionado como fração do ganho)
+5. Próximo passo (CTA com data e ação clara)
+
+Não exagere promessas. Termine pedindo uma resposta objetiva.</pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h4 class="font-bold text-blue-400 mb-3">Cómo usar</h4>
+<p class="text-neutral-300 text-sm">Aliméntala con los números del ejercicio 6.1.2 (ROI). La IA genera la v1; ajustas el tono para el cliente específico y la envías.</p>
+</div>
+<div class="bg-rose-500/10 rounded-xl border border-rose-500/30 p-6">
+<h4 class="font-bold text-rose-400 mb-3">Variables por cambiar</h4>
+<ul class="space-y-1 text-neutral-300 text-sm">
+<li><span class="mono text-rose-400">{{cliente}}</span> · <span class="mono text-rose-400">{{problema}}</span> · <span class="mono text-rose-400">{{solucao}}</span></li>
+<li><span class="mono text-rose-400">{{roi}}</span> · <span class="mono text-rose-400">{{preco_setup}}</span> · <span class="mono text-rose-400">{{preco_mensal}}</span> · <span class="mono text-rose-400">{{prazo}}</span></li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Tono</div><p class="text-xs text-neutral-400">Directo y seguro</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Estructura</div><p class="text-xs text-neutral-400">5 secciones fijas</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Anclaje</div><p class="text-xs text-neutral-400">Precio × beneficio</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">CTA</div><p class="text-xs text-neutral-400">Fecha + acción</p></div>
+</div>
+</section>
+<!-- RESUMO -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-rose-900/40 via-dark-800 to-dark-800 rounded-xl border border-rose-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📌</span> Resumen del módulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">Un prompt listo para cada etapa del ciclo</strong><span class="text-neutral-400"> - auditar, identificar, diseñar, configurar, extraer y vender.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">Variables entre {{llaves}}</strong><span class="text-neutral-400"> - cámbialo y el prompt estará listo para tu caso.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">El prompt de JSON es lo que conecta la IA con el flujo</strong><span class="text-neutral-400"> - esquema fijo, «solo JSON» y validación siempre.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">El formato de salida es una instrucción, no un detalle</strong><span class="text-neutral-400"> - es lo que hace automatizable la respuesta.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-rose-400 mb-2">Próximo Módulo:</h3>
+<p class="text-neutral-300">6.3 — Skills listas (empaqueta esos prompts en skills reutilizables y con control de versiones)</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-6-1.html">← Módulo anterior</a>
+<a class="flex-1 text-center px-6 py-3 bg-rose-600 text-white rounded-lg font-semibold hover:bg-rose-500 transition-colors" href="modulo-6-3.html">Próximo Módulo →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-8">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>Formación en Automatización Estratégica con IA · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+</footer>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { html.classList.remove('dark'); darkIcon.classList.remove('hidden'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
