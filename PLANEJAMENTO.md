@@ -1,6 +1,6 @@
 # Formação em Automação Estratégica com IA — Planejamento
 
-> **Curso público gratuito do INEMA.CLUB**
+> **Curso público gratuito do ARCKHÉ AI**
 > Baseado na tese "10 Horas para 10 Segundos" (AI Automation Society).
 > Objetivo: capacitar o aluno a **identificar, desenhar e construir automações com IA que economizam tempo e têm valor comercial** — transformar processos manuais demorados em automações rápidas, úteis e vendáveis.
 
@@ -62,6 +62,6 @@ Identificar → Mapear → Desenhar → Construir → Comercializar
 
 ## Publicação
 
-- Repositório: `inematds/fae-ai` (GitHub)
-- GitHub Pages: branch `main`, path `/` → `https://inematds.github.io/fae-ai/`
-- Formato: padrão visual INEMA.CLUB (skill `formato-curso`)
+- Repositório: `linnoff88-dev/fae-ai` (GitHub)
+- GitHub Pages: branch `main`, path `/` → `https://linnoff88-dev.github.io/
+- Formato: padrão visual ARCKHÉ AI (skill `formato-curso`)

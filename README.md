@@ -1,4 +1,4 @@
-﻿# FormaÃ§Ã£o em AutomaÃ§Ã£o EstratÃ©gica com IA
+# FormaÃ§Ã£o em AutomaÃ§Ã£o EstratÃ©gica com IA
 
 <div align="center">
   <img src="capa/logo.svg" alt="Arckhé AI" height="48" />
@@ -6,7 +6,7 @@
 </div>
 
 
-> **Curso pÃºblico gratuito do [INEMA.CLUB](https://inema.club).**
+> **Curso pÃºblico gratuito do [ARCKHÉ AI](https://ARCKHÉ AI).**
 > De **10 horas** para **10 segundos** â€” o diferencial nÃ£o Ã© saber mexer em ferramentas, Ã© saber **o que construir**.
 
 Capacita o aluno a **identificar, desenhar e construir automaÃ§Ãµes com IA que economizam tempo e tÃªm valor comercial**: transformar processos manuais demorados em automaÃ§Ãµes rÃ¡pidas, Ãºteis e vendÃ¡veis.
@@ -30,7 +30,7 @@ Identificar â†’ Mapear â†’ Desenhar â†’ Construir â†’ Comerc
 
 ## Acesso
 
-- **Online:** https://inematds.github.io/fae-ai/
+- **Online:** https://linnoff88-dev.github.io/
 - **Local:** abra `index.html` no navegador.
 
 ## Estrutura
@@ -41,15 +41,15 @@ curso/trilhaN/index.html  # Index da trilha
 curso/trilhaN/modulo-N-M.html  # MÃ³dulos
 ```
 
-ConstruÃ­do no formato visual INEMA.CLUB (dark/light, responsivo). Â© 2026 INEMA.CLUB.
+ConstruÃ­do no formato visual ARCKHÉ AI (dark/light, responsivo). Â© 2026 ARCKHÉ AI.
 
-<!-- inema-backlink:v1 -->
-## Mais no INEMA.CLUB
+<!-- ARCKHÉ-backlink:v1 -->
+## Mais no ARCKHÉ AI
 
-- [Ficha completa deste curso](https://www.inema.club/cursos/134-formacao-em-automacao-estrategica-com-ia/)
-- [Guia: como aprender inteligÃªncia artificial](https://www.inema.club/aprender-inteligencia-artificial/)
-- [Todos os cursos](https://www.inema.club/cursos/)
-<!-- /inema-backlink:v1 -->
+- [Ficha completa deste curso](https://www.ARCKHÉ AI/cursos/134-formacao-em-automacao-estrategica-com-ia/)
+- [Guia: como aprender inteligÃªncia artificial](https://www.ARCKHÉ AI/aprender-inteligencia-artificial/)
+- [Todos os cursos](https://www.ARCKHÉ AI/cursos/)
+<!-- /ARCKHÉ-backlink:v1 -->
 
 ---
 

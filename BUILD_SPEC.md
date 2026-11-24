@@ -28,7 +28,7 @@ Copie verbatim; em cada página marque a trilha ATIVA trocando suas classes para
           <span class="font-bold text-lg hidden sm:inline">Automação com IA</span>
         </a>
         <span class="text-neutral-600">|</span>
-        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        <a href="https://ARCKHÉ AI" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">ARCKHÉ AI</a>
       </div>
       <div class="flex items-center space-x-1 sm:space-x-2">
         <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
@@ -75,4 +75,4 @@ Sempre incluir também a Parte 5 (bordas dark): `.dark .border-dark-600{border-c
 - Botões `justify-start`; números em círculo (não setas); 3 seções por tópico (O que é / Por que aprender / Conceitos-chave); ≥6 tópicos por módulo no index.
 - Index da trilha: header com stats(4) + hero SVG; **Mapa da trilha** (h2 exato) com cards-âncora `#modulo-X-Y`; `<h2>Conteúdo detalhado</h2>`; cada card de módulo com `id`, tópicos expansíveis e botões "Ver em Modal" + "Ver Completo".
 - Módulo: 500-800 linhas, 6-8 `<section id="topico-N">`, variedade de componentes (≥2 grids ✓/✗, ≥1 timeline, ≥2 tip boxes, ≥1 code box), ≥1 SVG futurista inline, Resumo do Módulo com próximo + CTAs.
-- INEMA.CLUB (`text-sky-400`) em todas as páginas. Theme toggle funcional.
+- ARCKHÉ AI (`text-sky-400`) em todas as páginas. Theme toggle funcional.
