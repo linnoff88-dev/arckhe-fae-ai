@@ -110,7 +110,7 @@
 <p class="text-lg text-neutral-400 max-w-3xl">
         Seis desafíos guiados, uno para cada etapa del ciclo de automatización. Cada ejercicio incluye
         <strong class="text-neutral-300">objetivo, paso a paso, criterio de «listo» y una respuesta de ejemplo</strong>.
-        Usa el negocio ficticio <strong class="text-rose-400">"Panadería Pão&amp;Cia"</strong> como hilo conductor, o aplícalo en tu propio cliente.
+        Usa el negocio ficticio <strong class="text-rose-400">"Panadería Pêo&amp;Cia"</strong> como hilo conductor, o aplícalo en tu propio cliente.
       </p>
 <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
 <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">6</div><div class="text-xs text-neutral-400">Ejercicios</div></div>
@@ -123,11 +123,11 @@
 <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 <!-- Briefing do negócio fictício -->
 <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-12">
-<h3 class="text-lg font-semibold text-rose-400 mb-3 flex items-center"><span class="mr-2">🍞</span> Briefing: Panadería Pão&amp;Cia</h3>
+<h3 class="text-lg font-semibold text-rose-400 mb-3 flex items-center"><span class="mr-2">🍞</span> Briefing: Panadería Pêo&amp;Cia</h3>
 <p class="text-neutral-300 mb-3">Panadería de barrio, 12 empleados, 1 dueña (Marta) que se encarga de la administración. Vende en el mostrador y por WhatsApp. Recibe ~40 pedidos al día por WhatsApp, emite facturas manualmente, controla el inventario en una hoja de cálculo y responde las mismas dudas de los clientes todo el día.</p>
 <p class="text-neutral-400 text-sm">Usa este contexto en los seis ejercicios. Cuando haya un número, inventa uno plausible y sé consistente.</p>
 </div>
-<!-- Fluxo de decisão SVG -->
+<!-- Fluxo de decisêo SVG -->
 <div class="rounded-2xl border border-rose-500/30 bg-dark-900/40 p-4 mb-12 overflow-hidden">
 <svg aria-label="Flujo de decisión: ¿vale la pena automatizar esta tarea? Una frecuencia alta y una regla clara indican que conviene automatizar ahora" class="w-full h-auto" font-family="Inter,sans-serif" role="img" viewbox="0 0 1000 220">
 <defs>
@@ -162,7 +162,7 @@
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">1</span>
 <h2 class="text-2xl font-bold">🎯 Busca 3 tareas de 10 horas</h2>
 </div>
-<p class="text-neutral-300 mb-6 leading-relaxed">Tu misión: encontrar, en la Panadería Pão&amp;Cia, <strong class="text-rose-400">tres tareas repetitivas</strong> que suman unas 10 horas por semana y son buenas candidatas a la automatización.</p>
+<p class="text-neutral-300 mb-6 leading-relaxed">Tu misión: encontrar, en la Panadería Pêo&amp;Cia, <strong class="text-rose-400">tres tareas repetitivas</strong> que suman unas 10 horas por semana y son buenas candidatas a la automatización.</p>
 <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-6">
 <h3 class="text-lg font-semibold text-rose-400 mb-2 flex items-center"><span class="mr-2">🎯</span> Objetivo</h3>
 <p class="text-neutral-300">Salir con una lista de 3 tareas, cada una con frecuencia, duración y nivel de dificultad — lista para convertirse en un proyecto.</p>
@@ -289,7 +289,7 @@ Cálculo
 <pre class="mono text-sm text-neutral-300 leading-relaxed">AS-IS (hoje)
   cliente → manda msg no WhatsApp
   Marta   → lê a msg
-  Marta   → identifica o tipo (pedido? dúvida? reclamação?)
+  Marta   → identifica o tipo (pedido? dúvida? reclamaçêo?)
   Marta   → responde manualmente
   Marta   → se for pedido, copia pra planilha   🤖
   Marta   → confirma valor e prazo               🤖
@@ -297,10 +297,10 @@ Cálculo
 TO-BE (automatizado)
   cliente → manda msg no WhatsApp        [trigger]
   IA      → classifica (pedido/dúvida/outro)     🤖
-  decisão → é dúvida comum? --sim--&gt; IA responde da base  🤖
-                            --não--&gt; encaminha p/ Marta
+  decisêo → é dúvida comum? --sim--&gt; IA responde da base  🤖
+                            --nêo--&gt; encaminha p/ Marta
   IA      → se pedido, extrai itens e grava na planilha  🤖
-  IA      → devolve confirmação ao cliente              🤖</pre>
+  IA      → devolve confirmaçêo ao cliente              🤖</pre>
 </div>
 <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
 <h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">✅</span> Criterio de "listo"</h3>
@@ -326,12 +326,12 @@ TO-BE (automatizado)
 </div>
 <h3 class="text-lg font-semibold mb-3">Plantilla de blueprint (completa)</h3>
 <div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
-<pre class="mono text-sm text-neutral-300 leading-relaxed">BLUEPRINT — Atendimento WhatsApp Pão&amp;Cia
+<pre class="mono text-sm text-neutral-300 leading-relaxed">BLUEPRINT — Atendimento WhatsApp Pêo&amp;Cia
   Trigger     : nova mensagem no WhatsApp Business (webhook)
   Ferramentas : n8n · WhatsApp API · Google Sheets · modelo de IA
-  Modelo      : LLM rápido/barato (classificação) + 1 chamada p/ resposta
+  Modelo      : LLM rápido/barato (classificaçêo) + 1 chamada p/ resposta
   Lógica      :
-     1. classificar intenção -&gt; {pedido | duvida | outro}
+     1. classificar intençêo -&gt; {pedido | duvida | outro}
      2. se duvida -&gt; RAG na base de FAQ -&gt; resposta
      3. se pedido -&gt; extrair itens (JSON) -&gt; append na planilha
      4. se confiança &lt; 0.6 -&gt; encaminhar p/ humano
@@ -372,19 +372,19 @@ TO-BE (automatizado)
 <h3 class="text-lg font-semibold mb-3">Seudoflujo (copia y adapta)</h3>
 <div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
 <pre class="mono text-sm text-neutral-300 leading-relaxed">// NÓ 1 — TRIGGER (webhook WhatsApp)
-input = { from: "+55...", text: "quero 2 pães de queijo e 1 café" }
+input = { from: "+55...", text: "quero 2 pêes de queijo e 1 café" }
 
-// NÓ 2 — IA (extração estruturada)
+// NÓ 2 — IA (extraçêo estruturada)
 prompt = `Extraia o pedido como JSON do schema:
 { "itens":[{"produto":string,"qtd":number}], "obs":string|null }
 Responda SÓ o JSON. Texto: ${input.text}`
 ia_out = chamarLLM(prompt)        // -&gt; { "itens":[...], "obs":null }
 pedido = JSON.parse(ia_out)
 
-// NÓ 3 — AÇÃO (gravar + responder)
+// NÓ 3 — AÇêO (gravar + responder)
 appendPlanilha("Pedidos", pedido.itens)
 responderWhatsApp(input.from,
-  `Anotado! ${pedido.itens.length} itens. Confirma? (sim/não)`)</pre>
+  `Anotado! ${pedido.itens.length} itens. Confirma? (sim/nêo)`)</pre>
 </div>
 <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
 <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Consejo práctico</h3>
@@ -415,12 +415,12 @@ responderWhatsApp(input.from,
 <h3 class="text-lg font-semibold mb-3">Plantilla de propuesta (completa)</h3>
 <div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
 <pre class="mono text-sm text-neutral-300 leading-relaxed">PROPOSTA — Atendimento automático no WhatsApp
-Para: Marta · Padaria Pão&amp;Cia
+Para: Marta · Padaria Pêo&amp;Cia
 
 1. O problema
-   ~20 h/mês respondendo as mesmas dúvidas e lançando pedidos à mão.
+   ~20 h/mês respondendo as mesmas dúvidas e lançando pedidos à mêo.
 
-2. A solução
+2. A soluçêo
    Assistente no WhatsApp que classifica, responde dúvidas da base e
    registra pedidos na planilha automaticamente. Você só revê exceções.
 
@@ -429,10 +429,10 @@ Para: Marta · Padaria Pão&amp;Cia
    Economia estimada: R$ 510/mês líquidos · paga em ~5 meses.
 
 4. Investimento
-   Setup: R$ 2.500 (única vez) · Manutenção: R$ 120/mês.
+   Setup: R$ 2.500 (única vez) · Manutençêo: R$ 120/mês.
 
 5. Próximo passo
-   Aprovação até [data] -&gt; entrego rodando em 2 semanas.
+   Aprovaçêo até [data] -&gt; entrego rodando em 2 semanas.
    Responda "topo" para começarmos.</pre>
 </div>
 <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
@@ -458,7 +458,7 @@ Para: Marta · Padaria Pão&amp;Cia
 <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">Cada etapa del ciclo se convirtió en un ejercicio</strong><span class="text-neutral-400"> - identificar, auditar, mapear, diseñar, construir y vender.</span></div></div>
 <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">Todo ejercicio tiene un criterio de «listo»</strong><span class="text-neutral-400"> - sabes cuándo terminó, sin tener que adivinar.</span></div></div>
 <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">Las plantillas son un punto de partida</strong><span class="text-neutral-400"> - copia la estructura, pero cambia los números por los de tu caso real.</span></div></div>
-<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">La Panadería Pão&amp;Cia es práctica</strong><span class="text-neutral-400"> - reházlo todo con un cliente tuyo para afianzarlo.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">La Panadería Pêo&amp;Cia es práctica</strong><span class="text-neutral-400"> - reházlo todo con un cliente tuyo para afianzarlo.</span></div></div>
 </div>
 <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
 <h3 class="font-semibold text-rose-400 mb-2">Próximo Módulo:</h3>

@@ -134,7 +134,7 @@
 </div>
 <p class="text-neutral-300 mb-6 leading-relaxed">Takes a process description and returns steps, timings, and automation candidates.</p>
 <div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
-<pre class="mono text-sm text-neutral-300 leading-relaxed">Você é um analista de processos especializado em automação com IA.
+<pre class="mono text-sm text-neutral-300 leading-relaxed">Você é um analista de processos especializado em automaçêo com IA.
 
 Processo a auditar (setor: {{setor}}):
 """
@@ -142,13 +142,13 @@ Processo a auditar (setor: {{setor}}):
 """
 
 Tarefa:
-1. Quebre o processo em passos numerados (ator + ação).
+1. Quebre o processo em passos numerados (ator + açêo).
 2. Para cada passo, estime tempo (min) e classifique:
-   [MANUAL] / [AUTOMATIZÁVEL] / [DECISÃO HUMANA].
+   [MANUAL] / [AUTOMATIZÁVEL] / [DECISêO HUMANA].
 3. Aponte os 3 maiores gargalos.
 4. Liste os passos AUTOMATIZÁVEIS em ordem de impacto.
 
-Responda em tabela markdown + um parágrafo de recomendação final.</pre>
+Responda em tabela markdown + um parágrafo de recomendaçêo final.</pre>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
 <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
@@ -178,8 +178,8 @@ Responda em tabela markdown + um parágrafo de recomendação final.</pre>
 </div>
 <p class="text-neutral-300 mb-6 leading-relaxed">Lists and ranks automation opportunities by effort × impact.</p>
 <div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
-<pre class="mono text-sm text-neutral-300 leading-relaxed">Você é um consultor de automação. Dado o contexto do negócio abaixo,
-proponha oportunidades de automação com IA.
+<pre class="mono text-sm text-neutral-300 leading-relaxed">Você é um consultor de automaçêo. Dado o contexto do negócio abaixo,
+proponha oportunidades de automaçêo com IA.
 
 Negócio: {{nome_negocio}}
 Setor: {{setor}}
@@ -191,7 +191,7 @@ Para cada oportunidade, devolva:
 - problema que resolve
 - esforço de build (BAIXO/MÉDIO/ALTO)
 - impacto (BAIXO/MÉDIO/ALTO)
-- "quick win"? (sim/não)
+- "quick win"? (sim/nêo)
 
 Ordene por (impacto alto + esforço baixo) primeiro.
 No fim, recomende UMA para começar e justifique em 2 linhas.</pre>
@@ -235,12 +235,12 @@ Entregue nesta estrutura:
 TRIGGER     : (1 gatilho)
 FERRAMENTAS : (da stack)
 MODELO IA   : (qual e por quê)
-LÓGICA      : (passos numerados, com decisões "se/senão")
+LÓGICA      : (passos numerados, com decisões "se/senêo")
 AÇÕES       : (saídas finais)
-FALLBACK    : (o que fazer quando a IA não tiver confiança)
+FALLBACK    : (o que fazer quando a IA nêo tiver confiança)
 PONTOS DE FALHA: (3+)
 
-Seja específico e não invente ferramentas fora da stack.</pre>
+Seja específico e nêo invente ferramentas fora da stack.</pre>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
 <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
@@ -270,7 +270,7 @@ Seja específico e não invente ferramentas fora da stack.</pre>
 </div>
 <p class="text-neutral-300 mb-6 leading-relaxed">Translates a business rule in text into the implementable conditional logic of a node.</p>
 <div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
-<pre class="mono text-sm text-neutral-300 leading-relaxed">Você converte regras de negócio em lógica de automação clara.
+<pre class="mono text-sm text-neutral-300 leading-relaxed">Você converte regras de negócio em lógica de automaçêo clara.
 
 Regra de negócio:
 """
@@ -285,7 +285,7 @@ Devolva:
 3. Casos de borda (valores nulos, vazios, fora do esperado) e o que fazer.
 4. Um exemplo de entrada e a saída esperada.
 
-Não use bibliotecas externas. Mantenha simples e legível.</pre>
+Nêo use bibliotecas externas. Mantenha simples e legível.</pre>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
 <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
@@ -326,9 +326,9 @@ sem markdown, sem comentários, exatamente neste schema:
 }
 
 Regras:
-- Se um campo não existir no texto, use null (ou [] para listas).
-- Não invente valores. qtd é número, não texto.
-- Não escreva nada além do JSON.
+- Se um campo nêo existir no texto, use null (ou [] para listas).
+- Nêo invente valores. qtd é número, nêo texto.
+- Nêo escreva nada além do JSON.
 
 Texto:
 """
@@ -372,24 +372,24 @@ Texto:
 </div>
 <p class="text-neutral-300 mb-6 leading-relaxed">Build a complete sales proposal based on the problem, solution, and ROI.</p>
 <div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
-<pre class="mono text-sm text-neutral-300 leading-relaxed">Você é especialista em propostas de automação. Escreva uma proposta
+<pre class="mono text-sm text-neutral-300 leading-relaxed">Você é especialista em propostas de automaçêo. Escreva uma proposta
 de UMA página, tom direto e confiante, em PT-BR.
 
 Cliente: {{cliente}}
 Problema atual: {{problema}}
-Solução proposta: {{solucao}}
+Soluçêo proposta: {{solucao}}
 Resultado/ROI: {{roi}}            // ex: economiza 14h/mês, R$ 510/mês
 Preço: setup {{preco_setup}} · mensal {{preco_mensal}}
 Prazo de entrega: {{prazo}}
 
 Estrutura obrigatória:
-1. O problema (na dor do cliente, sem jargão)
-2. A solução (o que muda no dia a dia)
+1. O problema (na dor do cliente, sem jargêo)
+2. A soluçêo (o que muda no dia a dia)
 3. Resultado esperado (ancore no ROI)
-4. Investimento (preço, posicionado como fração do ganho)
-5. Próximo passo (CTA com data e ação clara)
+4. Investimento (preço, posicionado como fraçêo do ganho)
+5. Próximo passo (CTA com data e açêo clara)
 
-Não exagere promessas. Termine pedindo uma resposta objetiva.</pre>
+Nêo exagere promessas. Termine pedindo uma resposta objetiva.</pre>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
 <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">

@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Módulo 6.2 · Prompts prontos | Automação com IA</title>
+<title>Módulo 6.2 · Prompts prontos | Automaçêo com IA</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
     tailwind.config = {
@@ -68,7 +68,7 @@
 <div class="flex items-center space-x-4">
 <a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
 <span class="text-2xl">⚙️</span>
-<span class="font-bold text-lg hidden sm:inline">Automação com IA</span>
+<span class="font-bold text-lg hidden sm:inline">Automaçêo com IA</span>
 </a>
 <span class="text-neutral-600">|</span>
 <a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://ARCKHÉ AI" target="_blank">ARCKHÉ AI</a>
@@ -77,7 +77,7 @@
 <a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
 <a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Auditoria</span></a>
 <a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Desenho</span></a>
-<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construção</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construçêo</span></a>
 <a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Comercial</span></a>
 <a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-rose-400 bg-rose-500/10" href="index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Prática</span></a>
 <button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
@@ -122,8 +122,8 @@
 <ul class="space-y-2 text-neutral-300 text-sm">
 <li>1. Copie o prompt inteiro do code box.</li>
 <li>2. Substitua todo <span class="mono text-primary">{{texto_entre_chaves}}</span> pelos seus dados.</li>
-<li>3. Para automação, mantenha as instruções de formato — elas garantem saída parseável.</li>
-<li>4. Teste com 3 entradas reais diferentes antes de colocar em produção.</li>
+<li>3. Para automaçêo, mantenha as instruções de formato — elas garantem saída parseável.</li>
+<li>4. Teste com 3 entradas reais diferentes antes de colocar em produçêo.</li>
 </ul>
 </div>
 <!-- PROMPT 1 -->
@@ -132,9 +132,9 @@
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">1</span>
 <h2 class="text-2xl font-bold">🔎 Prompt de auditoria de processos</h2>
 </div>
-<p class="text-neutral-300 mb-6 leading-relaxed">Recebe a descrição de um processo e devolve passos, tempos e candidatos a automação.</p>
+<p class="text-neutral-300 mb-6 leading-relaxed">Recebe a descriçêo de um processo e devolve passos, tempos e candidatos a automaçêo.</p>
 <div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
-<pre class="mono text-sm text-neutral-300 leading-relaxed">Você é um analista de processos especializado em automação com IA.
+<pre class="mono text-sm text-neutral-300 leading-relaxed">Você é um analista de processos especializado em automaçêo com IA.
 
 Processo a auditar (setor: {{setor}}):
 """
@@ -142,18 +142,18 @@ Processo a auditar (setor: {{setor}}):
 """
 
 Tarefa:
-1. Quebre o processo em passos numerados (ator + ação).
+1. Quebre o processo em passos numerados (ator + açêo).
 2. Para cada passo, estime tempo (min) e classifique:
-   [MANUAL] / [AUTOMATIZÁVEL] / [DECISÃO HUMANA].
+   [MANUAL] / [AUTOMATIZÁVEL] / [DECISêO HUMANA].
 3. Aponte os 3 maiores gargalos.
 4. Liste os passos AUTOMATIZÁVEIS em ordem de impacto.
 
-Responda em tabela markdown + um parágrafo de recomendação final.</pre>
+Responda em tabela markdown + um parágrafo de recomendaçêo final.</pre>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
 <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
 <h4 class="font-bold text-blue-400 mb-3">Como usar</h4>
-<p class="text-neutral-300 text-sm">Cole a descrição crua do processo (pode ser o que o cliente te contou no áudio transcrito). Use no início da fase de auditoria para ganhar tempo.</p>
+<p class="text-neutral-300 text-sm">Cole a descriçêo crua do processo (pode ser o que o cliente te contou no áudio transcrito). Use no início da fase de auditoria para ganhar tempo.</p>
 </div>
 <div class="bg-rose-500/10 rounded-xl border border-rose-500/30 p-6">
 <h4 class="font-bold text-rose-400 mb-3">Variáveis a trocar</h4>
@@ -165,21 +165,21 @@ Responda em tabela markdown + um parágrafo de recomendação final.</pre>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Papel</div><p class="text-xs text-neutral-400">Define quem a IA "é"</p></div>
-<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Tarefa numerada</div><p class="text-xs text-neutral-400">Reduz omissão</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Tarefa numerada</div><p class="text-xs text-neutral-400">Reduz omissêo</p></div>
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Rótulos fixos</div><p class="text-xs text-neutral-400">Saída comparável</p></div>
-<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Formato</div><p class="text-xs text-neutral-400">Tabela + recomendação</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Formato</div><p class="text-xs text-neutral-400">Tabela + recomendaçêo</p></div>
 </div>
 </section>
 <!-- PROMPT 2 -->
 <section class="mb-16" id="topico-2">
 <div class="flex items-center space-x-4 mb-6">
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">2</span>
-<h2 class="text-2xl font-bold">💡 Prompt de identificação de oportunidades</h2>
+<h2 class="text-2xl font-bold">💡 Prompt de identificaçêo de oportunidades</h2>
 </div>
-<p class="text-neutral-300 mb-6 leading-relaxed">Lista e ranqueia oportunidades de automação por esforço × impacto.</p>
+<p class="text-neutral-300 mb-6 leading-relaxed">Lista e ranqueia oportunidades de automaçêo por esforço × impacto.</p>
 <div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
-<pre class="mono text-sm text-neutral-300 leading-relaxed">Você é um consultor de automação. Dado o contexto do negócio abaixo,
-proponha oportunidades de automação com IA.
+<pre class="mono text-sm text-neutral-300 leading-relaxed">Você é um consultor de automaçêo. Dado o contexto do negócio abaixo,
+proponha oportunidades de automaçêo com IA.
 
 Negócio: {{nome_negocio}}
 Setor: {{setor}}
@@ -191,7 +191,7 @@ Para cada oportunidade, devolva:
 - problema que resolve
 - esforço de build (BAIXO/MÉDIO/ALTO)
 - impacto (BAIXO/MÉDIO/ALTO)
-- "quick win"? (sim/não)
+- "quick win"? (sim/nêo)
 
 Ordene por (impacto alto + esforço baixo) primeiro.
 No fim, recomende UMA para começar e justifique em 2 linhas.</pre>
@@ -213,7 +213,7 @@ No fim, recomende UMA para começar e justifique em 2 linhas.</pre>
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Esforço</div><p class="text-xs text-neutral-400">Custo de construir</p></div>
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Impacto</div><p class="text-xs text-neutral-400">Valor gerado</p></div>
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Quick win</div><p class="text-xs text-neutral-400">Alto impacto, baixo esforço</p></div>
-<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Ordenação</div><p class="text-xs text-neutral-400">Decide o começo</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Ordenaçêo</div><p class="text-xs text-neutral-400">Decide o começo</p></div>
 </div>
 </section>
 <!-- PROMPT 3 -->
@@ -235,17 +235,17 @@ Entregue nesta estrutura:
 TRIGGER     : (1 gatilho)
 FERRAMENTAS : (da stack)
 MODELO IA   : (qual e por quê)
-LÓGICA      : (passos numerados, com decisões "se/senão")
+LÓGICA      : (passos numerados, com decisões "se/senêo")
 AÇÕES       : (saídas finais)
-FALLBACK    : (o que fazer quando a IA não tiver confiança)
+FALLBACK    : (o que fazer quando a IA nêo tiver confiança)
 PONTOS DE FALHA: (3+)
 
-Seja específico e não invente ferramentas fora da stack.</pre>
+Seja específico e nêo invente ferramentas fora da stack.</pre>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
 <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
 <h4 class="font-bold text-blue-400 mb-3">Como usar</h4>
-<p class="text-neutral-300 text-sm">Use a saída como rascunho de blueprint do exercício 6.1.4 e refine à mão. A restrição "só use a stack" evita propostas irreais.</p>
+<p class="text-neutral-300 text-sm">Use a saída como rascunho de blueprint do exercício 6.1.4 e refine à mêo. A restriçêo "só use a stack" evita propostas irreais.</p>
 </div>
 <div class="bg-rose-500/10 rounded-xl border border-rose-500/30 p-6">
 <h4 class="font-bold text-rose-400 mb-3">Variáveis a trocar</h4>
@@ -266,11 +266,11 @@ Seja específico e não invente ferramentas fora da stack.</pre>
 <section class="mb-16" id="topico-4">
 <div class="flex items-center space-x-4 mb-6">
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">4</span>
-<h2 class="text-2xl font-bold">⚙️ Prompt para gerar config/lógica de automação</h2>
+<h2 class="text-2xl font-bold">⚙️ Prompt para gerar config/lógica de automaçêo</h2>
 </div>
 <p class="text-neutral-300 mb-6 leading-relaxed">Traduz uma regra de negócio em texto para a lógica condicional implementável de um nó.</p>
 <div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
-<pre class="mono text-sm text-neutral-300 leading-relaxed">Você converte regras de negócio em lógica de automação clara.
+<pre class="mono text-sm text-neutral-300 leading-relaxed">Você converte regras de negócio em lógica de automaçêo clara.
 
 Regra de negócio:
 """
@@ -285,7 +285,7 @@ Devolva:
 3. Casos de borda (valores nulos, vazios, fora do esperado) e o que fazer.
 4. Um exemplo de entrada e a saída esperada.
 
-Não use bibliotecas externas. Mantenha simples e legível.</pre>
+Nêo use bibliotecas externas. Mantenha simples e legível.</pre>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
 <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
@@ -311,9 +311,9 @@ Não use bibliotecas externas. Mantenha simples e legível.</pre>
 <section class="mb-16" id="topico-5">
 <div class="flex items-center space-x-4 mb-6">
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">5</span>
-<h2 class="text-2xl font-bold">🧱 Prompt de extração estruturada (JSON)</h2>
+<h2 class="text-2xl font-bold">🧱 Prompt de extraçêo estruturada (JSON)</h2>
 </div>
-<p class="text-neutral-300 mb-6 leading-relaxed">O prompt mais importante para automação: extrai campos de texto livre e devolve <strong class="text-rose-400">JSON válido</strong> com schema fixo.</p>
+<p class="text-neutral-300 mb-6 leading-relaxed">O prompt mais importante para automaçêo: extrai campos de texto livre e devolve <strong class="text-rose-400">JSON válido</strong> com schema fixo.</p>
 <div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
 <pre class="mono text-sm text-neutral-300 leading-relaxed">Extraia os dados do texto e responda APENAS com um JSON válido,
 sem markdown, sem comentários, exatamente neste schema:
@@ -326,9 +326,9 @@ sem markdown, sem comentários, exatamente neste schema:
 }
 
 Regras:
-- Se um campo não existir no texto, use null (ou [] para listas).
-- Não invente valores. qtd é número, não texto.
-- Não escreva nada além do JSON.
+- Se um campo nêo existir no texto, use null (ou [] para listas).
+- Nêo invente valores. qtd é número, nêo texto.
+- Nêo escreva nada além do JSON.
 
 Texto:
 """
@@ -340,7 +340,7 @@ Texto:
 <h4 class="font-bold text-emerald-400 mb-4">✓ Por que funciona</h4>
 <ul class="space-y-2 text-neutral-300 text-sm">
 <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>"APENAS JSON" evita texto extra que quebra o parse</span></li>
-<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Schema explícito com tipos reduz alucinação</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Schema explícito com tipos reduz alucinaçêo</span></li>
 <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Regra de null garante campo sempre presente</span></li>
 </ul>
 </div>
@@ -348,7 +348,7 @@ Texto:
 <h4 class="font-bold text-red-400 mb-4">✗ Erros comuns</h4>
 <ul class="space-y-2 text-neutral-300 text-sm">
 <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Esquecer de proibir markdown (vem ```json e quebra)</span></li>
-<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Não dizer o tipo de cada campo</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Nêo dizer o tipo de cada campo</span></li>
 <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Confiar sem validar o JSON depois</span></li>
 </ul>
 </div>
@@ -361,7 +361,7 @@ Texto:
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Schema</div><p class="text-xs text-neutral-400">Tipos explícitos</p></div>
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Só JSON</div><p class="text-xs text-neutral-400">Sem markdown</p></div>
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Null</div><p class="text-xs text-neutral-400">Para ausente</p></div>
-<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Validação</div><p class="text-xs text-neutral-400">Parse no fluxo</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Validaçêo</div><p class="text-xs text-neutral-400">Parse no fluxo</p></div>
 </div>
 </section>
 <!-- PROMPT 6 -->
@@ -370,26 +370,26 @@ Texto:
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">6</span>
 <h2 class="text-2xl font-bold">💼 Prompt de proposta comercial</h2>
 </div>
-<p class="text-neutral-300 mb-6 leading-relaxed">Monta uma proposta comercial completa a partir do problema, da solução e do ROI.</p>
+<p class="text-neutral-300 mb-6 leading-relaxed">Monta uma proposta comercial completa a partir do problema, da soluçêo e do ROI.</p>
 <div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
-<pre class="mono text-sm text-neutral-300 leading-relaxed">Você é especialista em propostas de automação. Escreva uma proposta
+<pre class="mono text-sm text-neutral-300 leading-relaxed">Você é especialista em propostas de automaçêo. Escreva uma proposta
 de UMA página, tom direto e confiante, em PT-BR.
 
 Cliente: {{cliente}}
 Problema atual: {{problema}}
-Solução proposta: {{solucao}}
+Soluçêo proposta: {{solucao}}
 Resultado/ROI: {{roi}}            // ex: economiza 14h/mês, R$ 510/mês
 Preço: setup {{preco_setup}} · mensal {{preco_mensal}}
 Prazo de entrega: {{prazo}}
 
 Estrutura obrigatória:
-1. O problema (na dor do cliente, sem jargão)
-2. A solução (o que muda no dia a dia)
+1. O problema (na dor do cliente, sem jargêo)
+2. A soluçêo (o que muda no dia a dia)
 3. Resultado esperado (ancore no ROI)
-4. Investimento (preço, posicionado como fração do ganho)
-5. Próximo passo (CTA com data e ação clara)
+4. Investimento (preço, posicionado como fraçêo do ganho)
+5. Próximo passo (CTA com data e açêo clara)
 
-Não exagere promessas. Termine pedindo uma resposta objetiva.</pre>
+Nêo exagere promessas. Termine pedindo uma resposta objetiva.</pre>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
 <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
@@ -408,7 +408,7 @@ Não exagere promessas. Termine pedindo uma resposta objetiva.</pre>
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Tom</div><p class="text-xs text-neutral-400">Direto e confiante</p></div>
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Estrutura</div><p class="text-xs text-neutral-400">5 seções fixas</p></div>
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">Ancoragem</div><p class="text-xs text-neutral-400">Preço × ganho</p></div>
-<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">CTA</div><p class="text-xs text-neutral-400">Data + ação</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-rose-400 font-bold text-sm mb-1">CTA</div><p class="text-xs text-neutral-400">Data + açêo</p></div>
 </div>
 </section>
 <!-- RESUMO -->
@@ -418,8 +418,8 @@ Não exagere promessas. Termine pedindo uma resposta objetiva.</pre>
 <div class="space-y-4 mb-8">
 <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">Um prompt pronto por etapa do ciclo</strong><span class="text-neutral-400"> - auditar, identificar, desenhar, configurar, extrair e vender.</span></div></div>
 <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">Variáveis em {{chaves}}</strong><span class="text-neutral-400"> - troque e o prompt está pronto para o seu caso.</span></div></div>
-<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">O prompt de JSON é o que liga IA ao fluxo</strong><span class="text-neutral-400"> - schema fixo, "só JSON" e validação sempre.</span></div></div>
-<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">Formato de saída é instrução, não detalhe</strong><span class="text-neutral-400"> - é o que torna a resposta automatizável.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">O prompt de JSON é o que liga IA ao fluxo</strong><span class="text-neutral-400"> - schema fixo, "só JSON" e validaçêo sempre.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-neutral-100">Formato de saída é instruçêo, nêo detalhe</strong><span class="text-neutral-400"> - é o que torna a resposta automatizável.</span></div></div>
 </div>
 <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
 <h3 class="font-semibold text-rose-400 mb-2">Próximo Módulo:</h3>
@@ -434,7 +434,7 @@ Não exagere promessas. Termine pedindo uma resposta objetiva.</pre>
 </main>
 <footer class="border-t border-dark-600 py-8 mt-8">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
-<p>Formação em Automação Estratégica com IA · <a class="text-sky-400 hover:text-sky-300" href="https://ARCKHÉ AI" target="_blank">ARCKHÉ AI</a> · 2026</p>
+<p>Formaçêo em Automaçêo Estratégica com IA · <a class="text-sky-400 hover:text-sky-300" href="https://ARCKHÉ AI" target="_blank">ARCKHÉ AI</a> · 2026</p>
 </div>
 </footer>
 <script>

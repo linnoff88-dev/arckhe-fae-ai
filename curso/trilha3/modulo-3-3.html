@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Módulo 3.3 · Desenho de prompts e lógica de decisão | Automação com IA</title>
-<meta content="Prompt como especificação, estrutura confiável, saída JSON e validação, guardrails, ramificação IF/switch a partir da IA e o ciclo de testar e iterar." name="description"/>
+<title>Módulo 3.3 · Desenho de prompts e lógica de decisêo | Automaçêo com IA</title>
+<meta content="Prompt como especificaçêo, estrutura confiável, saída JSON e validaçêo, guardrails, ramificaçêo IF/switch a partir da IA e o ciclo de testar e iterar." name="description"/>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
     tailwind.config = {
@@ -71,7 +71,7 @@
 <div class="flex items-center space-x-4">
 <a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
 <span class="text-2xl">⚙️</span>
-<span class="font-bold text-lg hidden sm:inline">Automação com IA</span>
+<span class="font-bold text-lg hidden sm:inline">Automaçêo com IA</span>
 </a>
 <span class="text-neutral-600">|</span>
 <a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://ARCKHÉ AI" target="_blank">ARCKHÉ AI</a>
@@ -80,7 +80,7 @@
 <a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
 <a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Auditoria</span></a>
 <a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10" href="index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Desenho</span></a>
-<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construção</span></a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construçêo</span></a>
 <a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors" href="../trilha5/index.html"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Comercial</span></a>
 <a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors" href="../trilha6/index.html"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Prática</span></a>
 <button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
@@ -105,10 +105,10 @@
 <header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MÓDULO 3.3</span>
-<h1 class="text-3xl sm:text-4xl font-bold mb-4">🎯 Desenho de prompts e lógica de decisão</h1>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🎯 Desenho de prompts e lógica de decisêo</h1>
 <p class="text-lg text-neutral-400 max-w-3xl">
-        O prompt é o <strong class="text-neutral-300">cérebro</strong> da automação com IA — e, como não há humano para corrigir
-        em tempo real, ele precisa estar certo de antemão. Aqui você desenha prompts como especificação, força saída em JSON
+        O prompt é o <strong class="text-neutral-300">cérebro</strong> da automaçêo com IA — e, como nêo há humano para corrigir
+        em tempo real, ele precisa estar certo de antemêo. Aqui você desenha prompts como especificaçêo, força saída em JSON
         validável, protege com guardrails, ramifica o fluxo a partir da IA e itera com testes até confiar.
       </p>
 <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
@@ -124,34 +124,34 @@
 <section class="mb-16" id="topico-1">
 <div class="flex items-center space-x-4 mb-6">
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span>
-<h2 class="text-2xl font-bold">📝 Prompt como especificação</h2>
+<h2 class="text-2xl font-bold">📝 Prompt como especificaçêo</h2>
 </div>
 <p class="text-neutral-300 mb-6 leading-relaxed">
-        Na automação, o prompt não é uma conversa — é <strong class="text-purple-400">código em linguagem natural</strong>.
-        Ele vai rodar sozinho mil vezes, sem ninguém para corrigir a IA em tempo real. Por isso precisa ser uma especificação:
+        Na automaçêo, o prompt nêo é uma conversa — é <strong class="text-purple-400">código em linguagem natural</strong>.
+        Ele vai rodar sozinho mil vezes, sem ninguém para corrigir a IA em tempo real. Por isso precisa ser uma especificaçêo:
         instruções precisas, sem ambiguidade, que definem exatamente o comportamento esperado.
       </p>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
 <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
-<h4 class="font-bold text-emerald-400 mb-4">✓ Prompt de especificação</h4>
+<h4 class="font-bold text-emerald-400 mb-4">✓ Prompt de especificaçêo</h4>
 <ul class="space-y-3 text-neutral-300">
 <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Define papel, tarefa e formato exato de saída.</span></li>
-<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Cobre os casos de borda ("se não houver dados, retorne X").</span></li>
-<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Comporta-se igual a cada execução.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Cobre os casos de borda ("se nêo houver dados, retorne X").</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Comporta-se igual a cada execuçêo.</span></li>
 </ul>
 </div>
 <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
 <h4 class="font-bold text-red-400 mb-4">✗ Prompt de conversa</h4>
 <ul class="space-y-3 text-neutral-300">
 <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>"Me ajuda a analisar isso aqui" — vago, depende de contexto.</span></li>
-<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Não diz o que fazer quando algo foge do esperado.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Nêo diz o que fazer quando algo foge do esperado.</span></li>
 <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Dá respostas diferentes a cada rodada.</span></li>
 </ul>
 </div>
 </div>
 <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
 <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica prática</h3>
-<p class="text-neutral-300">Antes de escrever o prompt, pergunte: <strong>se eu desse essa instrução a um funcionário novo, ele conseguiria executar sem me perguntar nada?</strong> Se a resposta é não, o prompt ainda tem buracos.</p>
+<p class="text-neutral-300">Antes de escrever o prompt, pergunte: <strong>se eu desse essa instruçêo a um funcionário novo, ele conseguiria executar sem me perguntar nada?</strong> Se a resposta é nêo, o prompt ainda tem buracos.</p>
 </div>
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Código</div><p class="text-sm text-neutral-400">Roda sozinho mil vezes.</p></div>
@@ -170,7 +170,7 @@
         Um esqueleto fixo torna o comportamento previsível: <strong class="text-purple-400">papel</strong> (quem a IA é),
         <strong class="text-purple-400">contexto</strong> (o que ela precisa saber), <strong class="text-purple-400">tarefa</strong>
         (o que fazer), <strong class="text-purple-400">formato de saída</strong> (como responder) e <strong class="text-purple-400">regras</strong>
-        (o que respeitar). Abaixo, o mesmo padrão aplicado a um classificador de pedidos.
+        (o que respeitar). Abaixo, o mesmo padrêo aplicado a um classificador de pedidos.
       </p>
 <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
 <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🧾</span> Exemplo de prompt estruturado</h3>
@@ -189,7 +189,7 @@
 <div class="text-neutral-300">ou depois, com as chaves: categoria, prioridade,</div>
 <div class="text-neutral-300">confianca, justificativa.</div>
 <div class="text-purple-400 mt-3"># REGRAS</div>
-<div class="text-neutral-300">- Se não der para classificar, use confianca &lt; 0.5.</div>
+<div class="text-neutral-300">- Se nêo der para classificar, use confianca &lt; 0.5.</div>
 <div class="text-neutral-300">- Nunca invente uma categoria fora da lista.</div>
 <div class="text-purple-400 mt-3"># MENSAGEM</div>
 <div class="text-neutral-300">{{ mensagem_do_cliente }}</div>
@@ -198,8 +198,8 @@
 <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
 <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📐</span> Por que seções nomeadas funcionam</h3>
 <ul class="space-y-2 text-neutral-300">
-<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>A IA separa instrução (regras) de dado (a mensagem do cliente) sem confundir.</span></li>
-<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Você revisa e versiona cada seção isoladamente.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>A IA separa instruçêo (regras) de dado (a mensagem do cliente) sem confundir.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Você revisa e versiona cada seçêo isoladamente.</span></li>
 <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Vira template: o mesmo esqueleto serve para qualquer classificador.</span></li>
 </ul>
 </div>
@@ -214,12 +214,12 @@
 <section class="mb-16" id="topico-3">
 <div class="flex items-center space-x-4 mb-6">
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span>
-<h2 class="text-2xl font-bold">🧾 Saída estruturada (JSON) e validação</h2>
+<h2 class="text-2xl font-bold">🧾 Saída estruturada (JSON) e validaçêo</h2>
 </div>
 <p class="text-neutral-300 mb-6 leading-relaxed">
-        Texto livre quebra a automação: o passo seguinte não sabe onde está cada informação. Forçar
+        Texto livre quebra a automaçêo: o passo seguinte nêo sabe onde está cada informaçêo. Forçar
         <strong class="text-purple-400">JSON com campos fixos</strong> e <strong class="text-purple-400">validar</strong> a resposta
-        antes de usá-la é o que torna a saída da IA confiável o suficiente para alimentar uma ação automática.
+        antes de usá-la é o que torna a saída da IA confiável o suficiente para alimentar uma açêo automática.
       </p>
 <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
 <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">📤</span> Saída JSON esperada</h3>
@@ -233,20 +233,20 @@
 </div>
 </div>
 <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
-<h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">✅</span> Validação antes de usar (pseudocódigo)</h3>
+<h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">✅</span> Validaçêo antes de usar (pseudocódigo)</h3>
 <div class="font-mono text-sm bg-dark-900 rounded-lg p-4 border border-dark-600 overflow-x-auto leading-relaxed">
 <div class="text-neutral-500"># 1. é JSON válido?</div>
 <div class="text-neutral-300">dados = parse_json(saida_ia)  <span class="text-neutral-500"># falhou → repetir/escalar</span></div>
 <div class="text-neutral-500 mt-2"># 2. tem todos os campos obrigatórios?</div>
 <div class="text-neutral-300">exigir(dados, [categoria, prioridade, confianca])</div>
-<div class="text-neutral-500 mt-2"># 3. valores estão na lista permitida?</div>
-<div class="text-neutral-300">se dados.categoria não em CATEGORIAS: rejeitar</div>
-<div class="text-neutral-500 mt-2"># 4. só então segue para a decisão</div>
+<div class="text-neutral-500 mt-2"># 3. valores estêo na lista permitida?</div>
+<div class="text-neutral-300">se dados.categoria nêo em CATEGORIAS: rejeitar</div>
+<div class="text-neutral-500 mt-2"># 4. só entêo segue para a decisêo</div>
 </div>
 </div>
 <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
-<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Atenção</h3>
-<p class="text-neutral-300">Nunca confie cegamente na saída da IA. Se o JSON vier <strong>malformado</strong> ou com uma categoria inventada, a validação deve <strong>rejeitar e repetir</strong> (ou escalar) — jamais deixar um valor inválido seguir para uma ação automática.</p>
+<h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Atençêo</h3>
+<p class="text-neutral-300">Nunca confie cegamente na saída da IA. Se o JSON vier <strong>malformado</strong> ou com uma categoria inventada, a validaçêo deve <strong>rejeitar e repetir</strong> (ou escalar) — jamais deixar um valor inválido seguir para uma açêo automática.</p>
 </div>
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">JSON</div><p class="text-sm text-neutral-400">Campos fixos e nomeados.</p></div>
@@ -262,45 +262,45 @@
 <h2 class="text-2xl font-bold">🚧 Guardrails e fallback</h2>
 </div>
 <p class="text-neutral-300 mb-6 leading-relaxed">
-        A IA erra e alucina. <strong class="text-purple-400">Guardrails</strong> são os limites — o que ela não pode fazer, o que
-        a validação rejeita. <strong class="text-purple-400">Fallback</strong> é o que acontece quando ela não tem certeza: pedir
-        confirmação, escalar para um humano ou usar um valor padrão seguro. Juntos, impedem que um erro vire uma ação irreversível.
+        A IA erra e alucina. <strong class="text-purple-400">Guardrails</strong> sêo os limites — o que ela nêo pode fazer, o que
+        a validaçêo rejeita. <strong class="text-purple-400">Fallback</strong> é o que acontece quando ela nêo tem certeza: pedir
+        confirmaçêo, escalar para um humano ou usar um valor padrêo seguro. Juntos, impedem que um erro vire uma açêo irreversível.
       </p>
 <div class="space-y-6 mb-6">
 <div class="flex items-start space-x-4">
 <div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">1</span></div>
-<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-neutral-100 mb-2">Guardrail no prompt</h4><p class="text-neutral-300 text-sm">Instruções explícitas do que nunca fazer: não inventar categorias, não tomar decisões fora do escopo, marcar confiança baixa quando incerto.</p></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-neutral-100 mb-2">Guardrail no prompt</h4><p class="text-neutral-300 text-sm">Instruções explícitas do que nunca fazer: nêo inventar categorias, nêo tomar decisões fora do escopo, marcar confiança baixa quando incerto.</p></div>
 </div>
 <div class="flex items-start space-x-4">
 <div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">2</span></div>
-<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-neutral-100 mb-2">Guardrail na validação</h4><p class="text-neutral-300 text-sm">Checagem programática que rejeita saídas fora do formato ou da lista de valores — a IA propõe, o código verifica.</p></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-neutral-100 mb-2">Guardrail na validaçêo</h4><p class="text-neutral-300 text-sm">Checagem programática que rejeita saídas fora do formato ou da lista de valores — a IA propõe, o código verifica.</p></div>
 </div>
 <div class="flex items-start space-x-4">
 <div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">3</span></div>
-<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-neutral-100 mb-2">Fallback por confiança</h4><p class="text-neutral-300 text-sm">Quando a confiança vem abaixo de um limite (ex.: 0.6), o fluxo desvia para revisão humana em vez de agir sozinho.</p></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600"><h4 class="font-semibold text-neutral-100 mb-2">Fallback por confiança</h4><p class="text-neutral-300 text-sm">Quando a confiança vem abaixo de um limite (ex.: 0.6), o fluxo desvia para revisêo humana em vez de agir sozinho.</p></div>
 </div>
 </div>
 <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
 <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica prática</h3>
-<p class="text-neutral-300">Peça à IA um campo <strong>confianca</strong> em toda saída e use-o como gatilho de fallback. É o jeito mais simples de transformar "a IA não tem certeza" em uma decisão concreta do fluxo: agir sozinho só acima do limite, escalar abaixo.</p>
+<p class="text-neutral-300">Peça à IA um campo <strong>confianca</strong> em toda saída e use-o como gatilho de fallback. É o jeito mais simples de transformar "a IA nêo tem certeza" em uma decisêo concreta do fluxo: agir sozinho só acima do limite, escalar abaixo.</p>
 </div>
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Limitar</div><p class="text-sm text-neutral-400">O que a IA não pode fazer.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Limitar</div><p class="text-sm text-neutral-400">O que a IA nêo pode fazer.</p></div>
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Confiança</div><p class="text-sm text-neutral-400">Campo que dispara fallback.</p></div>
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Escalar</div><p class="text-sm text-neutral-400">Humano quando incerto.</p></div>
-<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Seguro</div><p class="text-sm text-neutral-400">Erro não vira ação irreversível.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Seguro</div><p class="text-sm text-neutral-400">Erro nêo vira açêo irreversível.</p></div>
 </div>
 </section>
 <!-- TOPICO 5 -->
 <section class="mb-16" id="topico-5">
 <div class="flex items-center space-x-4 mb-6">
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span>
-<h2 class="text-2xl font-bold">🔀 Lógica de ramificação a partir da IA</h2>
+<h2 class="text-2xl font-bold">🔀 Lógica de ramificaçêo a partir da IA</h2>
 </div>
 <p class="text-neutral-300 mb-6 leading-relaxed">
         É aqui que a IA deixa de ser enfeite e vira o cérebro: um campo categórico da saída JSON (ex.:
         <strong class="text-purple-400">categoria</strong> ou <strong class="text-purple-400">prioridade</strong>) vira a chave de um
-        <strong class="text-neutral-100">IF/switch</strong> no fluxo, roteando cada caso para uma ação diferente. A IA classifica,
+        <strong class="text-neutral-100">IF/switch</strong> no fluxo, roteando cada caso para uma açêo diferente. A IA classifica,
         o fluxo executa.
       </p>
 <div class="rounded-2xl border border-purple-500/30 bg-dark-900/40 p-3 sm:p-4 mb-8 overflow-hidden">
@@ -326,23 +326,23 @@
 <g font-family="Inter,sans-serif" font-size="13" font-weight="600">
 <g><rect fill="#0e1b26" height="40" rx="10" stroke="#38bdf8" stroke-width="2" width="200" x="602" y="20"></rect><text fill="#bfe6ff" x="622" y="45">compra → criar pedido</text></g>
 <g><rect fill="#0e1b26" height="40" rx="10" stroke="#38bdf8" stroke-width="2" width="200" x="602" y="107"></rect><text fill="#bfe6ff" x="622" y="132">suporte → abrir ticket</text></g>
-<g><rect fill="#1a1230" height="40" rx="10" stroke="#c084fc" stroke-width="2" width="200" x="602" y="194"></rect><text fill="#d8b4fe" x="622" y="219">reclamação → escalar</text></g>
+<g><rect fill="#1a1230" height="40" rx="10" stroke="#c084fc" stroke-width="2" width="200" x="602" y="194"></rect><text fill="#d8b4fe" x="622" y="219">reclamaçêo → escalar</text></g>
 </g>
 <text fill="#64748b" font-size="11" x="30" y="225">ilustrativo — a IA decide, o fluxo ramifica</text>
 </svg>
 </div>
 <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
-<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📐</span> Regras de uma ramificação saudável</h3>
+<h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📐</span> Regras de uma ramificaçêo saudável</h3>
 <ul class="space-y-2 text-neutral-300">
 <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Use um campo <strong>categórico</strong> (lista fechada) como chave — nunca texto livre.</span></li>
-<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Tenha sempre um <strong>ramo padrão</strong> para o caso que não casa com nenhuma opção.</span></li>
+<li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Tenha sempre um <strong>ramo padrêo</strong> para o caso que nêo casa com nenhuma opçêo.</span></li>
 <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Combine com confiança: categoria certa + confiança baixa ainda pode escalar.</span></li>
 </ul>
 </div>
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">IA decide</div><p class="text-sm text-neutral-400">Fluxo executa.</p></div>
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Chave</div><p class="text-sm text-neutral-400">Campo categórico fechado.</p></div>
-<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Padrão</div><p class="text-sm text-neutral-400">Ramo para o resto.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Padrêo</div><p class="text-sm text-neutral-400">Ramo para o resto.</p></div>
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Combinar</div><p class="text-sm text-neutral-400">Categoria + confiança.</p></div>
 </div>
 </section>
@@ -355,7 +355,7 @@
 <p class="text-neutral-300 mb-6 leading-relaxed">
         Um prompt que acerta em um exemplo pode falhar em dez. Monte um <strong class="text-purple-400">conjunto de casos de teste</strong>
         — incluindo os difíceis e adversariais — rode o prompt contra todos, meça a taxa de acerto e ajuste até estabilizar.
-        Só esse ciclo te dá confiança para colocar a IA decidindo sozinha em produção.
+        Só esse ciclo te dá confiança para colocar a IA decidindo sozinha em produçêo.
       </p>
 <div class="space-y-6 mb-6">
 <div class="flex items-start space-x-4">
@@ -373,15 +373,15 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
 <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
-<h4 class="font-bold text-emerald-400 mb-4">✓ Iteração saudável</h4>
+<h4 class="font-bold text-emerald-400 mb-4">✓ Iteraçêo saudável</h4>
 <ul class="space-y-3 text-neutral-300">
 <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Inclui casos difíceis e adversariais desde o início.</span></li>
 <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Mede taxa de acerto antes e depois de cada ajuste.</span></li>
-<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Para de iterar quando a taxa estabiliza, não na primeira tentativa.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Para de iterar quando a taxa estabiliza, nêo na primeira tentativa.</span></li>
 </ul>
 </div>
 <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
-<h4 class="font-bold text-red-400 mb-4">✗ Iteração ingênua</h4>
+<h4 class="font-bold text-red-400 mb-4">✗ Iteraçêo ingênua</h4>
 <ul class="space-y-3 text-neutral-300">
 <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Testa só com um exemplo fácil e dá por pronto.</span></li>
 <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Ajusta no "achismo", sem medir se melhorou.</span></li>
@@ -390,9 +390,9 @@
 </div>
 </div>
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Conjunto</div><p class="text-sm text-neutral-400">Vários casos, não um.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Conjunto</div><p class="text-sm text-neutral-400">Vários casos, nêo um.</p></div>
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Difíceis</div><p class="text-sm text-neutral-400">Casos adversariais primeiro.</p></div>
-<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Medir</div><p class="text-sm text-neutral-400">Taxa de acerto, não achismo.</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Medir</div><p class="text-sm text-neutral-400">Taxa de acerto, nêo achismo.</p></div>
 <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-purple-400 font-bold mb-1">Estabilizar</div><p class="text-sm text-neutral-400">Iterar até parar de melhorar.</p></div>
 </div>
 </section>
@@ -401,15 +401,15 @@
 <div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
 <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">🎯</span> Resumo do Módulo</h2>
 <div class="space-y-4 mb-8">
-<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-neutral-100">Prompt é especificação</strong><span class="text-neutral-400"> — código em linguagem natural que roda sozinho mil vezes.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-neutral-100">Prompt é especificaçêo</strong><span class="text-neutral-400"> — código em linguagem natural que roda sozinho mil vezes.</span></div></div>
 <div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-neutral-100">Estrutura fixa</strong><span class="text-neutral-400"> — papel, contexto, tarefa, formato e regras em seções nomeadas.</span></div></div>
-<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-neutral-100">JSON validado</strong><span class="text-neutral-400"> — saída estruturada, checada antes de virar ação.</span></div></div>
-<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-neutral-100">Guardrails e fallback</strong><span class="text-neutral-400"> — limites + escala por confiança impedem ação irreversível errada.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-neutral-100">JSON validado</strong><span class="text-neutral-400"> — saída estruturada, checada antes de virar açêo.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-neutral-100">Guardrails e fallback</strong><span class="text-neutral-400"> — limites + escala por confiança impedem açêo irreversível errada.</span></div></div>
 <div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-neutral-100">Ramificar e testar</strong><span class="text-neutral-400"> — IA decide via switch; iterar com casos reais até estabilizar.</span></div></div>
 </div>
 <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
 <h3 class="font-semibold text-purple-400 mb-2">Próxima Trilha:</h3>
-<p class="text-neutral-300">Trilha 4 · Construção — sair do blueprint e montar a automação ponta a ponta.</p>
+<p class="text-neutral-300">Trilha 4 · Construçêo — sair do blueprint e montar a automaçêo ponta a ponta.</p>
 </div>
 <div class="flex flex-col sm:flex-row gap-4">
 <a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="index.html">← Voltar para Trilha</a>
@@ -420,7 +420,7 @@
 </main>
 <footer class="border-t border-dark-600 py-8 mt-8">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
-<p>Formação em Automação Estratégica com IA · <a class="text-sky-400 hover:text-sky-300" href="https://ARCKHÉ AI" target="_blank">ARCKHÉ AI</a> · 2026</p>
+<p>Formaçêo em Automaçêo Estratégica com IA · <a class="text-sky-400 hover:text-sky-300" href="https://ARCKHÉ AI" target="_blank">ARCKHÉ AI</a> · 2026</p>
 </div>
 </footer>
 <script>

@@ -188,7 +188,7 @@ Erro:      ={{ $json.execution.error.message }}
 <pre class="font-mono text-sm text-neutral-300 leading-relaxed">Retry On Fail:      true
 Max Tries:          3
 Wait Between Tries: 2000 ms   <span class="text-emerald-400">// idealmente crescente (backoff)</span>
-Timeout:            30000 ms  <span class="text-emerald-400">// não espere para sempre</span></pre>
+Timeout:            30000 ms  <span class="text-emerald-400">// nêo espere para sempre</span></pre>
 </div>
 <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
 <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Retry with care</h3>
@@ -211,8 +211,8 @@ Timeout:            30000 ms  <span class="text-emerald-400">// não espere para
 <pre class="font-mono text-sm text-neutral-300 leading-relaxed"><span class="text-emerald-400">// chave idempotente derivada do evento</span>
 chave = ={{ $json.pedido_id + '-' + $json.tipo_evento }}
 
-<span class="text-emerald-400">// UPSERT: se a chave já existe, atualiza; senão, cria</span>
-<span class="text-emerald-400">// → reenvio do mesmo evento não duplica</span></pre>
+<span class="text-emerald-400">// UPSERT: se a chave já existe, atualiza; senêo, cria</span>
+<span class="text-emerald-400">// → reenvio do mesmo evento nêo duplica</span></pre>
 </div>
 <div class="space-y-6 mb-6">
 <div class="flex items-start space-x-4">

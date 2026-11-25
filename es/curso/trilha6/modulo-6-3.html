@@ -156,13 +156,13 @@ PAPEL:    Você é {{especialista_em_X}}.
 OBJETIVO: {{o_que_a_skill_entrega}}.
 
 ENTRADA (variáveis):
-  - {{var_1}} : descrição
-  - {{var_2}} : descrição
+  - {{var_1}} : descriçêo
+  - {{var_2}} : descriçêo
 
 REGRAS:
   - {{regra_1}}
   - {{regra_2}}
-  - Quando não tiver certeza: {{fallback}}.
+  - Quando nêo tiver certeza: {{fallback}}.
 
 FORMATO DE SAÍDA:
   {{schema_ou_estrutura}}
@@ -209,7 +209,7 @@ ENTRADA REAL:
 PAPEL: Você é um classificador de mensagens de atendimento.
 
 REGRAS:
-  - Categorias permitidas: {{categorias}}   // ex: pedido, dúvida, reclamação, spam
+  - Categorias permitidas: {{categorias}}   // ex: pedido, dúvida, reclamaçêo, spam
   - Escolha SOMENTE uma categoria da lista.
   - Dê uma confiança de 0 a 1.
   - Se confiança &lt; 0.6, destino = "humano".
@@ -253,10 +253,10 @@ Mensagem:
 <p class="text-neutral-300 mb-6 leading-relaxed">Recibe un documento largo y devuelve un resumen + campos estructurados, citando la fuente.</p>
 <div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
 <pre class="mono text-sm text-neutral-300 leading-relaxed">SKILL: Resumir &amp; Extrair Documento     # v1.0
-PAPEL: Você extrai dados de documentos com precisão.
+PAPEL: Você extrai dados de documentos com precisêo.
 
 REGRAS:
-  - Use SOMENTE o que está no documento. Não infira.
+  - Use SOMENTE o que está no documento. Nêo infira.
   - Para cada campo extraído, cite o trecho de origem.
   - Campo ausente = null.
 
@@ -313,12 +313,12 @@ Período: {{periodo}}   ·   Métricas-chave: {{metricas}}
 REGRAS:
   - Baseie-se SÓ nos números fornecidos.
   - Destaque variações relevantes (subiu/caiu) com o número.
-  - Tom executivo, direto. Sem jargão.
+  - Tom executivo, direto. Sem jargêo.
 
 FORMATO DE SAÍDA (markdown):
   ## Resumo (2 linhas)
   ## Destaques (3 bullets com números)
-  ## Pontos de atenção (1-2 bullets)
+  ## Pontos de atençêo (1-2 bullets)
   ## Recomendações (2 ações concretas)</pre>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -360,8 +360,8 @@ BASE DE CONHECIMENTO (trechos recuperados):
 
 REGRAS:
   - Responda SOMENTE com o que está na base acima.
-  - Se a resposta não estiver na base, diga:
-    "Não tenho essa informação, vou te encaminhar para um atendente."
+  - Se a resposta nêo estiver na base, diga:
+    "Nêo tenho essa informaçêo, vou te encaminhar para um atendente."
   - Cite o trecho usado entre colchetes [fonte].
   - Tom: {{tom}}   // ex: cordial e objetivo
 
@@ -429,9 +429,9 @@ Pergunta do cliente:
 # v2.0  2026-07-01  schema de saída mudou: +campo "prioridade"
 #
 # CUSTOMIZAÇÕES deste cliente:
-#   - categorias = [pedido, dúvida, entrega, reclamação]
+#   - categorias = [pedido, dúvida, entrega, reclamaçêo]
 #   - tom = cordial e curto
-# TESTES DE REGRESSÃO: ver casos/faq-paocia.csv (8 casos)</pre>
+# TESTES DE REGRESSêO: ver casos/faq-paocia.csv (8 casos)</pre>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
 <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">

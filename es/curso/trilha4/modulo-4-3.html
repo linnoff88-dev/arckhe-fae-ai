@@ -249,7 +249,7 @@ Data:       ={{ $now.format('dd/MM/yyyy') }}</pre>
 <div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
 <div class="text-xs text-neutral-500 mb-2 font-mono"># buscar la página siguiente con cursor</div>
 <pre class="font-mono text-sm text-neutral-300 leading-relaxed">GET https://api.exemplo.com/v1/itens?cursor=={{ $json.next_cursor }}
-<span class="text-emerald-400">// repita o HTTP node em loop enquanto next_cursor não for null</span>
+<span class="text-emerald-400">// repita o HTTP node em loop enquanto next_cursor nêo for null</span>
 <span class="text-emerald-400">// SplitInBatches: tamanho 50 + Wait 1s entre lotes p/ respeitar rate limit</span></pre>
 </div>
 <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
@@ -289,7 +289,7 @@ Data:       ={{ $now.format('dd/MM/yyyy') }}</pre>
 <p class="text-neutral-300 mb-6 leading-relaxed">Un campo <strong class="text-amber-400">nulo inesperado</strong> interrumpe el flujo a mitad de camino. Expresiones de n8n <span class="font-mono text-amber-400">={{ }}</span> con valor predeterminado y optional chaining hacen que la automatización sea resistente a datos sucios.</p>
 <div class="codebox rounded-xl p-5 mb-6 overflow-x-auto">
 <div class="text-xs text-neutral-500 mb-2 font-mono"># expresiones defensivas en n8n</div>
-<pre class="font-mono text-sm text-neutral-300 leading-relaxed"><span class="text-emerald-400">// valor padrão quando vem nulo/undefined</span>
+<pre class="font-mono text-sm text-neutral-300 leading-relaxed"><span class="text-emerald-400">// valor padrêo quando vem nulo/undefined</span>
 ={{ $json.email ?? 'sem-email@placeholder.com' }}
 
 <span class="text-emerald-400">// optional chaining evita "cannot read property of undefined"</span>

@@ -1,6 +1,6 @@
 # BUILD SPEC — fae-ai (uso interno dos construtores)
 
-Curso: **Formação em Automação Estratégica com IA** · Emoji do curso: ⚙️ · Nome curto no logo: "Automação com IA"
+Curso: **Formaçêo em Automaçêo Estratégica com IA** · Emoji do curso: ⚙️ · Nome curto no logo: "Automaçêo com IA"
 
 Leia também: `/home/nmaldaner/.claude/skills/formato-curso/references/MASTER_COMPLETO.md`,
 `/home/nmaldaner/.claude/skills/formato-curso/references/SVG-FUTURISTA.md`,
@@ -10,8 +10,8 @@ Leia também: `/home/nmaldaner/.claude/skills/formato-curso/references/MASTER_CO
 - T1 Emerald · `curso/trilha1/` · Fundamentos · 🧭
 - T2 Blue · `curso/trilha2/` · Auditoria & Mapeamento · 🔍
 - T3 Purple · `curso/trilha3/` · Desenho de Soluções · 📐
-- T4 Amber · `curso/trilha4/` · Construção · 🛠️
-- T5 Teal · `curso/trilha5/` · Comercialização · 💰
+- T4 Amber · `curso/trilha4/` · Construçêo · 🛠️
+- T5 Teal · `curso/trilha5/` · Comercializaçêo · 💰
 - T6 Rose · `curso/trilha6/` · Prática · 🧪
 
 ## NAV CANÔNICO para páginas dentro de `curso/trilhaX/` (index da trilha E módulos — mesma profundidade)
@@ -25,7 +25,7 @@ Copie verbatim; em cada página marque a trilha ATIVA trocando suas classes para
       <div class="flex items-center space-x-4">
         <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
           <span class="text-2xl">⚙️</span>
-          <span class="font-bold text-lg hidden sm:inline">Automação com IA</span>
+          <span class="font-bold text-lg hidden sm:inline">Automaçêo com IA</span>
         </a>
         <span class="text-neutral-600">|</span>
         <a href="https://ARCKHÉ AI" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">ARCKHÉ AI</a>
@@ -34,7 +34,7 @@ Copie verbatim; em cada página marque a trilha ATIVA trocando suas classes para
         <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
         <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Auditoria</span></a>
         <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Desenho</span></a>
-        <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construção</span></a>
+        <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Construçêo</span></a>
         <a href="../trilha5/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-teal-400 hover:bg-teal-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Comercial</span></a>
         <a href="../trilha6/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Prática</span></a>
         <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
@@ -71,8 +71,8 @@ Sempre incluir também a Parte 5 (bordas dark): `.dark .border-dark-600{border-c
 
 ## Scripts (todas as páginas): toggleTopic + theme toggle + (index da trilha) openModal/closeModal com iframe. Ver MASTER Sec. 9.
 
-## Regras não-negociáveis (resumo)
-- Botões `justify-start`; números em círculo (não setas); 3 seções por tópico (O que é / Por que aprender / Conceitos-chave); ≥6 tópicos por módulo no index.
+## Regras nêo-negociáveis (resumo)
+- Botões `justify-start`; números em círculo (nêo setas); 3 seções por tópico (O que é / Por que aprender / Conceitos-chave); ≥6 tópicos por módulo no index.
 - Index da trilha: header com stats(4) + hero SVG; **Mapa da trilha** (h2 exato) com cards-âncora `#modulo-X-Y`; `<h2>Conteúdo detalhado</h2>`; cada card de módulo com `id`, tópicos expansíveis e botões "Ver em Modal" + "Ver Completo".
 - Módulo: 500-800 linhas, 6-8 `<section id="topico-N">`, variedade de componentes (≥2 grids ✓/✗, ≥1 timeline, ≥2 tip boxes, ≥1 code box), ≥1 SVG futurista inline, Resumo do Módulo com próximo + CTAs.
 - ARCKHÉ AI (`text-sky-400`) em todas as páginas. Theme toggle funcional.
